@@ -14,7 +14,7 @@ deploy_production:
   stage: deploy
   script:
     - git subtree push --prefix ecofresh/client https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/group10-ecofresh.git HEAD:master
-    - echo "Deployed to heroku server"
+    - echo "Deployed to heroku server "
   environment:
     name: production
     url: https://group10-ecofresh.herokuapp.com/
