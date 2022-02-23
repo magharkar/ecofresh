@@ -9,7 +9,7 @@ initialize:
     - cd ecofresh/client
     - npm install
 
-deploy_production:
+deploy:
   image: node:latest
   stage: deploy
   script:
