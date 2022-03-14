@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import Footer from "../../common/Footer/Footer";
-import Header from "../../common/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
   Column, Image } from "./LandingPage.style";
 import landingPageImg from '../../assets/landing-page.png';
