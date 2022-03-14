@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from 'react-router-dom';
-import LandingPage from "./components/LandingPage/LandingPage";
-import Error from "./components/Error/Error";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import Error from "./pages/Error/Error";
 
 function App() {
   return (
