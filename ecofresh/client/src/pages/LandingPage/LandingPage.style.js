@@ -8,13 +8,8 @@ const HeaderWrapper = styled.div`
     width: 100%;
     z-index: 100;
 `;
-const FooterWrapper = styled.div`
-    height: 148px;
-    background-color: #1D3124;
-`;
-const PageWrapper = styled.div`
-    font-family: 'Segoe UI';
-`;
+
+const PageWrapper = styled.div``;
 
 const  BottomContainer = styled.div`
     position: relative;
@@ -40,4 +35,4 @@ const Image = styled.img`
     object-fit: cover;
 `;
 
-export { MainContent, HeaderWrapper, FooterWrapper, PageWrapper, BottomContainer, Row, Column, Image }; 
+export { MainContent, HeaderWrapper, PageWrapper, BottomContainer, Row, Column, Image }; 

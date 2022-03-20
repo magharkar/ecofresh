@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
+import Navbar from "../../components/Navbar/NavLanding";
+import { HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
   Column, Image } from "./LandingPage.style";
-import landingPageImg from '../../assets/landing-page.png';
-import frenchOnion from '../../assets/french-onion.jpeg';
-import lasagnaSoup from '../../assets/lasagna-soup.webp';
+import landingPageImg from '../../assets/pictures/landing-page.png';
+import frenchOnion from '../../assets/pictures/french-onion.jpeg';
+import lasagnaSoup from '../../assets/pictures/lasagna-soup.webp';
+import { FooterContainer } from '../../components/Footer/FooterContainer'
 
 function LandingPage() {
   return (
     <PageWrapper>
         <HeaderWrapper>
-            <Header />
+            <Navbar />
         </HeaderWrapper>
 
         <BottomContainer>
@@ -32,9 +32,9 @@ function LandingPage() {
                 </Row>
             </MainContent>
 
-            <FooterWrapper>
-                <Footer />
-            </FooterWrapper>
+            
+                <FooterContainer />
+
         </BottomContainer>
        
     </PageWrapper>
