@@ -1,37 +1,72 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding-top: 47px;
-`;
-const IconContainer = styled.div`
-    padding: 12px;
-`;
+export const Container = styled.div`
+    padding: 80px 60px;
+    background: #1d3124;
+`
 
-const LeftContainer = styled.div`
+export const Wrapper = styled.div`
     display: flex;
-    line-height: 24px;
-    margin: auto;
-    flex-wrap: wrap;
-`;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+`
 
-const RightContainer = styled.div`
+export const Row = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 25px;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+`
+
+export const Column = styled.div`
     display: flex;
-    line-height: 24px;
-    margin: auto;
-    flex-wrap: wrap;
-`;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 60px;
+`
 
-const AppLogo = styled.div`
+export const Link = styled.a`
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-decoration: none;
+
+    &:hover {
+        color: #fdad11;
+        transition: 0.2s ease-in;
+    }
+`
+
+export const Title = styled.p`
+    font-size: 24px;
     color: #FDAD11;
-    padding: 12px;
-`;
+    margin-bottom: 40px;
+    font-weight: bold;
+`
 
-const LinkText = styled.div`
-    color: #FFFFFF;
-    padding: 12px;
-`;
+export const Text = styled.div`
+    font-size: 30px;
+    color: #fdad11;
+    margin-left: 0 auto;
+    margin-top: 90px;
 
-export { Wrapper, IconContainer, LeftContainer, RightContainer, AppLogo, LinkText };
+    @media (max-width:1114px) {
+        margin-left: 62px;
+    }
+`
+
+export const SubText = styled.div`
+    font-size: 10px;
+    color: #fff;
+    margin-left: -254px;
+    margin-top: 125px;
+
+    @media (max-width:1114px) {
+        margin-left: 62px;
+    }
+`
