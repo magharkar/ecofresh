@@ -13,12 +13,18 @@ const express = require("express");
  */
 
 validatePassword = (salt, password, actualPassword) => {
+    console.log("inside validate");
     let hashedPassword = crypto.pbkdf2Sync(actualPassword,
         salt, 1000, 64, `sha512`).toString(`hex`);
-    if (password === hashedPassword) {
+    console.log(hashedPassword);
+    if (password == hashedPassword) {
+        console.log("inside if");
         return true;
+    } else {
+        console.log("inside else");
+        return false;
+
     }
-    return false;
 
 }
 
@@ -35,4 +41,4 @@ createSalt = () => {
 }
 
 
-module.exports = {validatePassword, getPassword, createSalt};
+module.exports = { validatePassword, getPassword, createSalt };

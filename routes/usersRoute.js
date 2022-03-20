@@ -17,20 +17,23 @@ route.get("/allUsers", (req, res) => {
   }
 });
 
-route.post("/login",  (req, res) => {
+route.post("/login", async (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   console.log(email, password);
-  Users.findOne({ "email": email }).then(result => {
+  await Users.findOne({ "email": email }).then(result => {
     console.log("Res: " + result);
     console.log("Salt: " + result.salt);
     if (validatePassword(result.salt, result.password, password)) {
       console.log("valid");
       res.send({ "success": true, "user": email });
     }
+    else {
+      res.status(401).send({ "success": false, "message": "Invalid credentials" });
+    }
   }).catch(err => {
     console.log("Err: " + err);
-    res.send({ "success": true, "user": email });
+    res.send({ "success": false, "user": email });
   });
 });
 
@@ -57,5 +60,30 @@ route.post("/register", (req, res) => {
   });
 
 });
+
+route.post("/updatePassword", (req, res) => {
+  let email = req.body.email;
+  Users.findOne({
+    "email": email
+  }, (err, data) => {
+    if (data) {
+      let password = getPassword(data.salt, req.body.password);
+      console.log("new password" + password);
+      Users.updateOne({ "email": email }, { "password": password }, (error, result) => {
+        if (result) {
+          res.send({ "success": true, "message": "Password updated" });
+        }
+        else {
+          res.status(400).send({ "success": false, "message": "Cannot update password. Please check your request." });
+        }
+      });
+    }
+    else {
+      res.status(400).send({ "success": false, "message": "Cannot update password. Please check your request." });
+    }
+  });
+
+})
+
 
 module.exports = route;
