@@ -4,12 +4,11 @@
 
 const express = require("express");
 const route = express.Router();
-const usersModel = require("../models/usersModel");
-const login = require("../controllers/login");
-const register = require("../controllers/register");
+const Users = require("../models/usersModel");
+const { validatePassword, getPassword, createSalt } = require("../controllers/login")
 
-route.get("/allUsers", async (req, res) => {
-  let users = await usersModel.find({});
+route.get("/allUsers", (req, res) => {
+  let users = usersModel.find({});
   try {
     res.send(users);
   } catch (error) {
@@ -18,26 +17,45 @@ route.get("/allUsers", async (req, res) => {
   }
 });
 
-route.post("/login", (req, res) => {
-  let body = req.body;
-  let isValidUser = login(body);
-  if (isValidUser) {
-    res.send({ "success": true , "user": body.Email});
-  }
-  else {
-    res.send({ "success": false});
-  }
+route.post("/login",  (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+  console.log(email, password);
+  Users.findOne({ "email": email }).then(result => {
+    console.log("Res: " + result);
+    console.log("Salt: " + result.salt);
+    if (validatePassword(result.salt, result.password, password)) {
+      console.log("valid");
+      res.send({ "success": true, "user": email });
+    }
+  }).catch(err => {
+    console.log("Err: " + err);
+    res.send({ "success": true, "user": email });
+  });
 });
 
 route.post("/register", (req, res) => {
-let body = req.body;
-let isRegistered =  register(body);
-if(isRegistered){
-  res.status(201).send({"success": true});
-}
-else{
-  res.status(400).send({ "success": false});
-}
+  let isRegistered = true;
+  let password = req.body.password
+  let newUser = new Users();
+  newUser.email = req.body.email;
+  newUser.firstName = req.body.firstName;
+  newUser.lastName = req.body.lastName;
+  newUser.mealType = req.body.mealType;
+  newUser.cuisine = req.body.cuisine;
+  newUser.phoneNumber = req.body.phoneNumber;
+  newUser.userType = req.body.userType;
+  newUser.salt = createSalt();
+  newUser.password = getPassword(newUser.salt, password);
+  newUser.save().then(result => {
+    console.log("in result");
+    res.status(201).send("User created");
+  }).catch(err => {
+    console.log("Failed to add user.");
+    console.log("Is user registered? " + isRegistered)
+    res.status(400).send("User cannot be created");
+  });
+
 });
 
 module.exports = route;

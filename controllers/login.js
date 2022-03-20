@@ -2,8 +2,10 @@
  * @author Ruchi Shinde
  */
 
+const async = require("async")
 const Users = require("../models/usersModel");
 const crypto = require("crypto");
+const express = require("express");
 
 /**
  * This code is derived from https://www.loginradius.com/blog/async/password-hashing-with-nodejs/
@@ -20,25 +22,17 @@ validatePassword = (salt, password, actualPassword) => {
 
 }
 
-login = (body) => {
-    let email = body.email;
-    let password = body.password;
-    let isValidUser = false;
-    let users = Users.find({ "Email": email }, (err, result) => {
-        if (err) {
-            console.log(err);
-            isValidUser = false;
-        }
-    });
+getPassword = (salt, password) => {
+    let saltedPassword = crypto.pbkdf2Sync(password,
+        salt, 1000, 64, `sha512`).toString(`hex`);
+    console.log(this.salt + " " + saltedPassword);
+    return saltedPassword;
+}
 
-    if(users){
-        console.log(users + " " + users.salt);
-        if (validatePassword(users.salt, users.Password, password)) {
-            isValidUser = true;
-        }
-    }
+createSalt = () => {
+    let salt = crypto.randomBytes(16).toString('hex');
+    return salt;
+}
 
-    return isValidUser;
-};
 
-module.exports = login;
+module.exports = {validatePassword, getPassword, createSalt};
