@@ -1,25 +1,31 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import EmojiEvents from '@mui/icons-material/EmojiEvents';
 import LocalOffer from '@mui/icons-material/LocalOffer';
 import SentimentVeryDissatisfied from '@mui/icons-material/SentimentVeryDissatisfied';
 import Visibility from '@mui/icons-material/Visibility';
 import ShoppingBag from '@mui/icons-material/ShoppingBag';
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import { useNavigate } from 'react-router-dom';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log(event.currentTarget);
   };
+  const handleRouting = (event) => {
+    const selectedOption = event.target.innerText;
+    if(selectedOption === "Logout"){
+      navigate("/");
+    }
+  }
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -27,44 +33,47 @@ export default function AccountMenu() {
       {
         icon: <ShoppingBag fontSize='small' />,
         text: "Orders",
+        divider: true,
       },
       {
         icon: <LocalOffer fontSize='small' />,
         text: "Offers",
+        divider: false,
       },
       {
         icon: <EmojiEvents fontSize='small' />,
         text: "Rewards",
+        divider: true,
       },
       {
         icon: <Visibility fontSize='small' />,
         text: "View Complaints",
+        divider: false,
       },
       {
         icon: <SentimentVeryDissatisfied fontSize='small' />,
         text: "Raise Complaint",
+        divider: true,
       },
       {
         icon: <Logout fontSize='small' />,
         text: "Logout",
+        divider: false,
       }
   ];
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-          </IconButton>
-        </Tooltip>
-      </Box>
+      <button 
+        className="buttons"
+        onClick={handleClick}
+        size="small"
+        sx={{ ml: 2 }}
+        aria-controls={open ? 'account-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+      >
+          <AccountCircleRoundedIcon />
+      </button>
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -100,56 +109,28 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-          {/* <MenuItem>
-        <ListItemIcon>
-            <ShoppingBag fontSize="small" />
-          </ListItemIcon>
-          Orders
-        </MenuItem>
-        <Divider />
-          <MenuItem>
-        <ListItemIcon>
-            <LocalOffer fontSize="small" />
-          </ListItemIcon>
-          Offers
-        </MenuItem>
-          <MenuItem>
-          <ListItemIcon>
-            <EmojiEvents fontSize="small" />
-          </ListItemIcon>
-          Rewards
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-        <ListItemIcon>
-            <Visibility fontSize="small" />
-          </ListItemIcon>
-          View Complaints
-        </MenuItem>
-        <MenuItem>
-        <ListItemIcon>
-            <SentimentVeryDissatisfied fontSize="small" />
-          </ListItemIcon>
-          Raise Complaint
-        </MenuItem>
-        <Divider />
-        
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu> */}
       {
-          menuOptions.map(option => (
-              <MenuItem>
-                <ListItemIcon>
-                    {option.icon}
-                </ListItemIcon>
-                {option.text}
-              </MenuItem>
-          ))
+          menuOptions.map(option => {
+            return (
+              option.divider ? (
+                <>
+                <MenuItem value={option.text} onClick={(event) => handleRouting(event)}>
+                    <ListItemIcon>
+                        {option.icon}
+                    </ListItemIcon>
+                    {option.text}
+                  </MenuItem>
+                  <Divider />
+                </>
+                ) : (
+                  <MenuItem value={option.text} onClick={(event) => handleRouting(event)}>
+                  <ListItemIcon>
+                      {option.icon}
+                  </ListItemIcon>
+                  {option.text}
+                </MenuItem>
+                )
+          )})
       }
       </Menu>
     </React.Fragment>

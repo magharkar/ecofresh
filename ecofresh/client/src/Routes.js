@@ -10,13 +10,16 @@ import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
 
 function App() {
   return (
-    <Routes> 
-      <Route path="/" element={<LandingPage />} />
-      <Route path="*" element={<Error />} />
-      <Route path="/home" element={<UserHomepage/>} />
-      <Route path="/uploadRecipe" element={<UploadRecipe/>} />
-      <Route path="/admin" element={<AdminHomepage/>} />
-    </Routes>
+    <ThemeProvider theme={theme}>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="*" element={<Error />} />
+        <Route path="/home" element={<UserHomepage/>} />
+        <Route path="/uploadRecipe" element={<UploadRecipe/>} />
+        <Route path="/admin" element={<AdminHomepage/>} />
+      </Routes>
+    </ThemeProvider>
+
   );
 }
 
