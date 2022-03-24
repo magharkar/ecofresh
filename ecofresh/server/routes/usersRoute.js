@@ -99,4 +99,32 @@ route.get("/orders",async(req,res)=>{
 });
 
 
+route.get(`/orders/:id`,(req,res)=>{
+  let param = req.params.id;
+  Orders.findOne({orderId:param}).then(result=>{
+    if(result.length==0){
+      res.send({
+        "success": false,
+        "user":{}
+      });
+    }
+    else{
+      res.send({
+        "success": true,
+        "user":{
+          "order Id": result.orderId,
+          "Recipe name":result.recipes,
+          "Username": result.userId
+        }
+      });
+    }
+  }).catch(err=>{
+    res.status(400).send({
+      "sucess": false,
+      "message":"Cannot fetch data"
+    });
+  });
+});
+
+
 module.exports = route;
