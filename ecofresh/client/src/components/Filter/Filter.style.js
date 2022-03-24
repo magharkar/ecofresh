@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
  width: 300px;
- background-color: #c9b8a2;
+ background-color: #50AF00;
 `;
 
 const FilterText = styled.div`

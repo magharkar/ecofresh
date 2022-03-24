@@ -9,12 +9,11 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
     position: relative;
-    top: 66px;
     display: flex;
 `;
 
 const Content = styled.div`
-    width: calc(100vw - 300px );
+    width: calc(100vw - 240px );
 `;
 
 const CssTextField = withStyles({
@@ -59,7 +58,8 @@ const CssTextField = withStyles({
 
 const FlexContainer = styled.div`
     display: flex;
-    height: calc(100vh - 68.5px)
+    //height: calc(100vh - 68.5px)
+    padding-bottom: 24px;
 `;
 
 const MainContent = styled.div`
@@ -68,7 +68,7 @@ const MainContent = styled.div`
 const RecipeContainer = styled.div`
     display: flex;
     flex-wrap: wrap; 
-    gap: 24px;
+    // gap: 24px;
     margin-left: 24px;
 `;
 

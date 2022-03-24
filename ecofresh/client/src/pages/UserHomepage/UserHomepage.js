@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, ContentContainer, Content, CssTextField, SearchBar as SearchBarContainer,
 FlexContainer, MainContent, RecipeContainer } from './UserHomepage.style'
 import Navbar from '../../components/Navbar/NavUser'
@@ -19,7 +19,7 @@ import porkChopLogo from '../../assets/pictures/pork-chop.jpg';
 import lasagnaSoupLogo from '../../assets/pictures/lasagna-soup.webp';
 import friedDumplingLogo from '../../assets/pictures/fried-dumpling.jpg';
 import thaiChickenLogo from '../../assets/pictures/thai-chicken.jpg';
-
+import axios from 'axios';
 
 const recipeCardData = [
     {
@@ -73,6 +73,16 @@ const recipeCardData = [
   ]
 
 function UserHomepage() {
+
+    useEffect(() => {
+      axios.get('localhost:3001/recipes/allRecipes')
+      .then(res => {
+          const data = res.data;
+          console.log(data);
+      })
+
+    }, []);
+
     const [sortBy, setSortKey] = React.useState('');
 
     const handleChange = (event) => {
