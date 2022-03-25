@@ -3,9 +3,10 @@ import { useState } from 'react'
 import { Button } from '@mui/material';
 import { Nav,Logo,MenuIcon, Menu, NavLinks, ButtonContainer } from './NavLanding.style'
 
-function Navbar() {
+function Navbar(props) {
 
   const [isClicked, setIsClicked] = useState(false);
+  const { hideButtons } = props;
 
   return (
     <Nav>
@@ -24,15 +25,25 @@ function Navbar() {
             <NavLinks to="/howItWorks">How It Works</NavLinks>
             <NavLinks to="/pricing">Pricing</NavLinks>
 
-            <ButtonContainer className = "btn_container">
-                <Button variant="contained" style={{color:"black", backgroundColor: "#FFFFFF"}}>LOGIN</Button>
-                <Button variant="contained" style={{color:"black", backgroundColor: "#FDAD11"}}>SIGNUP</Button>
-            </ButtonContainer>
+            {
+                !hideButtons && (
+                    <ButtonContainer className = "btn_container">
+                        <Button variant="contained" style={{color:"black", backgroundColor: "#FFFFFF"}}>LOGIN</Button>
+                        <Button variant="contained" style={{color:"black", backgroundColor: "#FDAD11"}}>SIGNUP</Button>
+                    </ButtonContainer>
+                )
+            }
+
+           
         </Menu>
-        <ButtonContainer className = "btn_container">
-            <Button variant="contained" style={{color:"black", backgroundColor: "#FFFFFF"}}>LOGIN</Button>
-            <Button variant="contained" style={{color:"black", backgroundColor: "#FDAD11"}}>SIGNUP</Button>
-        </ButtonContainer>
+            {
+                !hideButtons && (
+                    <ButtonContainer className = "btn_container">
+                        <Button variant="contained" style={{color:"black", backgroundColor: "#FFFFFF"}}>LOGIN</Button>
+                        <Button variant="contained" style={{color:"black", backgroundColor: "#FDAD11"}}>SIGNUP</Button>
+                    </ButtonContainer>
+                )
+            }
     </Nav>
   )
 }
