@@ -4,6 +4,7 @@ const ATLAS_URI = require("./config");
 const app = express();
 const port = process.env.PORT || 3001
 const usersRoute = require("./routes/usersRoute");
+const paymentRoute = require("./routes/paymentRoute");
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
@@ -22,7 +23,13 @@ db.once('open', () => {
     console.log("Database connected");
 });
 
-app.use("/users", usersRoute);
+// app.use("/users", usersRoute);
+
+// app.listen(port, () => {
+//     console.log("App is listening on port " + port);
+// });
+
+app.use("/api", paymentRoute);
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);

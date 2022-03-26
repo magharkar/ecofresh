@@ -33,7 +33,7 @@ route.post("/login", async (req, res) => {
     }
   }).catch(err => {
     console.log("Err: " + err);
-    res.send({ "success": false, "user": email });
+    res.status(400).send({ "success": false, "user": email });
   });
 });
 

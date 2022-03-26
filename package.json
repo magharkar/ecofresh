@@ -1,5 +1,21 @@
 {
   "dependencies": {
     "styled-components": "^5.3.3"
-  }
+  },
+  "name": "group_10_csci_5709",
+  "description": "This is the repository for CSCI 5709 group project created by Group 10.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "start": "server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.cs.dal.ca/agharkar/group_10_csci_5709.git"
+  },
+  "author": "",
+  "license": "ISC"
 }
