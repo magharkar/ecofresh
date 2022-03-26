@@ -1,25 +1,34 @@
-import React from "react";
-import { IconContainer, LeftContainer, Wrapper, AppLogo, LinkText, RightContainer } from './Footer.style';
-import TwitterIcon  from '@mui/icons-material/Twitter';
-import WhatsappIcon  from '@mui/icons-material/WhatsApp';
-import FacebookIcon  from '@mui/icons-material/Facebook';
+import React from 'react'
+import { Container, Wrapper, Row, Column, Link, Title, Text, SubText } from './Footer.style'
 
-function Footer() {
-    return(
-        <Wrapper>
-            <LeftContainer>
-                <AppLogo> © EcoFresh</AppLogo>
-                <LinkText>Terms And Conditions</LinkText>
-                <LinkText>Privacy</LinkText>
-            </LeftContainer>
-
-            <RightContainer>
-                <IconContainer><FacebookIcon sx={{ color: 'white' }} /></IconContainer>
-                <IconContainer><WhatsappIcon sx={{ color: 'white' }} /></IconContainer>
-                <IconContainer><TwitterIcon sx={{ color: 'white' }} /></IconContainer>
-            </RightContainer>
-        </Wrapper>
-    )
+export default function Footer({children, ...restProps}) {
+  return <Container {...restProps}>{children}</Container>
 }
 
-export default Footer;
+Footer.Wrapper = function FooterWrapper({children, ...restProps}) {
+    return <Wrapper {...restProps}>{children}</Wrapper>
+}
+
+Footer.Row = function FooterRow({children, ...restProps}) {
+    return <Row {...restProps}>{children}</Row>
+}
+
+Footer.Column = function FooterColumn({children, ...restProps}) {
+    return <Column {...restProps}>{children}</Column>
+}
+
+Footer.Link = function FooterLink({children, ...restProps}) {
+    return <Link {...restProps}>{children}</Link>
+}
+
+Footer.Title = function FooterTitle({children, ...restProps}) {
+    return <Title {...restProps}>{children}</Title>
+}
+
+Footer.Text = function FooterText({children, ...restProps}) {
+    return <Text {...restProps}>{children}</Text>
+}
+
+Footer.SubText = function FooterSubText({children, ...restProps}) {
+    return <SubText {...restProps}>{children}</SubText>
+}

@@ -7,48 +7,52 @@ const crypto = require('crypto');
 const Schema = mongoose.Schema;
 
 const Users = new mongoose.Schema({
-    FirstName: {
+    firstName: {
         type: String,
         required: true
     },
-    LastName: {
+    lastName: {
         type: String,
         required: true
     },
-    Email: {
+    email: {
         type: String,
         required: true
     },
-    MealType: {
+    mealType: {
         type: String,
         required: true
     },
-    Cuisine: {
+    cuisine: {
         type: String,
         required: true
     },
-    Password: {
+    password: {
         type: String,
         required: true
     },
     salt: {
         type: String,
     },
-    UserId: {
-        type: String
+    userId: {
+        type: Number,
+        default: function () {
+            return Math.floor(Math.random() * 1234) + 10000;
+        },
+        index: { unique: true }
     },
-    Cart: {
-        type: String
-    },
-
-    OrderId: {
-        type: String
-    },
-    UserType: {
+    cart: {
         type: String
     },
 
-    Credits: {
+    orderId: {
+        type: String
+    },
+    userType: {
+        type: String
+    },
+
+    credits: {
         type: String
     }
 });
@@ -58,14 +62,38 @@ const Users = new mongoose.Schema({
  * @param {String} password 
  */
 
-Users.methods.validatePassword = (password) => {
+Users.method(validatePassword = (password) => {
     console.log(Users);
     let hashedPassword = crypto.pbkdf2Sync(password,
         this.salt, 1000, 64, `sha512`).toString(`hex`);
     if (this.Password === hashedPassword) {
         return true;
     }
+},
+getPassword = (password) => {
+    this.salt = crypto.randomBytes(16).toString('hex');
+    let saltedPassword = crypto.pbkdf2Sync(password,
+        this.salt, 1000, 64, `sha512`).toString(`hex`);
+        this.password = saltedPassword;
+    console.log(this.salt + " " + saltedPassword);
+    return saltedPassword;
+},
+createSalt = () => {
+    let salt = crypto.randomBytes(16).toString('hex');
+    return salt;
+}
+);
+
+Users.methods.getPassword = (salt, password) => {
+    let saltedPassword = crypto.pbkdf2Sync(password,
+        salt, 1000, 64, `sha512`).toString(`hex`);
+    console.log(salt + " " + saltedPassword);
+    return saltedPassword;
 }
 
+Users.methods.createSalt = () => {
+    let salt = crypto.randomBytes(16).toString('hex');
+    return salt;
+}
 
-module.exports = mongoose.model("Users", Users, "Users");
+module.exports = mongoose.model("Users", Users);

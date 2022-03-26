@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 const ATLAS_URI = require("./config");
 const app = express();
 const port = process.env.PORT || 3001
-const config = require("./config")
 const usersRoute = require("./routes/usersRoute");
 const complaintRoutes = require("./routes/complaintRoutes");
 cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
+
 
 mongoose.connect(ATLAS_URI, {
     useNewUrlParser: true,
