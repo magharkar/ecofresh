@@ -5,6 +5,10 @@ const app = express();
 const port = process.env.PORT || 3001
 const config = require("./config")
 const usersRoute = require("./routes/usersRoute");
+const complaintRoutes = require("./routes/complaintRoutes");
+cors = require("cors");
+
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(ATLAS_URI, {
@@ -22,6 +26,7 @@ db.once('open', () => {
 });
 
 app.use("/users", usersRoute);
+app.use("/complaints", complaintRoutes);
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);
