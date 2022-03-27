@@ -2,7 +2,11 @@ var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Payment = new mongoose.Schema({
-    _id: {
+    // _id: {
+    //     type: String
+    //     // required: true
+    // },
+    email: {
         type: String,
         required: true
     },
@@ -14,26 +18,7 @@ const Payment = new mongoose.Schema({
         type: Number,
         required: true
     },
-    cardNumber: {
-        type: Number,
-        required: true
-    },
     city: {
-        type: String,
-        required: true
-    },
-    date: {
-        type: String,
-        required: true
-    },
-    instructions: {
-        type: String
-    },
-    paymentId: {
-        type: String,
-        required: true
-    },
-    paymentStatus: {
         type: String,
         required: true
     },
@@ -48,7 +33,19 @@ const Payment = new mongoose.Schema({
     number: {
         type: Number,
         required: true
+    },
+    instructions: {
+        type: String
+    },
+    paymentId: {
+        type: String
+        // required: true
+    },
+    paymentStatus: {
+        type: String
+        // required: true
     }
+
 
 
 }, { collection: 'payment' });
