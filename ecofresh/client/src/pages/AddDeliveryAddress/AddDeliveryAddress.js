@@ -40,6 +40,8 @@ function AddDeliveryAddress() {
     // const location = useLocation();
 
     useEffect(() => {
+
+
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             navigate("/details", { state: { formValues } });
         }
@@ -56,6 +58,20 @@ function AddDeliveryAddress() {
         setFormErrors(validate(formValues));
         setFormValues(formValues);
         setIsSubmit(true);
+
+        fetch('http://localhost:3001/api/paymentDetails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                formValues
+            }),
+        })
+            .then((res) => res.json())
+            .then((result) => setFormValues(result.rows))
+            .catch((formErrors) => console.log('error'))
+
     };
 
     const REGEX = {
@@ -71,36 +87,36 @@ function AddDeliveryAddress() {
         const errors = {};
         if (!value.fname) {
             errors.fname = "First Name is Required!";
-            // } else if (!REGEX.NAME.test(value.fname)) {
-            //     errors.fname = "Enter valid First Name";
+        } else if (!REGEX.NAME.test(value.fname)) {
+            errors.fname = "Enter valid First Name";
         }
         if (!value.lname) {
             errors.lname = "Last Name is Required!";
-            // } else if (!REGEX.NAME.test(value.lname)) {
-            //     errors.lname = "Enter valid Last Name";
+        } else if (!REGEX.NAME.test(value.lname)) {
+            errors.lname = "Enter valid Last Name";
         }
         if (!value.email) {
             errors.email = "Email is Required!";
-            // } else if (!REGEX.EMAIL.test(value.email)) {
-            //     errors.email = "Enter valid email address";
+        } else if (!REGEX.EMAIL.test(value.email)) {
+            errors.email = "Enter valid email address";
         }
         if (!value.number) {
             errors.number = "Phone Number is Required!";
-            // } else if (!REGEX.NUMBER.test(value.number)) {
-            //     errors.number = "Enter valid Phone Number";
+        } else if (!REGEX.NUMBER.test(value.number)) {
+            errors.number = "Enter valid Phone Number";
         }
         if (!value.postal) {
             errors.postal = "Postal Code is Required!";
-            // } else if (!REGEX.CODE.test(value.postal)) {
-            //     errors.postal = "Enter valid Postal Code";
+        } else if (!REGEX.CODE.test(value.postal)) {
+            errors.postal = "Enter valid Postal Code";
         }
         if (!value.address) {
             errors.address = "Street Adress is Required!";
         }
         if (!value.apartmentNumber) {
             errors.apartmentNumber = "Apartment Number is Required!";
-            // } else if (!REGEX.APTNO.test(value.apartmentNumber)) {
-            //     errors.apartmentNumber = "Enter valid Apartment No";
+        } else if (!REGEX.APTNO.test(value.apartmentNumber)) {
+            errors.apartmentNumber = "Enter valid Apartment No";
         }
         if (!value.city) {
             errors.city = "City is Required!";

@@ -1,12 +1,19 @@
+require('dotenv').config()
+
 const { Router } = require("express");
 const express = require("express");
 const Payment = require("../models/paymentModel");
+
+const secretKey = process.env.STRIPE_PRIVATE_KEY
 
 const app = express.Router();
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
-const stripe = require("stripe")('sk_test_51KhEA9D3pnjAoJfMngCLsewUw6zgT7tl2yYQbQUI62WwEHzwCnN2KCjmxIclMiUHN3P0BmZSF5g5QtFt7zDkhC6J00l4EFNiwH');
+console.log(secretKey)
+const stripe = require("stripe")(secretKey);
+
+// console.log(secretKey)
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -44,7 +51,46 @@ app.post("/payment", async (req, res) => {
     res.send({
         clientSecret: paymentIntent.client_secret,
     });
+    //     let data = req.body;
+    //     newPayment = new Payment();
+    //     newPayment.email = data.email;
+    //     newPayment.address = data.address;
+    //     newPayment.apartmentNumber = data.apartmentNumber;
+    //     newPayment.city = data.city;
+    //     newPayment.province = data.province;
+    //     newPayment.postal = data.postal;
+    //     newPayment.number = data.number;
+    //     newPayment.instructions = data.instructions;
+
+    //     newPayment.save().then(result => {
+    //         res.send("Success");
+    //         console.log(result);
+    //     }).catch(err => {
+    //         console.log(err);
+    //         res.status(400).send("Inavlid input");
+    //     });
 });
+
+// app.post("/payment", (req, res) => {
+//     let data = req.body;
+//     newPayment = new Payment();
+//     newPayment.email = data.email;
+//     newPayment.address = data.address;
+//     newPayment.apartmentNumber = data.apartmentNumber;
+//     newPayment.city = data.city;
+//     newPayment.province = data.province;
+//     newPayment.postal = data.postal;
+//     newPayment.number = data.number;
+//     newPayment.instructions = data.instructions;
+
+//     newPayment.save().then(result => {
+//         res.send("Success");
+//         console.log(result);
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(400).send("Invalid input");
+//     });
+// });
 
 // app.listen(4242, () => console.log("Node server listening on port 4242!"));
 
