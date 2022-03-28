@@ -1,18 +1,26 @@
 import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-export default function ColorCheckboxes() {
+export default function ColorCheckboxes(props) {
+
+  const handleCheck = (event, isInputChecked) => {
+    this.props.onChange(event, isInputChecked, props.category);
+  };
+
   return (
       <Checkbox
-        {...label}
+      {...props}
+      onClick={props.onClick}
         sx={{
-          color: "#582e44",
+          color: "#FFF",
           '&.Mui-checked': {
-            color: "#582e44",
+            color: "#FFF",
           },
         }}
+        onCheck={handleCheck}
+        label={props.category}
+        value={props.category}
       />
   );
 }

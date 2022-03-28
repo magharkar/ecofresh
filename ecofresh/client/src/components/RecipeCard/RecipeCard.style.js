@@ -4,13 +4,30 @@ const RecipeCard = styled.div`
     margin-right: 24px; 
     margin-top: 24px;
     display: flex;
+    background-color: #EFEFEF;
+    min-width: 256px;
+    justify-content: center;
+    @media (min-width: 1730px) {
+        width: calc(25% - 24px);
+    }
+    @media (min-width: 1380px) and (max-width: 1729px) {
+        width: calc(33% - 24px);
+    }
+    @media (min-width: 1035px) and (max-width: 1379px) {
+        width: calc(50% - 24px);
+    }
+    @media (max-width: 1034px) {
+        width: calc(100% - 24px);
+    }
 `;
-const ImageContainer = styled.img`
-    width: 250px;
-    height: 250px;
-    margin: 24px;
+const ImageContainer = styled.div`
+    width: 256px;
+    height: 256px;
+    margin: 8px;
 `;
-const Content = styled.div``;
+const Content = styled.div`
+    margin-top: 16px;
+`;
 
 const LeftColumn = styled.div`
     display: flex;
@@ -22,26 +39,56 @@ const RightColumn = styled.div`
     flex-direction: column;
 `;
 
-const RecipeName = styled.div`
-    background: white;
-    width: 250px;
-    padding-top: 16px;
+const Row = styled.div`
+    width: 256px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    padding-left: 8px;
     font-family:  "Roboto","Helvetica","Arial","sans-serif";
-    font-size: 14px;
+    font-size: 16px;
     word-wrap: break-all;
     &.title {
         font-weight: bold;
     }
 `;
 
+
+const Key = styled.div`
+    margin-right: 4px
+`;
+const Value = styled.div`
+    font-weight: 700;
+`;
 const Title = styled.div`
+
     font-weight: bold;
-    margin-bottom: 4px;
+    width: fit-content;
+    margin: 0px auto 8px auto;
 `;
 
 const Description = styled.div`
     margin-bottom: 8px;
 `;
 
+const ContentContainer = styled.div`
+    margin: 24px;
+    @media (min-width: 1035px) {
+        margin: 24px auto;
+    }
+`;
 
-export {RecipeCard, ImageContainer, Content, LeftColumn, RightColumn, RecipeName, Title, Description};
+const FlexContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+    width: fit-content;
+    margin:auto;
+`;
+
+
+export {RecipeCard, ImageContainer, Content, LeftColumn, RightColumn, Key, Value, Row, Title, 
+    Description, ContentContainer, ButtonContainer, FlexContainer};

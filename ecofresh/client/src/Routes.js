@@ -7,6 +7,7 @@ import Error from "./pages/Error/Error";
 import UserHomepage from "./pages/UserHomepage/UserHomepage";
 import UploadRecipe from "./pages/UploadRecipe/UploadRecipe";
 import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
+import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<UserHomepage/>} />
         <Route path="/uploadRecipe" element={<UploadRecipe/>} />
         <Route path="/admin" element={<AdminHomepage/>} />
+        <Route path="/home/recipe" element={<RecipeDetails />} />
       </Routes>
     </ThemeProvider>
 
