@@ -15,9 +15,7 @@ import { Box, Paper } from "@mui/material";
 import cardPayment from "../../assets/pictures/card-payment.png";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
 import Navbar from "../../components/Navbar/NavUser";
-// require('dotenv').config()
 
-// const publicKey = process.env.STRIPE_PUBLIC_KEY
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -31,6 +29,7 @@ export default function PaymentMethod() {
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
+
         // Create PaymentIntent as soon as the page loads
         fetch("http://localhost:3001/checkout/payment", {
             method: "POST",

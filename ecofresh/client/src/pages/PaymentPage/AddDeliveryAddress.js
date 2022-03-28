@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/NavUser";
 import { Typography } from "antd";
 
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
     HeaderWrapper,
     MainContent,
@@ -37,7 +37,6 @@ function AddDeliveryAddress() {
     const [isSubmit, setIsSubmit] = useState(false);
 
     const navigate = useNavigate();
-    // const location = useLocation();
 
     useEffect(() => {
 

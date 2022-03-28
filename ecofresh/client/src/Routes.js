@@ -7,11 +7,11 @@ import Error from "./pages/Error/Error";
 // import UserHomepage from "./pages/UserHomepage/UserHomepage";
 import UploadRecipe from "./pages/UploadRecipe/UploadRecipe";
 import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
-import AddDeliveryAddress from "./pages/AddDeliveryAddress/AddDeliveryAddress";
-import Details from "./pages/AddDeliveryAddress/Details";
-import Payment from "./pages/AddDeliveryAddress/Payment";
-import Confirmation from "./pages/AddDeliveryAddress/Confirmation";
-import PaymentMethod from "./pages/AddDeliveryAddress/PaymentMethod";
+import AddDeliveryAddress from "./pages/PaymentPage/AddDeliveryAddress";
+import Details from "./pages/PaymentPage/Details";
+import Payment from "./pages/PaymentPage/Payment";
+import Confirmation from "./pages/PaymentPage/Confirmation";
+import PaymentMethod from "./pages/PaymentPage/PaymentMethod";
 
 function App() {
   return (

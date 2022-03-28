@@ -22,29 +22,30 @@ const { Title } = Typography;
 export default function Details() {
 
     const [isSubmit, setIsSubmit] = useState(false);
+    const [formValues, setFormValues] = useState({});
     const navigate = useNavigate();
+    const { state } = useLocation()
+    console.log(state?.formValues)
 
     useEffect(() => {
+        setFormValues(state?.formValues)
         axios.get('http://localhost:3001/api/paymentDetails')
             .then(res => {
                 const data = res.data;
                 console.log(data);
             })
 
-        if (isSubmit) {
-            navigate("/payment");
-        }
-    });
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // setFormErrors(validate(formValues));
-        // setFormValues(formValues);
         setIsSubmit(true);
+        navigate("/payment", {
+            state: { formValues: state?.formValues }
+        })
+
     };
 
-    const { state } = useLocation()
-    console.log(state?.formValues)
 
     return (
         <PageWrapper>

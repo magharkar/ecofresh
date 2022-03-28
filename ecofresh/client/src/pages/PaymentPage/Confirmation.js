@@ -24,23 +24,26 @@ const { Title } = Typography;
 export default function Confirmation() {
 
     const [isSubmit, setIsSubmit] = useState(false);
+    const [formData, setFormData] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
+        const data = localStorage.getItem("formData") ? JSON.parse(localStorage.getItem("formData")) : {}
+        // console.log(JSON.parse(data))
+        setFormData(data)
         axios.get('http://localhost:3001/api/paymentDetails')
             .then(res => {
                 const data = res.data;
                 console.log(data);
             })
 
-        if (isSubmit) {
-            navigate("/home");
-        }
-    });
+
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmit(true);
+        navigate("/home");
     };
 
     const { state } = useLocation()
@@ -56,42 +59,6 @@ export default function Confirmation() {
                 <MainContent>
                     <img src={deliveryMan} width="100%" height="310px" />
                 </MainContent>
-                {/* <Box textAlign="center"
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "50%",
-                        justifyContent: "center",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        marginTop: "50px",
-                        marginBottom: "50px"
-                    }}>
-                    <Title level={1} className="title">
-                        Order Confirmation
-                    </Title>
-                    <Title level={2} className="title">
-                        Payment Successful
-                    </Title>
-
-
-                </Box>
-                <Box textAlign="center"
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "10%",
-                        justifyContent: "center",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        marginTop: "50px",
-                        marginBottom: "50px"
-                    }}>
-                    <AppButton color="secondary" textAlign="center"
-                        onClick={handleSubmit} >
-                        Return
-                    </AppButton>
-                </Box> */}
 
                 <Paper elevation={3}
                     sx={{
@@ -137,7 +104,7 @@ export default function Confirmation() {
                                     <strong> Delivery Address: </strong>
                                 </Column>
                                 <Column>
-                                    {state?.formValues.apartmentNumber} - {state?.formValues.address}, {state?.formValues.city}, {state?.formValues.province}, {state?.formValues.postal}
+                                    {formData?.apartmentNumber} - {formData?.address}, {formData?.city}, {formData?.province}, {formData?.postal}
                                 </Column>
                             </Row>
                             <Row>
@@ -145,7 +112,7 @@ export default function Confirmation() {
                                     <strong> Instructions for Delivery: </strong>
                                 </Column>
                                 <Column>
-                                    {state?.formValues.instructions}
+                                    {formData?.instructions}
                                 </Column>
                             </Row>
                             <Row>
@@ -165,14 +132,6 @@ export default function Confirmation() {
                                     2. Lasagna
                                 </Column>
                             </Row> <hr />
-                            {/* <Row>
-                                <Column>
-                                    <strong> Subtotal: </strong>
-                                </Column>
-                                <Column>
-                                    CAD 40.00
-                                </Column>
-                            </Row> */}
                         </Box>
                         <Box textAlign="center" sx={{
                             marginBottom: "50px",

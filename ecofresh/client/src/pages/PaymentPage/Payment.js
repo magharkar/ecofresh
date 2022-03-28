@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Typography } from "antd";
 import {
     PaymentElement,
@@ -16,8 +17,11 @@ export default function Payment() {
 
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const { state } = useLocation()
 
     useEffect(() => {
+        localStorage.setItem("formData", JSON.stringify(state?.formValues))
+
         if (!stripe) {
             return;
         }
@@ -97,7 +101,6 @@ export default function Payment() {
                     </span>
                 </AppButton>
             </Box>
-            {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
         </div>
     );
