@@ -10,6 +10,7 @@ import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
 import SupplierDashboard from "./pages/Supplier/SupplierDashboard";
 import SupplierOrders from "./pages/Supplier/SupplierOrders";
 import OrderDetail from "./pages/Supplier/OrderDetail";
+import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/supplier" element={<SupplierDashboard/>} />
         <Route path="/supplier/orders" element = {<SupplierOrders/>}/>
         <Route path="/supplier/orders/:id" element={<OrderDetail/>}></Route>
+        <Route path="/supplier/orders/fulfilment/:id" element={<OrderFulfilment />}> </Route>
 
         {/* <Route path="supplier/orders/order-detail/:id" element={<OrderDetail/>}></Route> */}
       </Routes>

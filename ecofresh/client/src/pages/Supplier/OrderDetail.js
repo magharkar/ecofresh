@@ -48,7 +48,17 @@ export default function Orders() {
 
 
   const handleCardClick = (id) => {
-    navigate(`/supplier/orders/${id}`)
+    axios.post(`${orderAPI}/update/${params.id}`).then((data) => {
+        console.log(data);
+        if (data.status) {
+          setIsError(false)
+      }
+      else {
+          setIsError(true)
+      }
+      });
+    
+    navigate(`/supplier/orders/fulfilment/${id}`)
 }
 
   return (
@@ -76,7 +86,7 @@ export default function Orders() {
                 <Typography  color="#ffffff"  padding={1} margin={2}>Username: {showdata.user_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}> Order id:{showdata.Order_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}>Ingredients: {showdata.Ingredients}</Typography>
-                <Button variant="contained" align="center"  onClick={() => handleCardClick(showdata.orderId)} padding={2} margin={2}>Fulfill</Button>
+                <Button variant="contained" align="center"  onClick={() => handleCardClick(showdata.Order_id)} padding={2} margin={2}>Fulfill</Button>
        <Button variant="outlined">Cancel</Button>
                 </Card>
                 </Grid>

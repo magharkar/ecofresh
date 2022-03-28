@@ -90,7 +90,7 @@ export default function Orders() {
             pb: 2,
           }}
         >
-        <Container container spacing={2} >
+        <Container container spacing={2} maxWidth="300">
         
         <Grid  bgcolor={"#96e0aa"} padding="4rem" sx={{display:'flex'}}> 
             {showdata.map((ele) => (
