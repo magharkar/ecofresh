@@ -4,6 +4,8 @@ const ATLAS_URI = require("./config");
 const app = express();
 const port = process.env.PORT || 3001
 const usersRoute = require("./routes/usersRoute");
+const paymentRoute = require("./routes/paymentRoute");
+const checkoutRoute = require("./routes/checkoutRoute");
 const ordersRoute = require("./routes/orderRoutes");
 const complaintRoutes = require("./routes/complaintRoutes");
 const uploadToS3 = require("./controllers/uploadToS3");
@@ -32,7 +34,9 @@ db.once('open', () => {
 });
 
 app.use("/users", usersRoute);
-app.use("/orders",ordersRoute);
+app.use("/checkout", paymentRoute);
+app.use("/api", checkoutRoute);
+app.use("/orders", ordersRoute);
 app.use("/complaints", complaintRoutes);
 app.use('/uploadToS3', uploadToS3.sign_s3);
 app.use("/recipes", recipesRoute);
@@ -42,7 +46,6 @@ app.use("/uploadRecipe", uploadRecipeRoute);
 app.listen(port, () => {
     console.log("App is listening on port " + port);
 });
-
 
 
 module.exports = app;
