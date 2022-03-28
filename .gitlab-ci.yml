@@ -13,5 +13,5 @@ initialize:
   environment:
     name: production
     url: https://group10-ecofresh.herokuapp.com/
-  only:
-    - main
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
