@@ -27,6 +27,7 @@ const orderModel = new mongoose.Schema({
         required: true
     }
 
+
 }, { collection: 'orders' });
 
 module.exports = mongoose.model("ecofresh",orderModel);
