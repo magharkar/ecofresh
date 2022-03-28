@@ -2,7 +2,7 @@ import React, { Component,useEffect, useState,useRef } from 'react';
 import axios from 'axios';
 import { Button } from "@mui/material";
 import {FooterContainer} from "../../components/Footer/FooterContainer";
-import Navbar from "../../components/Navbar/NavAdmin"
+import Navbar from "../../components/Navbar/NavUser"
 import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
   Column, Image } from "../LandingPage/LandingPage.style";
 import {useNavigate} from 'react-router-dom';

@@ -19,7 +19,7 @@ function ComplaintResolution() {
     const [api_url,setAPIUrl] = useState('http://localhost:3001/complaints/fetchByComplaintId');
     const [reimbursementAmount,setreimbursementAmount] = useState('')
     const [resolutionMessage,setresolutionMessage] = useState('')
-
+    const [imageUrl,setImageUrl] = useState('')
     const AddResolutionMesage = (e) =>{
         setresolutionMessage(e.target.value)
     }
@@ -42,6 +42,7 @@ function AddResolution()
     useEffect(()=>
         {
             setId(params.id)
+            setImageUrl("https://ecofresh-complaint.s3.us-west-2.amazonaws.com/"+id)
             const headers = {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
@@ -79,7 +80,7 @@ function AddResolution()
         </Row>
         <Row style={{height:"200px",alignItems:"center"}}>
             <Column style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Image :</Column>
-            <Column>  <img src="https://picsum.photos/200" width="40%" height="200px"/></Column>  
+            <Column>  <img src={imageUrl} width="40%" height="200px"/></Column>  
             <Column>   </Column> 
         </Row>
         <hr></hr>

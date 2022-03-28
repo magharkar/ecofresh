@@ -43,6 +43,7 @@
       
     }
     useEffect(() => {
+        console.log(localStorage.getItem("emailId"))
         const headers = {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
