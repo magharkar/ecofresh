@@ -7,11 +7,11 @@ const usersRoute = require("./routes/usersRoute");
 const complaintRoutes = require("./routes/complaintRoutes");
 const uploadToS3 = require("./controllers/uploadToS3");
 var sign_s3 = require('./controllers/uploadToS3');
-cors = require("cors");
+const cors = require("cors");
 
 const recipesRoute = require("./routes/recipesRoute");
 const cartManagementRoute = require("./routes/cartManagementRoute");
-const cors = require("cors");
+
 app.use(express.json());
 app.use(cors());
 
