@@ -4,6 +4,7 @@ const ATLAS_URI = require("./config");
 const app = express();
 const port = process.env.PORT || 3001
 const usersRoute = require("./routes/usersRoute");
+const uploadRecipeRoute = require("./routes/uploadRecipeRoute");
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
@@ -23,6 +24,7 @@ db.once('open', () => {
 });
 
 app.use("/users", usersRoute);
+app.use("/uploadRecipe", uploadRecipeRoute);
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);
