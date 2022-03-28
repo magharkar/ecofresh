@@ -32,7 +32,7 @@ const Login = () => {
                 if (res.status === 200) {
                     console.log("Logged in");
                     localStorage.setItem("emailId",emailId);
-                    navigate("/dashboard");
+                    navigate("/home");
                 } else {
                     console.log("sets invalid login")
                     setIsLoginValid(false);

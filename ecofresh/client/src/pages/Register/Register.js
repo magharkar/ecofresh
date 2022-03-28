@@ -78,7 +78,7 @@ const Register = () => {
             };
             axios.post(url, userJson).then(res => {
                 console.log("SUCCESS!")
-                navigate('/');
+                navigate('/home');
             }).catch(err => {
                 setEmailExistsError(true);
             });
