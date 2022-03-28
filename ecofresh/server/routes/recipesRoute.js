@@ -10,6 +10,10 @@ const url = require("url");
 const { request } = require("http");
 const e = require("express");
 
+const unique = (value, index, self) => {
+    return self.indexOf(value) === index
+  }
+  
 route.get("/allRecipes", (req, res) => {
     Recipe.find({}).then(result => {
         res.send(result);
@@ -98,5 +102,54 @@ route.get("/sort", (req, res) => {
         res.status(400).send("Could not search recipes");
     });
 });
+
+route.get("/getMealTypes", (req, res) => {
+    Recipe.find({}).select({mealType:1}).then(result => {
+        console.log(result);
+        let mealTypes = [];
+        for(index in result){
+            mealTypes.push(result[index].mealType);
+        }
+        let uniqueValues = mealTypes.filter(unique);
+        console.log(uniqueValues);
+        res.send(uniqueValues);
+    }).catch(err  => {
+        console.log(err);
+        res.status(500).send("Error in getting meal types");
+    });
+});
+
+route.get("/getRatings", (req, res) => {
+    Recipe.find({}).select({ratings:1}).then(result => {
+        console.log(result);
+        let mealTypes = [];
+        for(index in result){
+            mealTypes.push(result[index].ratings);
+        }
+        let uniqueValues = mealTypes.filter(unique);
+        console.log(uniqueValues);
+        res.send(uniqueValues);
+    }).catch(err  => {
+        console.log(err);
+        res.status(500).send("Error in getting meal types");
+    });
+});
+
+route.get("/getCuisines", (req, res) => {
+    Recipe.find({}).select({cuisine:1}).then(result => {
+        console.log(result);
+        let mealTypes = [];
+        for(index in result){
+            mealTypes.push(result[index].cuisine);
+        }
+        let uniqueValues = mealTypes.filter(unique);
+        console.log(uniqueValues);
+        res.send(uniqueValues);
+    }).catch(err  => {
+        console.log(err);
+        res.status(500).send("Error in getting meal types");
+    });
+});
+
 
 module.exports = route;
