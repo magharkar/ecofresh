@@ -6,8 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import LandingPage from "../../pages/Complaints/UserComplaintsPage" 
-import { style } from '@mui/system';
+
 
 export default function SelectAutoWidth({childToParent}) {
   const [complaintType, setComplaintType] = React.useState('');
@@ -19,7 +18,7 @@ export default function SelectAutoWidth({childToParent}) {
 
   return (
       <FormControl sx={{ m: 0, minWidth: 250 , paddingRight: 0}}>
-        <InputLabel id="demo-simple-select-autowidth-label">Filter By Complaint Type</InputLabel>
+        <InputLabel id="demo-simple-select-autowidth-label">Select Complaint Type</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"

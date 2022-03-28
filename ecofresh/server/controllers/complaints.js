@@ -26,11 +26,8 @@ addResolution = (req) =>{
 
 addCredits = (req) =>{
     var query = {'UserId': 'gimmemycoffee'};
-
     var currentCredit = usersModel.findOne(query)
-    console.log(currentCredit)
     currentCredit = parseInt(currentCredit.credits) + req.body.data.reimbursementAmount;
-    console.log(currentCredit.credits)
     complaintsModel.findOneAndUpdate(query, {'credits':credits}, function(err, doc) {
         if (err) return "error";
         return 'Succesfully saved.';
@@ -43,28 +40,31 @@ addCredits = (req) =>{
 }
 
 addComplaint = (req) => {
-    let generatedComplaintId = generateComplaintId()
+    console.log(req.body)
+
     var datetime = new Date();
     complaintsModel.create(
         {
-            complaintId : generatedComplaintId,
+            complaintId : req.body.data.complaintId,
             complaintStatus: 'open',
-            complaintType: req.body.complaintType,
+            complaintType: req.body.data.complaintType,
             date: datetime,
-            description: req.body.description,
-            orderId: req.body.orderId,
-            reimbursementAmount: req.body.reimbursementAmount,
-            resolutionMessage: req.body.resolutionMessage
+            description: req.body.data.description,
+            orderId: req.body.data.orderId,
+            photoUrl: req.body.data.photoUrl,
+            reimbursementAmount: '',
+            resolutionMessage: '',
+            userEmail: req.body.data.userEmail
         })
 }
 
 getComplaintByType = (req) => {
-    console.log(complaintsModel.find({complaintStatus: req.body.complaintStatus}))
+   
     return ("ok");
 }
 
 getComplaintById = (req) => {
-    console.log(complaintsModel.find({complaintStatus: req.body.data.complaintId}))
+    
     return ("ok");
 }
 
