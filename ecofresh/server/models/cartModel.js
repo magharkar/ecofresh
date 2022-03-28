@@ -8,10 +8,13 @@ const Cart = new mongoose.Schema({
     recipeName: {
         type: String
     },
-    recipePrice: {
+    price: {
         type: Number
     },
     userEmail: {
+        type: String
+    },
+    imgURL: {
         type: String
     }
 });
