@@ -7,6 +7,7 @@ import { useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style'
 import HomeAccountDropdown from '../Dropdown/HomeAccountDropdown'
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 function Navbar() {
 

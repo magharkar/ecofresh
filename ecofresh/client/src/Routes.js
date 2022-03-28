@@ -11,13 +11,18 @@ import ComplaintResolutionPage from "./pages/Complaints/ComplaintResolutionPage"
 import ComplaintDetailsPage from "./pages/Complaints/ComplaintDetails";
 import UserHomepage from "./pages/UserHomepage/UserHomepage";
 import UploadRecipe from "./pages/UploadRecipe/UploadRecipe";
-import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
 import CheckRequestStatus from "./pages/CheckRequestStatus/CheckRequestStatus";
-import UploadRecipeHero from './pages/UploadRecipeHero/UploadRecipeHero'
+import UploadRecipeHero from './pages/UploadRecipeHero/UploadRecipeHero';
+import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
+import SupplierDashboard from "./pages/Supplier/SupplierDashboard";
+import SupplierOrders from "./pages/Supplier/SupplierOrders";
+import OrderDetail from "./pages/Supplier/OrderDetail";
+import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
+import SupplierPantry from "./pages/Supplier/SupplierPantry";
 
 function App() {
 
@@ -48,6 +53,11 @@ function App() {
         <Route path="/uploadRecipe" element={<UploadRecipe/>} />
         <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
         <Route path="/admin" element={<AdminHomepage/>} />
+        <Route path="/supplier" element={<SupplierDashboard/>} />
+        <Route path="/supplier/orders" element = {<SupplierOrders/>}/>
+        <Route path="/supplier/orders/:id" element={<OrderDetail/>}></Route>
+        <Route path="/supplier/orders/fulfilment/:id" element={<OrderFulfilment />}> </Route>
+        <Route path="supplier/pantry" element={<SupplierPantry/>}></Route>
       </Routes>
     </ThemeProvider>
   );
