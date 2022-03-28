@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 const Schema  = mongoose.Schema;
 
-const orderModel = new mongoose.Schema({
+const orderDetailsModel = new mongoose.Schema({
     _id:{
         type: String,
         required: true
@@ -25,8 +25,10 @@ const orderModel = new mongoose.Schema({
     userId:{
         type: String,
         required: true
-    }
+    },
+    Recipe_details:[{type:Schema.Types.ObjectId,ref:'recipe'}],
+  
 
-}, { collection: 'orders' });
+});
 
-module.exports = mongoose.model("ecofresh",orderModel);
+module.exports = mongoose.model("orders",orderDetailsModel);
