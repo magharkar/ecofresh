@@ -139,7 +139,7 @@ const ForgotPassword = () => {
                             color="secondary"
                             onClick={() => handleForgotPassword(emailId, password)}
                         >
-                            Log In
+                            CHANGE PASSWORD
                         </AppButton>
                         {
                             // !isLoginValid && (
