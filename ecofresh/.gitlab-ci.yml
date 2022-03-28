@@ -7,10 +7,6 @@ initialize:
   image: node:latest
   script:
     - npm install
-deploy_production:
-  image: node:latest
-  stage: deploy
-  script:
     - git subtree push -f --prefix ecofresh/client/ https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/group10-ecofresh.git
  HEAD:master
     - echo "Deployed to heroku server"
