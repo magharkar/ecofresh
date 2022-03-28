@@ -15,15 +15,7 @@ const HeaderWrapper = styled.div`
     z-index: 100;
 `;
 
-<<<<<<< HEAD
-const PageWrapper = styled.div``;
-
-const  BottomContainer = styled.div`
-    position: relative;
-    top: 66px;
-=======
 const PageWrapper = styled.div`
->>>>>>> vibhor_bhatnagar_b00895636
 `;
 
 const Row = styled.div`
@@ -45,13 +37,8 @@ const Row = styled.div`
 `;
 
 const Column = styled.div`
-<<<<<<< HEAD
-    width: 100%;
-    margin: 8px;
-=======
     width: 50%;
     margin-top: 8px;
->>>>>>> vibhor_bhatnagar_b00895636
     padding: 16px;
     p {
         margin: auto;
