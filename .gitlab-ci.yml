@@ -5,7 +5,7 @@ initialize:
   stage: initialize
   image: node:latest
   script:
-    - git subtree push --prefix ecofresh/client/ heroku main
+    - git subtree push --prefix ecofresh/client/ https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/group10-ecofresh.git main
     - echo "Deployed to heroku server"
   environment:
     name: production
