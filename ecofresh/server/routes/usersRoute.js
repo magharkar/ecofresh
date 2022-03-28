@@ -44,20 +44,40 @@ route.post("/register", (req, res) => {
   newUser.email = req.body.email;
   newUser.firstName = req.body.firstName;
   newUser.lastName = req.body.lastName;
-  newUser.mealType = req.body.mealType;
-  newUser.cuisine = req.body.cuisine;
   newUser.phoneNumber = req.body.phoneNumber;
   newUser.userType = req.body.userType;
   newUser.salt = createSalt();
   newUser.password = getPassword(newUser.salt, password);
-  newUser.save().then(result => {
-    console.log("in result");
-    res.status(201).send("User created");
-  }).catch(err => {
-    console.log("Failed to add user.");
-    console.log("Is user registered? " + isRegistered)
-    res.status(400).send("User cannot be created");
-  });
+  // let email = req.body.email
+  // let options = { upsert: true, new: true, setDefaultsOnInsert: true };
+  // let query = {
+  //   $set: {
+  //     "email": req.body.email,
+  //     "firstName": req.body.firstName,
+  //     "lastName": req.body.lastName,
+  //     "password": req.body.password,
+  //     "userType": "customer"
+  //   }
+  // };
+  // Users.find({ email: email }).then(result => {
+  //   console.log("in result");
+  //   console.log(result);
+  //   if (result.length != 0) {
+  //     res.status(400).send("User already exists");
+  //   }
+  //   else {
+      newUser.save().then(savedResult => {
+        res.status(201).send("User created");
+      }).catch(saveErr => {
+        res.status(400).send("User already exists");
+      });
+    // }
+
+  // }).catch(err => {
+  //   console.log("Failed to add user.");
+  //   console.log("Is user registered? " + isRegistered)
+  //   res.status(400).send("User cannot be created");
+  // });
 
 });
 

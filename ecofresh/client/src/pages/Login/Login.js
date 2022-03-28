@@ -11,6 +11,7 @@ import AppButton from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import baseURL from '../../config';
 import PasswordTextBox from '../../components/TextBox/PasswordTextBox';
+import { Link } from 'react-router-dom';
 import loginImage from '../../assets/pictures/cropped-login-image.jpg';
 
 const Login = () => {
@@ -29,8 +30,8 @@ const Login = () => {
             res => {
                 console.log(res);
                 if (res.status === 200) {
-                    console.log("Logged in")
-                    localStorage.getItem("emailId");
+                    console.log("Logged in");
+                    localStorage.setItem("emailId",emailId);
                     navigate("/dashboard");
                 } else {
                     console.log("sets invalid login")
@@ -43,6 +44,10 @@ const Login = () => {
             }
         )
     }
+    const linkStyles = {
+        paddingTop: "8px",
+        textAlign: "right"
+      };
 
     const handlePasswordChange = (event) => {
         let password = event.target.value;
@@ -79,6 +84,7 @@ const Login = () => {
                                 >
                                 Password
                             </PasswordTextBox>
+                            <Link to="/forgotPassword" style={linkStyles}>Forgot password?</Link>
                             <Row />
                             <AppButton
                                 color="secondary"

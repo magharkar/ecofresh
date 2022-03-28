@@ -93,5 +93,10 @@ const TooltipRow = styled.div`
      padding-bottom: 4px;
 `;
 
-export {PageWrapper, FormWrapper, ImageWrapper, ContentWrapper,
+const ErrorMail = styled.div`
+     padding-top: 4px;
+     color: red;
+`;
+
+export {PageWrapper, FormWrapper, ImageWrapper, ContentWrapper, ErrorMail,
     Title, ControlContainer, Container, Row, Error, TooltipWrapper, TooltipTitle, TooltipRow};
