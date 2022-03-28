@@ -38,7 +38,10 @@
      },
      resolutionMessage: {
          type: String
-     }
+     },
+     userEmail: {
+        type: String
+    }
  }); 
  
  
