@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
 // import Header from "../../components/Header/Header";
 import { MainContent, PageWrapper, BottomContainer, Row,
-  Column, Image, HeaderWrapper } from "../LandingPage/LandingPage.style";
+  Column, HeaderWrapper } from "../LandingPage/LandingPage.style";
 import ComplaintsImage from '../../assets/pictures/Complaints.jpg';
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';

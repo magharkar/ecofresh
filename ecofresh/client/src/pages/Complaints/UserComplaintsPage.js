@@ -3,12 +3,10 @@
  */
  import { Button } from "@mui/material";
  import {FooterContainer} from "../../components/Footer/FooterContainer";
- // import Header from "../../components/Header/Header";
  import Navbar from "../../components/Navbar/NavUser"
  import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
    Column, Image } from "../LandingPage/LandingPage.style";
  import landingPageImg from '../../assets/pictures/landing-page.png';
- import frenchOnion from '../../assets/pictures/french-onion.jpeg';
  import lasagnaSoup from '../../assets/pictures/lasagna-soup.webp';
  import React, { useEffect, useState } from 'react'
  import axios from 'axios';
@@ -16,7 +14,6 @@
  import './Complaints.css';
  import DropDown from "../../components/CommonComponents/DropDown"
  import TextField from "@mui/material/TextField";
- import Footer from "../../components/Footer/Footer";
  import baseURL from "../../config";
  
  function LandingPage(props) {
