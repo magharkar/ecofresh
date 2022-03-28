@@ -17,15 +17,15 @@ const Users = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     mealType: {
         type: String,
-        required: true
+
     },
     cuisine: {
         type: String,
-        required: true
     },
     password: {
         type: String,
