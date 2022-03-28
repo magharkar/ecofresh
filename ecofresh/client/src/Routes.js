@@ -6,7 +6,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import Error from "./pages/Error/Error";
 import UserComplaintsPage from "./pages/Complaints/UserComplaintsPage"
 import ComplaintsPage from "./pages/Complaints/AdminComplaintsPage"
-import AddComplaintPage from "./pages/Complaints/AddComplaint-test"
+import AddComplaintPage from "./pages/Complaints/AddComplaint"
 import ComplaintResolutionPage from "./pages/Complaints/ComplaintResolutionPage";
 import ComplaintDetailsPage from "./pages/Complaints/ComplaintDetails";
 import UserHomepage from "./pages/UserHomepage/UserHomepage";
