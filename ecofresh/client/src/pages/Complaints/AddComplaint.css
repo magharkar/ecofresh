@@ -1,3 +1,6 @@
+/**
+ * @author Kandarp Parikh
+ */
 .flex-outer li {
     display: flex;
     flex-wrap: wrap;

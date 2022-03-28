@@ -1,10 +1,13 @@
+/**
+ * @author Kandarp Parikh
+ */
 import React, { Component,useEffect, useState,useRef } from 'react';
 import axios from 'axios';
 import { Button } from "@mui/material";
 import {FooterContainer} from "../../components/Footer/FooterContainer";
 import Navbar from "../../components/Navbar/NavUser"
-import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
-  Column, Image } from "../LandingPage/LandingPage.style";
+import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContain, Row_Complaint,
+  Column_Complaint, Image } from "../LandingPage/LandingPage.style";
 import {useNavigate} from 'react-router-dom';
 import './Complaints.css';
 import TextField from "@mui/material/TextField";
@@ -151,49 +154,49 @@ function LandingPage(props) {
       <PageWrapper>
         
       <HeaderWrapper><Navbar /></HeaderWrapper>
-        <BottomContainer> 
             <MainContent>
               <img src={ComplaintsImage} width="100%" height="300px"/>
-              <h1 style={{width: 'fit-content',margin: '0 auto'}}>Complaint Details</h1>
+              <h1 style={{width: 'fit-content',margin: '0 auto'}}>New Complaint</h1>
           <Card>
                   <hr></hr>
-              <Row style={{height:"50px",alignItems:"center"}}>
-                  <Column  style={{ backgroundColor:'#1d3124',color:'white'}}> Select OrderId : </Column>
-                  <Column style={{ backgroundColor:'orange'}}><Select options={orderIds} onChange={handleOrderSelect} value={orderIds[0]} /></Column>
-              </Row>
-              <Row style={{height:"50px",alignItems:"center"}}>
-                  <Column  style={{ backgroundColor:'#1d3124',color:'white'}}> Select Complaint Type : </Column>
-                  <Column style={{ backgroundColor:'orange'}}><Select options={complaintType} onChange={handleComplaintTypeSelect}/></Column>
+              <Row_Complaint style={{height:"50px",alignItems:"center"}}>
                   
-              </Row>
-              <Row style={{height:"50px",alignItems:"center"}}>
-                  <Column  style={{ backgroundColor:'#1d3124',color:'white'}}> Enter Complaint Description : </Column>
-                  <Column style={{ backgroundColor:'orange'}}><TextField style ={{width: '100%',backgroundColor:'white'}}onChange={handlecomplaint} type="text"/></Column>
+                  <Column_Complaint  style={{ backgroundColor:'#1d3124',color:'white'}}> <div>Select OrderId :</div> </Column_Complaint>
+                  <Column_Complaint style={{backgroundColor:"orange"}}><div><Select style={{ backgroundColor:'orange'}} options={orderIds} onChange={handleOrderSelect} value={orderIds[0]} /></div></Column_Complaint>
+
+              </Row_Complaint>
+              <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+                  <Column_Complaint  style={{ backgroundColor:'#1d3124',color:'white'}}> Select Complaint Type : </Column_Complaint>
+                  <Column_Complaint style={{backgroundColor:"orange"}}><Select options={complaintType} onChange={handleComplaintTypeSelect}/></Column_Complaint>
                   
-              </Row>
+              </Row_Complaint>
+              <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+                  <Column_Complaint  style={{ backgroundColor:'#1d3124',color:'white'}}> Enter Complaint Description : </Column_Complaint>
+                  <Column_Complaint style={{backgroundColor:"orange"}}><TextField style ={{width: '100%',backgroundColor:'white'}}onChange={handlecomplaint} type="text"/></Column_Complaint>
+              </Row_Complaint>
               {complaint.length < 15 && complaint.length!=0 && ComplaintError ? (
-                            <Row style={{height:"50px",alignItems:"center"}}>
-                            <Column></Column>
-                            <Column><p style={{color:"red"}}>{ComplaintError}</p></Column>
-                            <Column></Column> 
-                        </Row>)
+                            <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+                            <Column_Complaint></Column_Complaint>
+                            <Column_Complaint><p style={{color:"red"}}>{ComplaintError}</p></Column_Complaint>
+                            <Column_Complaint></Column_Complaint> 
+                        </Row_Complaint>)
               :null}
               
-              <Row style={{height:"50px",alignItems:"center"}}>
-                  <Column style={{ backgroundColor:'#1d3124',color:'white'}}> Upload Image :</Column>
-                  <Column>  <input onChange={handleChange} ref={fileInput} type="file"/></Column>  
-              </Row>
-              <Row style={{height:"50px"}}>
-                <Column></Column>
-                <Column>
+              <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+                  <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}> Upload Image :</Column_Complaint>
+                  <Column_Complaint style={{backgroundColor:"orange"}}>  <input onChange={handleChange} ref={fileInput} type="file"/></Column_Complaint>  
+              </Row_Complaint>
+              <Row_Complaint style={{height:"50px"}}>
+                <Column_Complaint></Column_Complaint>
+                <Column_Complaint>
               <Button style={{backgroundColor:"orange",
-                    float:'right'}} onClick={handleUpload}>Submit Complaint</Button> </Column>
-              </Row>
+                    float:'right'}} onClick={handleUpload}>Submit Complaint</Button> </Column_Complaint>
+              </Row_Complaint>
               <hr></hr>
           </Card>
           </MainContent>
-          </BottomContainer>
-          <FooterContainer />
+             <FooterContainer />
+
           </PageWrapper>
     );
 
