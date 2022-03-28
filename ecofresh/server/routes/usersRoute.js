@@ -5,17 +5,14 @@
 const express = require("express");
 const route = express.Router();
 const Users = require("../models/usersModel");
-const Orders = require("../models/orderModel");
 const { validatePassword, getPassword, createSalt } = require("../controllers/login")
 
 route.get("/allUsers", (req, res) => {
-  let users = usersModel.find({});
-  try {
-    res.send(users);
-  } catch (error) {
-    console.log(error);
+  Users.find({}).then(result => {
+    res.send(result);
+  }).catch(err => {
     res.status(500).send("Error while fetching the users.");
-  }
+  });
 });
 
 route.post("/login", async (req, res) => {
@@ -34,7 +31,7 @@ route.post("/login", async (req, res) => {
     }
   }).catch(err => {
     console.log("Err: " + err);
-    res.send({ "success": false, "user": email });
+    res.status(400).send({ "success": false, "user": email });
   });
 });
 
@@ -45,23 +42,42 @@ route.post("/register", (req, res) => {
   newUser.email = req.body.email;
   newUser.firstName = req.body.firstName;
   newUser.lastName = req.body.lastName;
-  newUser.mealType = req.body.mealType;
-  newUser.cuisine = req.body.cuisine;
   newUser.phoneNumber = req.body.phoneNumber;
   newUser.userType = req.body.userType;
   newUser.salt = createSalt();
   newUser.password = getPassword(newUser.salt, password);
-  newUser.save().then(result => {
-    console.log("in result");
-    res.status(201).send("User created");
-  }).catch(err => {
-    console.log("Failed to add user.");
-    console.log("Is user registered? " + isRegistered)
-    res.status(400).send("User cannot be created");
-  });
+  // let email = req.body.email
+  // let options = { upsert: true, new: true, setDefaultsOnInsert: true };
+  // let query = {
+  //   $set: {
+  //     "email": req.body.email,
+  //     "firstName": req.body.firstName,
+  //     "lastName": req.body.lastName,
+  //     "password": req.body.password,
+  //     "userType": "customer"
+  //   }
+  // };
+  // Users.find({ email: email }).then(result => {
+  //   console.log("in result");
+  //   console.log(result);
+  //   if (result.length != 0) {
+  //     res.status(400).send("User already exists");
+  //   }
+  //   else {
+      newUser.save().then(savedResult => {
+        res.status(201).send("User created");
+      }).catch(saveErr => {
+        res.status(400).send("User already exists");
+      });
+    // }
+
+  // }).catch(err => {
+  //   console.log("Failed to add user.");
+  //   console.log("Is user registered? " + isRegistered)
+  //   res.status(400).send("User cannot be created");
+  // });
 
 });
-
 
 route.post("/updatePassword", (req, res) => {
   let email = req.body.email;
@@ -86,48 +102,6 @@ route.post("/updatePassword", (req, res) => {
   });
 
 })
-
-route.get("/orders",async(req,res)=>{
-  try{
-  let  orders = await Orders.find({$or: [{ status: "placed" }, { status: "Placed" }]});
-  console.log(orders);
-  res.send(orders);
-  }catch(error){
-      console.log(error);
-      res.status(500).send("Error while fetching the orders ");
-  }
-});
-
-
-route.get(`/orders/:id`,(req,res)=>{
-  let param = req.params.id;
-  Orders.findOne({orderId:param}).then(result=>{
-    if(result.length==0){
-      res.send({
-        "success": false,
-        "user":{}
-      });
-    }
-    else{
-      res.send({
-        "success": true,
-        "user":{
-          "order Id": result.orderId,
-          "Recipe name":result.recipes,
-          "Username": result.userId
-        }
-      });
-    }
-  }).catch(err=>{
-    res.status(400).send({
-      "sucess": false,
-      "message":"Cannot fetch data"
-    });
-  });
-});
-
-
-
 
 
 module.exports = route;

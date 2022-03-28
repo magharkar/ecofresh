@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Error() {
+    let email = localStorage.getItem("emailId");
+    console.log(email);
     return(
         <div>
             <h1>You seem lost</h1>
