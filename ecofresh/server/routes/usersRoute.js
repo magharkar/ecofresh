@@ -8,13 +8,11 @@ const Users = require("../models/usersModel");
 const { validatePassword, getPassword, createSalt } = require("../controllers/login")
 
 route.get("/allUsers", (req, res) => {
-  let users = usersModel.find({});
-  try {
-    res.send(users);
-  } catch (error) {
-    console.log(error);
+  Users.find({}).then(result => {
+    res.send(result);
+  }).catch(err => {
     res.status(500).send("Error while fetching the users.");
-  }
+  });
 });
 
 route.post("/login", async (req, res) => {
