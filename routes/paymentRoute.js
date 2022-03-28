@@ -51,48 +51,9 @@ app.post("/payment", async (req, res) => {
     res.send({
         clientSecret: paymentIntent.client_secret,
     });
-    //     let data = req.body;
-    //     newPayment = new Payment();
-    //     newPayment.email = data.email;
-    //     newPayment.address = data.address;
-    //     newPayment.apartmentNumber = data.apartmentNumber;
-    //     newPayment.city = data.city;
-    //     newPayment.province = data.province;
-    //     newPayment.postal = data.postal;
-    //     newPayment.number = data.number;
-    //     newPayment.instructions = data.instructions;
 
-    //     newPayment.save().then(result => {
-    //         res.send("Success");
-    //         console.log(result);
-    //     }).catch(err => {
-    //         console.log(err);
-    //         res.status(400).send("Inavlid input");
-    //     });
 });
 
-// app.post("/payment", (req, res) => {
-//     let data = req.body;
-//     newPayment = new Payment();
-//     newPayment.email = data.email;
-//     newPayment.address = data.address;
-//     newPayment.apartmentNumber = data.apartmentNumber;
-//     newPayment.city = data.city;
-//     newPayment.province = data.province;
-//     newPayment.postal = data.postal;
-//     newPayment.number = data.number;
-//     newPayment.instructions = data.instructions;
-
-//     newPayment.save().then(result => {
-//         res.send("Success");
-//         console.log(result);
-//     }).catch(err => {
-//         console.log(err);
-//         res.status(400).send("Invalid input");
-//     });
-// });
-
-// app.listen(4242, () => console.log("Node server listening on port 4242!"));
 
 
 module.exports = app;
