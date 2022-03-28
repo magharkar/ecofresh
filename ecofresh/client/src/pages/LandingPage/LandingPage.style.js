@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const MainContent = styled.div``;
 const HeaderWrapper = styled.div`
-    height: 58px;
+    height: 66px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -13,7 +13,7 @@ const PageWrapper = styled.div``;
 
 const  BottomContainer = styled.div`
     position: relative;
-    top: 58px;
+    top: 66px;
 `;
 
 const Row = styled.div`

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style'
+import AccountMenu from '../Dropdown/HomeAccountDropdown';
 
 function Navbar() {
 
@@ -24,23 +24,20 @@ function Navbar() {
         <NavLinks to="/home">Home</NavLinks>
         <NavLinks to="/uploadRecipe">Upload Recipe</NavLinks>
         <div className="button_container">
-          <AccButton />
           <ShoppingButton />
+          <AccountMenu />
         </div>
       </Menu>
       <div className="button_container">
-          <AccButton />
           <ShoppingButton />
+          <AccountMenu />
         </div>
     </Nav>
   )
 }
 
-const AccButton = () => {
-  return <button className="buttons"><ShoppingCartIcon /></button>;
-};
 const ShoppingButton = () => {
-  return <button className="buttons"><AccountCircleRoundedIcon /></button>;
+  return <button className="buttons"><ShoppingCartIcon /></button>;
 };
 
 export default Navbar

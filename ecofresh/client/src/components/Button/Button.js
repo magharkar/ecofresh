@@ -3,7 +3,7 @@ import React from "react";
 
 function AppButton(props) {
     return(
-        <Button color={props.color} onClick={props.onClick}>
+        <Button color={props.color} onClick={props.onClick} {...props}>
             {props.children}
         </Button>
       
