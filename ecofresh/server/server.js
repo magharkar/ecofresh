@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 3001
 const config = require("./config")
 const usersRoute = require("./routes/usersRoute");
+const ordersRoute = require("./routes/orderRoutes");
 app.use(express.json());
 app.use(cors())
 
@@ -24,6 +25,7 @@ db.once('open', () => {
 });
 
 app.use("/users", usersRoute);
+app.use("/orders",ordersRoute);
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);

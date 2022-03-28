@@ -17,10 +17,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from '../../components/Navbar/NavSupplier';
-
-
-
-
+import { FooterContainer } from '../../components/Footer/FooterContainer'
 
 
 const theme = createTheme();
@@ -28,10 +25,7 @@ const theme = createTheme();
 export default function Orders() {
 
   let navigate = useNavigate();
-  const routeChange = () =>{ 
-      let path = '/supplier/orders/order-detials'; 
-      navigate(path);
-    }
+
 
 
 
@@ -54,7 +48,9 @@ export default function Orders() {
   }, []);
 
 
-
+  const handleCardClick = (id) => {
+    navigate(`/supplier/orders/${id}`)
+}
 
   return (
     <ThemeProvider theme={theme}>
@@ -89,56 +85,58 @@ export default function Orders() {
 
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: '#96e0aa',
             pt: 5,
             pb: 2,
           }}
         >
-        <Container sx={{ py: 2 }} maxWidth='300'>
+        <Container container spacing={2} >
         
-          <Grid
-          spacing={5}
-            item
-            sm={12}
-            md={6}
-            sx={{ display: "flex" }}
-          >
+        <Grid  bgcolor={"#96e0aa"} padding="4rem" sx={{display:'flex'}}> 
             {showdata.map((ele) => (
-              <Card
-                key={ele._id}
-                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                
-              >
+          
+              <Card style={{backgroundColor: "#0d401b"}} sx={{maxWidth:"50%",margin:'5px' }} >
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h5" component="h2" color="#cfa911">
                     {ele.orderId}
                   </Typography>
 
-
-                  <Typography component={"div"} variant={"h6"}>
-                    Recipe Name: {ele.recipes &&
-                      `${ele.recipes.slice(0, 1).toUpperCase()}${ele.recipes.slice(1, ele.recipes.length)}. `
+                   <Typography color="#cfa911"  variant={"h6"}>
+                   Recipe Name:
+                   </Typography>
+                  <Typography component={"div"} color="#ffffff" >
+                     {ele.recipeName &&
+                      `${ele.recipeName.slice(0, 1).toUpperCase()}${ele.recipeName.slice(1, ele.recipeName.length)}. `
                     }
-                    UserName:  {ele.userId}
+                   
                   </Typography>
-                  <Typography color="text.secondary">
+                  <Typography color="#cfa911">
+                    Username:
+                  </Typography>
+                  <Typography  color="#ffffff">
+                {ele.userId}
+                  </Typography>
+                  <Typography  color="#ffffff">
                     Status: {ele.status}
                   </Typography>
 
                 </CardContent>
                 <CardActions>
-                  <Button size="small" >View</Button>
+                  <Button size="small"  onClick={() => handleCardClick(ele.orderId)} >View</Button>
                   <Button size="small">Cancel</Button>
                 </CardActions>
               </Card>
 
             ))}
           </Grid>
+        
      
         </Container>
         </Box>
       </main>
-
+      <FooterContainer />
     </ThemeProvider>
+
+
   );
 }
