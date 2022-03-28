@@ -1,3 +1,3 @@
-const baseURL = "https://csci5709-ecofresh.herokuapp.com"
+const baseURL = ""
 
 export default baseURL;
