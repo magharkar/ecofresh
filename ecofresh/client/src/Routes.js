@@ -4,9 +4,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from "./assets/theme";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Error from "./pages/Error/Error";
-// import UserHomepage from "./pages/UserHomepage/UserHomepage";
 import UploadRecipe from "./pages/UploadRecipe/UploadRecipe";
 import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
+import CheckRequestStatus from "./pages/CheckRequestStatus/CheckRequestStatus";
+import UploadRecipeHero from './pages/UploadRecipeHero/UploadRecipeHero'
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<Error />} />
-        {/* <Route path="/home" element={<UserHomepage/>} /> */}
+        <Route path="/uploadRecipeNavigation" element={<UploadRecipeHero />} />
         <Route path="/uploadRecipe" element={<UploadRecipe/>} />
+        <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
         <Route path="/admin" element={<AdminHomepage/>} />
       </Routes>
     </ThemeProvider>

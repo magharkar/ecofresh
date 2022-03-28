@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import Navbar from "../../components/Navbar/NavLanding";
-import { HeaderWrapper, MainContent, PageWrapper, BottomContainer, Row,
-  Column, Image } from "./LandingPage.style";
+import { HeaderWrapper, MainContent, PageWrapper, Row,
+  Column, BottomContain, Image } from "./LandingPage.style";
 import landingPageImg from '../../assets/pictures/landing-page.png';
-import frenchOnion from '../../assets/pictures/french-onion.jpeg';
-import lasagnaSoup from '../../assets/pictures/lasagna-soup.webp';
+import food from '../../assets/pictures/food.png'
+import points from '../../assets/pictures/points.png'
 import { FooterContainer } from '../../components/Footer/FooterContainer'
+import AppButton from '../../components/Button/Button.js'
 
 function LandingPage() {
   return (
@@ -14,29 +15,30 @@ function LandingPage() {
         <HeaderWrapper>
             <Navbar />
         </HeaderWrapper>
-
-        <BottomContainer>
             <MainContent>
-                <img src={landingPageImg} width="100%"/>
+                <img className="hero_img" src={landingPageImg} alt="hero"/>
                 <Row>
+                  <Image src={food} width="100%" height="100%"></Image>
                     <Column className="text">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </Column>
-                    <Column><Image src={frenchOnion} width="100%" height="100%"/></Column>
-                </Row>
-                <Row>
-                    <Column><Image src={lasagnaSoup} width="100%" height="100%"/></Column>
-                    <Column className="text">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    <h4>Say 'Yes' to eco-friendly</h4>  
+                    <h3>Reduce food wastage</h3>
+                    <p>EcoFresh delivers fresh food for the recipes from farmers directly to your doorstep. Only order how much you need and contribute to our goal to be 100% eco-friendly.</p>
+                    <div className="mid_button"><AppButton color="secondary">Know more</AppButton></div>
                     </Column>
                 </Row>
-            </MainContent>
-
-            
+                <Row className="row2">
+                <Image src={points} width="100%" height="100%" style={{objectFit:"contain"}}></Image>
+                    <Column className="text">
+                    <h4>Earn for your contribution</h4>
+                    <h3>Rewards</h3>
+                    <p>Now collect reward points for every recipe that you upload on EcoFresh. Redeem these points when checking out during your next purchase from EcoFresh.</p>
+                    <div className="mid_button"><AppButton color="secondary">Get Started!</AppButton></div>
+                    </Column>
+                </Row>
+              </MainContent> 
+              <BottomContain>
                 <FooterContainer />
-
-        </BottomContainer>
-       
+              </BottomContain>
     </PageWrapper>
   );
 }
