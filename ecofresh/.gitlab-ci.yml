@@ -13,5 +13,3 @@ initialize:
   environment:
     name: production
     url: https://group10-ecofresh.herokuapp.com/
-  only:
-    - main
