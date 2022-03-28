@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-import { api } from '../../api/API';
+import { orderAPI } from '../../api/API';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -35,7 +35,7 @@ export default function Orders() {
 
 
   useEffect(() => {
-    axios.get(`${api}orders/`).then((data) => {
+    axios.get(`${orderAPI}orders/`).then((data) => {
       console.log(data);
       if (data.status) {
         setData(data.data)
