@@ -7,6 +7,7 @@ initialize:
   script:
     - cd ecofresh/client
     - npm install
+    - cd ../..
     - git subtree push --prefix ecofresh/client/ https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/group10-ecofresh.git main
     - echo "Deployed to heroku server"
   environment:
