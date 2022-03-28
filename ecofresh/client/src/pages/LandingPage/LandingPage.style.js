@@ -23,7 +23,7 @@ const Row = styled.div`
 `;
 
 const Column = styled.div`
-    width: 50%;
+    width: 100%;
     margin: 8px;
     padding: 16px;
     &.text {

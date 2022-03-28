@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { LinkText } from "../Footer/Footer.style";
+import { Link } from "../Footer/Footer.style";
 import { Wrapper, FlexContainer, LogoText } from './Header.style';
 import AppButton from '../Button/Button';
 
@@ -14,9 +14,9 @@ function Header() {
            </FlexContainer>
 
            <FlexContainer>
-               <LinkText>About</LinkText>
-               <LinkText>How It Works</LinkText>
-               <LinkText>Pricing</LinkText>
+               <Link>About</Link>
+               <Link>How It Works</Link>
+               <Link>Pricing</Link>
            </FlexContainer>
            <FlexContainer className="buttons">
                <Button variant="contained" style={{color: 'black', backgroundColor: "#FFFFFF"}}>LOGIN</Button>
