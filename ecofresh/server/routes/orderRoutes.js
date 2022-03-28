@@ -7,6 +7,7 @@ const OrderDetails = require("../models/orderDetailModel");
 route.post("/update/:id", (req, res) => {
     let id = req.params.id;
     let status ="completed";
+    try{
     Orders.findOne({
       "orderId": id
     }, (err, data) => {
@@ -22,10 +23,11 @@ route.post("/update/:id", (req, res) => {
           }
         });
       }
-      else {
-        res.status(400).send({ "success": false, "message": "Cannot process request" });
-      }
+     
     });
+}catch{
+    res.status(400).send({ "success": false, "message": "Cannot process request" });
+}
   
 })
 
@@ -43,7 +45,9 @@ route.get("/orders",async(req,res)=>{
   
   
   route.get(`/orders/:id`,async(req,res)=>{
-    let param = req.params.id;
+
+    try{
+        let param = req.params.id;
 
     Orders.aggregate([
         {$lookup:{ from: 'recipe', localField:'recipeName', 
@@ -62,16 +66,12 @@ route.get("/orders",async(req,res)=>{
 
     });
 });
+    }
+    catch{
+        res.status(400).send("Cannot fetch data")
+    }
 
-
-
-
-
-
-    
-
-   
-  });
+});
   
   
   

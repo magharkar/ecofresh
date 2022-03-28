@@ -72,12 +72,12 @@ export default function Orders() {
 <Card>
      
     <Box padding="2rem" bgcolor={"#96e0aa"}>
-        <Box mt={2} display="flex" alignItems="left"
+        <Box mt={2} display="flex"  justifyContent="center"
         >
-      
+        
           
             <Box padding="2rem"  width={400}  justifyContent="center">
-                <Grid style={{textAlign: "center"}} align = "center" justify = "center" alignItems = "center"> 
+                <Grid style={{textAlign: "center"}} align = "center"> 
                 <Card variant='outlined'style={{backgroundColor: "#0d401b"}} >
                 <Typography component={"div"} variant={"h6"} color="#cfa911">
                     Recipe name:
@@ -87,7 +87,7 @@ export default function Orders() {
                 <Typography color="#ffffff" padding={1} margin={2}> Order id:{showdata.Order_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}>Ingredients: {showdata.Ingredients}</Typography>
                 <Button variant="contained" align="center"  onClick={() => handleCardClick(showdata.Order_id)} padding={2} margin={2}>Fulfill</Button>
-       <Button variant="outlined">Cancel</Button>
+       {/* <Button variant="outlined">Cancel</Button> */}
                 </Card>
                 </Grid>
             </Box>

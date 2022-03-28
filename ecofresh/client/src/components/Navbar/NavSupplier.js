@@ -21,12 +21,9 @@ function Navbar() {
       </MenuIcon>
       
       <Menu isClicked={isClicked}>
-        <NavLinks to="/admin">Home</NavLinks>
-        <NavLinks to="/admin">Orders</NavLinks>
-        <NavLinks to="/admin">Pantry</NavLinks>
-        <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Logout
-          </Button>
+        <NavLinks to="/supplier">Home</NavLinks>
+        <NavLinks to="/supplier/orders">Orders</NavLinks>
+        <NavLinks to="/supplier/pantry">Pantry</NavLinks>
         <div className="button_container">
           <AccButton />
         </div>

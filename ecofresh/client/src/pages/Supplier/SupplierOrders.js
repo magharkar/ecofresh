@@ -69,12 +69,12 @@ export default function Orders() {
           <Container maxWidth="sm">
             <Typography
               component="h1"
-              variant="h2"
+              variant="h3"
               align="center"
               color="text.primary"
               gutterBottom
             >
-              Orders
+              Current Orders
             </Typography>
 
 
@@ -93,6 +93,7 @@ export default function Orders() {
         <Container container spacing={2} maxWidth="300">
         
         <Grid  bgcolor={"#96e0aa"} padding="4rem" sx={{display:'flex'}}> 
+            
             {showdata.map((ele) => (
           
               <Card style={{backgroundColor: "#0d401b"}} sx={{maxWidth:"50%",margin:'5px' }} >
