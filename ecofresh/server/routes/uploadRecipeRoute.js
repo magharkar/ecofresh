@@ -38,13 +38,12 @@ route.get('/getAllRequests', async (req, res) => {
 
 route.get('/:requestId', async (req, res) => {
   const requestId = req.params.requestId;
-  console.log(requestId)
   await UploadRecipe.findOne({
     "requestId": requestId
   }).then(
     result=>{
       let requestStatus = result.requestStatus;
-      res.status(201).send(requestStatus);
+      res.status(200).send(requestStatus);
     }).catch(err=>{
       console.log("Err: " + err);
       res.status(400).send({ "message": "Recipe not found"});
