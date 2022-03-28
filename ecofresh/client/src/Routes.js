@@ -17,6 +17,10 @@ import Register from "./pages/Register/Register";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 
 import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
+import UploadRecipe from "./pages/UploadRecipe/UploadRecipe";
+import AdminHomepage from "./pages/AdminHomepage/AdminHomepage";
+import CheckRequestStatus from "./pages/CheckRequestStatus/CheckRequestStatus";
+import UploadRecipeHero from './pages/UploadRecipeHero/UploadRecipeHero'
 
 function App() {
 
@@ -43,6 +47,10 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/home" element={<UserHomepage/>} />
         <Route path="/home/recipe" element={<RecipeDetails />} />
+        <Route path="/uploadRecipeNavigation" element={<UploadRecipeHero />} />
+        <Route path="/uploadRecipe" element={<UploadRecipe/>} />
+        <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
+        <Route path="/admin" element={<AdminHomepage/>} />
       </Routes>
     </ThemeProvider>
   );

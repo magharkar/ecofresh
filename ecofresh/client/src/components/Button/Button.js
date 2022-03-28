@@ -6,8 +6,6 @@ function AppButton(props) {
         <Button color={props.color} onClick={props.onClick} {...props}>
             {props.children}
         </Button>
-      
-        
     )
 }
 

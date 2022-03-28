@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React from 'react'
 import { useState } from 'react'
 import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style'
