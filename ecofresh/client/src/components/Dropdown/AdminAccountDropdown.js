@@ -18,7 +18,10 @@ export default function AdminMenu() {
   };
   const handleRouting = (event) => {
     const selectedOption = event.target.innerText;
-    
+    if(selectedOption==="Support")
+    {
+      navigate("/complaints")
+    }
     //use the selectedOption and navigate hook to route to different pages.
     //refer to HomeAccountDropdown for an example
     //remove these comments once one option is added

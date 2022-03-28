@@ -1,8 +1,13 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React from 'react'
 import { useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style'
+import HomeAccountDropdown from '../Dropdown/HomeAccountDropdown'
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 function Navbar() {
 
@@ -22,25 +27,23 @@ function Navbar() {
       
       <Menu isClicked={isClicked}>
         <NavLinks to="/home">Home</NavLinks>
-        <NavLinks to="/uploadRecipe">Upload Recipe</NavLinks>
+        <NavLinks to="/uploadRecipeNavigation">Upload Recipe</NavLinks>
         <div className="button_container">
-          <AccButton />
-          <ShoppingButton />
+        <ShoppingButton />
+          <HomeAccountDropdown />
+          
         </div>
       </Menu>
       <div className="button_container">
-          <AccButton />
           <ShoppingButton />
+          <HomeAccountDropdown />
         </div>
     </Nav>
   )
 }
 
-const AccButton = () => {
-  return <button className="buttons"><ShoppingCartIcon /></button>;
-};
 const ShoppingButton = () => {
-  return <button className="buttons"><AccountCircleRoundedIcon /></button>;
+  return <button className="buttons"><ShoppingCartIcon /></button>;
 };
 
 export default Navbar

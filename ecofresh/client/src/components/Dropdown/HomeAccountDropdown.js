@@ -24,6 +24,13 @@ export default function AccountMenu() {
     const selectedOption = event.target.innerText;
     if(selectedOption === "Logout"){
       navigate("/");
+
+    }
+    if(selectedOption === "View Complaints"){
+      navigate("/usercomplaints");
+    }
+    if(selectedOption === "Raise Complaint"){
+      navigate("/addcomplaint");
     }
   }
   const handleClose = () => {
