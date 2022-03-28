@@ -1,9 +1,12 @@
+/**
+ * @author Kandarp Parikh
+ */
 import {useParams} from 'react-router-dom'
 import { Button } from "@mui/material";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
 // import Header from "../../components/Header/Header";
-import { MainContent, PageWrapper, BottomContainer, Row,
-  Column, Image, HeaderWrapper } from "../LandingPage/LandingPage.style";
+import { MainContent, PageWrapper, BottomContain, Row_Complaint,
+  Column_Complaint, Image, HeaderWrapper } from "../LandingPage/LandingPage.style";
 import ComplaintsImage from '../../assets/pictures/Complaints.jpg';
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
@@ -36,44 +39,43 @@ function ComplaintDetails() {
   return     (
   <PageWrapper>
 <HeaderWrapper><Navbar /></HeaderWrapper>
-  <BottomContainer>
       <MainContent>
         <img src={ComplaintsImage} width="100%" height="300px"/>
         <h1 style={{width: 'fit-content',margin: '0 auto'}}>Complaint Details</h1>
           {true ? (
     <Card>
-            <hr></hr>
-        <Row style={{height:"10px",alignItems:"center"}}>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Id : {complaint.complaintId}</Column>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Date : {complaint.date}</Column>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}>OrderId : {complaint.orderId}</Column>
-        </Row>
-        <Row style={{height:"10px",alignItems:"center"}}>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Type : {complaint.complaintType}</Column>
-            <Column>      </Column>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Status : {complaint.complaintStatus}</Column>
-        </Row>
         <hr></hr>
-        <Row style={{height:"50px",alignItems:"center"}}>
-            <Column  style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Description : </Column>
-            <Column style={{ backgroundColor:'orange'}}>{complaint.description}</Column>
-            <Column></Column>
-        </Row>
-        <Row style={{height:"200px",alignItems:"center"}}>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Image :</Column>
-            <Column>  <img src={imageUrl} width="40%" height="200px"/></Column>  
-            <Column>   </Column> 
-        </Row>
-        <Row style={{height:"50px",alignItems:"center"}}>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Resolution Message : </Column>
-            <Column style={{ backgroundColor:'orange'}}>{complaint.resolutionMessage}</Column>
-            <Column></Column>
-        </Row>
-        <Row style={{height:"50px",alignItems:"center"}}>
-            <Column style={{ backgroundColor:'#1d3124',color:'white'}}> Reimbursement Amount : </Column>
-            <Column style={{ backgroundColor:'orange'}}>{complaint.reimbursementAmount}</Column>
-            <Column></Column>
-        </Row>
+        <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Id : {complaint.complaintId}</Column_Complaint>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Date : {complaint.date}</Column_Complaint>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}>OrderId : {complaint.orderId}</Column_Complaint>
+        </Row_Complaint>
+        <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Type : {complaint.complaintType}</Column_Complaint>
+            <Column_Complaint>      </Column_Complaint>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}>Complaint Status : {complaint.complaintStatus}</Column_Complaint>
+        </Row_Complaint>
+        <hr></hr>
+        <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+            <Column_Complaint  style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Description : </Column_Complaint>
+            <Column_Complaint style={{ backgroundColor:'orange'}}>{complaint.description}</Column_Complaint>
+            <Column_Complaint></Column_Complaint>
+        </Row_Complaint>
+        <Row_Complaint style={{height:"200px",alignItems:"center"}}>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Image :</Column_Complaint>
+            <Column_Complaint>  <img src={imageUrl} width="40%" height="200px"/></Column_Complaint>  
+            <Column_Complaint>   </Column_Complaint> 
+        </Row_Complaint>
+        <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}> Complaint Resolution Message : </Column_Complaint>
+            <Column_Complaint style={{ backgroundColor:'orange'}}>{complaint.resolutionMessage}</Column_Complaint>
+            <Column_Complaint></Column_Complaint>
+        </Row_Complaint>
+        <Row_Complaint style={{height:"50px",alignItems:"center"}}>
+            <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}> Reimbursement Amount : </Column_Complaint>
+            <Column_Complaint style={{ backgroundColor:'orange'}}>{complaint.reimbursementAmount}</Column_Complaint>
+            <Column_Complaint></Column_Complaint>
+        </Row_Complaint>
         <hr></hr>
     </Card>
 )
@@ -82,8 +84,9 @@ function ComplaintDetails() {
 <br></br>
       </MainContent>
 
-  </BottomContainer>
-<FooterContainer />
+      <BottomContain>
+             <FooterContainer />
+         </BottomContain>
 </PageWrapper>
 );
 }
