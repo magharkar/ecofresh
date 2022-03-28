@@ -78,7 +78,7 @@ function LandingPage(props) {
       {
         alert("Please select value for each dropdown")
       }
-      if(ComplaintError.length>0)
+      else if(ComplaintError.length>0)
       {
         alert("Please enter atleast 15 characters in complaint description")
       }
