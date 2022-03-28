@@ -9,9 +9,11 @@ const uploadToS3 = require("./controllers/uploadToS3");
 var sign_s3 = require('./controllers/uploadToS3');
 cors = require("cors");
 
-app.use(cors());
+const recipesRoute = require("./routes/recipesRoute");
+const cartManagementRoute = require("./routes/cartManagementRoute");
+const cors = require("cors");
 app.use(express.json());
-
+app.use(cors());
 
 mongoose.connect(ATLAS_URI, {
     useNewUrlParser: true,
@@ -30,6 +32,8 @@ db.once('open', () => {
 app.use("/users", usersRoute);
 app.use("/complaints", complaintRoutes);
 app.use('/uploadToS3', uploadToS3.sign_s3);
+app.use("/recipes", recipesRoute);
+app.use("/cart", cartManagementRoute);
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);
