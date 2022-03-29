@@ -27,6 +27,8 @@
     const [complaintId,setComplaintId] = useState('')
     const userEmail = localStorage.getItem("emailId");
     const [orderId,setOrderId] = useState('')
+
+    // This function gets the state of the selected value from Select Complaint Type dropdown
     const childToParent = (childdata) => {
       setData(childdata);
       if(complaintType.includes(childdata))
@@ -62,13 +64,13 @@
          navigate(`/complaints/ComplaintDetailsPage/${id}`);
      }
  
-     const SearchByComplaintId=(e)=>{
-         setComplaintId(e.target.value)
-         };
+    const SearchByComplaintId=(e)=>{
+        setComplaintId(e.target.value)
+        };
  
-         const SearchByOrderId=(e)=>{
-             setOrderId(e.target.value)
-             };
+    const SearchByOrderId=(e)=>{
+        setOrderId(e.target.value)
+        };
  
  
    return (

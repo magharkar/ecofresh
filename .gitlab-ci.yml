@@ -1,8 +1,8 @@
+
 stages:
-  - initialize
-  - deploy
-initialize:
-  stage: initialize
+    - deploy
+deploy:
+  stage: deploy
   image: node:latest
   script:
     - cd ecofresh/client
