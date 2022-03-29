@@ -64,6 +64,8 @@
   // API to add resolution to a complaint
   route.post("/addresolution", async (req, res) => {
       try {
+          res.header("Access-Control-Allow-Origin", "*");
+          res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
           complaints.addResolution(req)
           complaints.addCredits(req)
           res.status(200).send({"message": "successfully updated"});
