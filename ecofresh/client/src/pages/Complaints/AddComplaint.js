@@ -87,7 +87,7 @@
        {
          alert("Please enter atleast 15 characters in complaint description")
        }
-       else if(errormsg.length>0{
+       else if(errormsg.length>0){
          alert(errormsg)
        }
      }
