@@ -162,7 +162,7 @@ function UploadRecipe() {
         <p>Upload request submitted.</p>
         <p>Request Reference number: {requestId}</p>
       </Typography>
-      <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)}>Go Back</AppButton>
+      <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)} style={{marginLeft: "160px"}}>Go Back</AppButton>
     </Box>
     </Modal>
    <Footer><FooterContainer /></Footer>
