@@ -9,7 +9,7 @@
  const complaints = require("../controllers/complaints")
  const ordersModel = require("../models/orderModel");
 
- 
+ // Retrieve all complaints
  route.get("/allcomplaints", async (req, res) => {
    let complaints = await complaintsModel.find();
    try {
@@ -22,6 +22,7 @@
    }
  });
 
+  // Generate Complaint ID every time user files a new complaint
  route.get("/generateComplaintId", async (req, res) => {
   let complaintId = complaints.generateComplaintId();
   try {
@@ -34,6 +35,7 @@
   }
 });
 
+// Retrieve all orders for a specific user ID
  route.post("/allorders", async (req, res) => {
   let orders = await ordersModel.find({userId: req.body.data.userId});
   try {
@@ -46,9 +48,11 @@
   }
 });
  
+ // API to insert new complaint to database
  route.post("/addcomplaint", async (req, res) => {
     try {
-      console.log("add complaint called")
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         complaints.addComplaint(req)
         res.status(200).send({"message": "successfully created complaint"});
       } catch (error) {
@@ -57,30 +61,35 @@
       }
         });
 
-    route.post("/addresolution", async (req, res) => {
-        try {
-            complaints.addResolution(req)
-            complaints.addCredits(req)
-            res.status(200).send({"message": "successfully updated"});
-          } catch (error) {
-            console.log(error);
-            res.status(500).send("Error while fetching the complaints.");
-          }
-            });
-    
-    route.post("/filterByComplaintStatus", async (req, res) => {
-        
-    try {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        let data = await complaintsModel.find({complaintStatus: req.body.data.complaintStatus});
-        res.status(200).send(data);
+  // API to add resolution to a complaint
+  route.post("/addresolution", async (req, res) => {
+      try {
+          res.header("Access-Control-Allow-Origin", "*");
+          res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+          complaints.addResolution(req)
+          complaints.addCredits(req)
+          res.status(200).send({"message": "successfully updated"});
         } catch (error) {
-        console.log(error);
-        res.status(500).send("Error while fetching the complaints.");
+          console.log(error);
+          res.status(500).send("Error while fetching the complaints.");
         }
-        });
+          });
+    
+  // Get all complaints based on complaint Status
+  route.post("/filterByComplaintStatus", async (req, res) => {
+      
+  try {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      let data = await complaintsModel.find({complaintStatus: req.body.data.complaintStatus});
+      res.status(200).send(data);
+      } catch (error) {
+      console.log(error);
+      res.status(500).send("Error while fetching the complaints.");
+      }
+      });
 
+    // Get all complaints based on complaint Type
     route.post("/filterByComplaintType", async (req, res) => {
         
         try {
@@ -92,6 +101,7 @@
             }
             });
 
+    // Get all complaints based on complaint Id
     route.post("/fetchByComplaintId", async (req, res) => {
         try {
             let data = await complaintsModel.findOne({complaintId: req.body.data.complaintId});
@@ -109,6 +119,7 @@
             }
             });
 
+      // Get all complaints based on Order ID
       route.post("/fetchByOrderId", async (req, res) => {
         try {
             let data = await complaintsModel.findOne({OrderId: req.body.data.orderId});
@@ -126,6 +137,7 @@
             }
             });
 
+      // Get all complaints based on User Email
       route.post("/fetchByUserEmail", async (req, res) => {
         try {
           

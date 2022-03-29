@@ -1,8 +1,7 @@
 stages:
-  - initialize
-  - deploy
-initialize:
-  stage: initialize
+    - deploy
+deploy:
+  stage: deploy
   image: node:latest
   script:
     - cd ecofresh/client
@@ -13,5 +12,5 @@ initialize:
   environment:
     name: production
     url: https://group10-ecofresh.herokuapp.com/
-  only:
-    - main
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
