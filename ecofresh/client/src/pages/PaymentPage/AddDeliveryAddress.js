@@ -1,3 +1,7 @@
+/**
+ * @author Meha Desai
+ */
+
 import React from "react";
 import Navbar from "../../components/Navbar/NavUser";
 import { Typography } from "antd";

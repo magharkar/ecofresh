@@ -1,3 +1,7 @@
+/**
+ * @author Meha Desai
+ */
+
 import styled from 'styled-components';
 
 const MainContent = styled.div``;
@@ -11,7 +15,7 @@ const HeaderWrapper = styled.div`
 
 const PageWrapper = styled.div``;
 
-const  BottomContainer = styled.div`
+const BottomContainer = styled.div`
     position: relative;
     top: 58px;
 `;
@@ -41,4 +45,4 @@ const Image = styled.img`
     object-fit: cover;
 `;
 
-export { MainContent, HeaderWrapper, PageWrapper, BottomContainer, Container,Row, Column, Image }; 
+export { MainContent, HeaderWrapper, PageWrapper, BottomContainer, Container, Row, Column, Image };

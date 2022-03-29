@@ -1,3 +1,7 @@
+/**
+ * @author Meha Desai
+ */
+
 require('dotenv').config()
 
 const { Router } = require("express");
@@ -7,21 +11,16 @@ const Payment = require("../models/paymentModel");
 const secretKey = process.env.STRIPE_PRIVATE_KEY
 
 const app = express.Router();
-// This is a public sample test API key.
-// Don’t submit any personally identifiable information in requests made with this key.
-// Sign in to see your own test API key embedded in code samples.
+
 console.log(secretKey)
 const stripe = require("stripe")(secretKey);
 
-// console.log(secretKey)
 
 app.use(express.static("public"));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
-    // Replace this constant with a calculation of the order's amount
-    // Calculate the order total on the server to prevent
-    // people from directly manipulating the amount on the client
+
     return 1400;
 };
 

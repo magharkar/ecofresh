@@ -1,3 +1,7 @@
+/**
+ * @author Meha Desai
+ */
+
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -16,12 +20,6 @@ import cardPayment from "../../assets/pictures/card-payment.png";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
 import Navbar from "../../components/Navbar/NavUser";
 
-
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is a public sample test API key.
-// Don’t submit any personally identifiable information in requests made with this key.
-// Sign in to see your own test API key embedded in code samples.
 
 const stripePromise = loadStripe('pk_test_51KhEA9D3pnjAoJfMFmML7iTQCnqznYxc0ANnAzWVVSi2c1hVV7368SDniaQ0iCG5nsulXb9aYgBsaqF5O6YPLUD600zfv6Tf0k');
 
