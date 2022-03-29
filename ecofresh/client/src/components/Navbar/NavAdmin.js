@@ -4,8 +4,9 @@
 
 import React from 'react'
 import { useState } from 'react'
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style'
+import AdminMenu from '../Dropdown/AdminAccountDropdown';
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 function Navbar() {
 
@@ -27,18 +28,14 @@ function Navbar() {
         <NavLinks to="/admin">Home</NavLinks>
         <NavLinks to="/admin">Analytics</NavLinks>
         <div className="button_container">
-          <AccButton />
+          <AdminMenu />
         </div>
       </Menu>
       <div className="button_container">
-          <AccButton />
+          <AdminMenu />
         </div>
     </Nav>
   )
 }
-
-const AccButton = () => {
-  return <button className="buttons"><AccountCircleRoundedIcon /></button>;
-};
 
 export default Navbar

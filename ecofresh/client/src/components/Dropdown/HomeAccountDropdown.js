@@ -23,7 +23,15 @@ export default function AccountMenu() {
   const handleRouting = (event) => {
     const selectedOption = event.target.innerText;
     if(selectedOption === "Logout"){
-      navigate("/");
+      localStorage.clear();
+      navigate("/login");
+
+    }
+    if(selectedOption === "View Complaints"){
+      navigate("/usercomplaints");
+    }
+    if(selectedOption === "Raise Complaint"){
+      navigate("/addcomplaint");
     }
   }
   const handleClose = () => {
