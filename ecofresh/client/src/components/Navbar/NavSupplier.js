@@ -1,8 +1,16 @@
+/**
+ * @author Sumadhur Vaidyula
+ */
+
+
+
+
 import React from 'react'
 import { useState } from 'react'
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style';
 import Button from '@mui/material/Button';
+import AdminMenu from '../Dropdown/AdminAccountDropdown';
 
 function Navbar() {
 
@@ -25,18 +33,16 @@ function Navbar() {
         <NavLinks to="/supplier/orders">Orders</NavLinks>
         <NavLinks to="/supplier/pantry">Pantry</NavLinks>
         <div className="button_container">
-          <AccButton />
+        <AdminMenu />
         </div>
       </Menu>
       <div className="button_container">
-          <AccButton />
+      <AdminMenu />
         </div>
     </Nav>
   )
 }
 
-const AccButton = () => {
-  return <button className="buttons"><AccountCircleRoundedIcon /></button>;
-};
+
 
 export default Navbar
