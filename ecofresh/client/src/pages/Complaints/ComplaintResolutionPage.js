@@ -19,7 +19,7 @@ function ComplaintResolution() {
     const [complaint,setComplaint] = useState('');
     const [id,setId] = useState('')
     const params = useParams();
-    const [api_url,setAPIUrl] = useState('http://localhost:3001/complaints/fetchByComplaintId');
+    const [api_url,setAPIUrl] = useState(baseURL+'/complaints/fetchByComplaintId');
     const [reimbursementAmount,setreimbursementAmount] = useState('')
     const [resolutionMessage,setresolutionMessage] = useState('')
     const [imageUrl,setImageUrl] = useState('')
@@ -38,7 +38,7 @@ function AddResolution()
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         }
-        axios.post("http://localhost:3001/complaints/addresolution",{headers: headers, data : {'complaintId': params.id,
+        axios.post(baseURL+"/complaints/addresolution",{headers: headers, data : {'complaintId': params.id,
         "reimbursementAmount":reimbursementAmount, "resolutionMessage":resolutionMessage}})
     }
 
