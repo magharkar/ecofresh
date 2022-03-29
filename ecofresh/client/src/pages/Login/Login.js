@@ -1,3 +1,7 @@
+/* 
+* @author Ruchi Shinde
+*/
+
 import axios from 'axios';
 import { useState } from 'react';
 import {
@@ -32,7 +36,12 @@ const Login = () => {
                 if (res.status === 200) {
                     console.log("Logged in");
                     localStorage.setItem("emailId",emailId);
-                    navigate("/home");
+                    if(res.data.userType == "customer"){
+                        navigate("/home");
+                    } 
+                    else if(res.data.userType == "admin"){
+                        navigate("/admin");
+                    }
                 } else {
                     console.log("sets invalid login")
                     setIsLoginValid(false);
