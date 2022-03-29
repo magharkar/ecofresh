@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import React, {useState, useEffect} from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -11,11 +15,12 @@ import Checkbox from '../Checkbox/Checkbox';
 import AppButton from '../Button/Button';
 import MaterialUIForm from 'react-material-ui-form'
 import JssProvider from 'react-jss/lib/JssProvider';
+import axios from 'axios';
+import baseURL from '../../config';
 
 function Filter(props) {
-    const { filterData } = props;
     const [selectedFilters, setSelectedFilters] = useState([]);
-    const [clearFilters, setClearFilters] = useState(false);
+    const [filterData, setFilterData] = useState([]);
     const handleSubmit = (values, pristineValues) => {
       console.log(values, pristineValues);
     }
@@ -24,14 +29,18 @@ function Filter(props) {
       props.getSelectedFilters(selectedFilters);
     }
 
-    const clearAllFilters = () => {
-      setSelectedFilters([]);
-      props.clearAllFilters();
-    }
+    useEffect(() => {
+      const getFilterDataURL = baseURL + '/recipes/getFilterValues';
+      axios.get(getFilterDataURL)
+      .then(res => {
+          const data = res.data;
+          setFilterData(data);
+          console.log(data);
+      })
+    },[]);
 
     useEffect(() => {
-      // Update the document title using the browser API
-      console.log("HERE")
+      console.log("HELLO THERE");
     });
 
     function handleCheckbox(event, isChecked, value) {
@@ -47,6 +56,7 @@ function Filter(props) {
       setSelectedFilters(currentlySelectedFilters);
     }
     console.log(selectedFilters);
+
     return (
         <Container>
             <FilterText>Filters</FilterText>
@@ -66,7 +76,7 @@ function Filter(props) {
                               <Typography 
                                   style={{textTransform:"capitalize"}}
                               >
-                                  {data.filterKey === "mealType" ? "Meal Type" : data.filterKey}
+                                  {data.filterKey === "mealTypes" ? "Meal Types" : data.filterKey}
                               </Typography>
                             </AccordionSummary>
                             <AccordionDetails
@@ -80,7 +90,6 @@ function Filter(props) {
                                                         onChange={(event) => handleCheckbox(event)} 
                                                         category={data.filterKey}
                                                         name={value}
-                                                        //checked={selectedFilters === [] && false}
                                                     />} 
                                             label={value} />
                                     ))
@@ -93,7 +102,6 @@ function Filter(props) {
                     }
                     <ButtonContainer>
                         <AppButton color="secondary" type="submit" onClick={applyFilters}>Apply</AppButton>
-                        <AppButton type="submit" onClick={clearAllFilters}>Clear All</AppButton>
                     </ButtonContainer>
                 </MaterialUIForm>
             </JssProvider>

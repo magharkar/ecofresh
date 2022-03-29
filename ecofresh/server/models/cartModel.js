@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import React, { useEffect } from 'react'
 import { Container, ContentContainer, Content, CssTextField, SearchBar as SearchBarContainer,
 FlexContainer, MainContent, RecipeContainer, NoResults, AccordionContainer, FilterContainer  } from './UserHomepage.style'
@@ -28,7 +32,7 @@ const filterData = [
   },
   {
     filterKey: "cuisine",
-    filterValues: ["Mediterranean", "American", "Italian", "Asian", "Mexican"]
+    filterValues: ["Mediterranean", "American", "Italian", "Asian", "Mexican", "Indian"]
   },
   {
     filterKey: "ratings",
@@ -41,6 +45,8 @@ function UserHomepage() {
   const [recipes, setAllRecipes] = React.useState([]);
 
     useEffect(() => {
+      const emailId = localStorage.getItem("emailId");
+      const getCartDataURL = baseURL + '/cart/getAllItemsInCart/' + emailId;
       const getRecipeURL = baseURL + '/recipes/allRecipes';
       axios.get(getRecipeURL)
       .then(res => {
@@ -55,6 +61,13 @@ function UserHomepage() {
       console.log(selectedFilters);
       let filterRequest = [];
       if(selectedFilters.length === 0) {
+        const getRecipeURL = baseURL + '/recipes/allRecipes';
+        axios.get(getRecipeURL)
+        .then(res => {
+          const data = res.data;
+          setAllRecipes(data);
+          console.log(data);
+      })
         return;
       }
       selectedFilters.map(selectedFilter => {
@@ -121,6 +134,8 @@ function UserHomepage() {
 
     const handleChange = (event) => {
       const option = event.target.value;
+      setSortKey(option);
+
       let key="costPerMeal";
       let asc = false;
       if(option === 1) {
@@ -160,7 +175,7 @@ function UserHomepage() {
       <ContentContainer>
         <FilterContainer>
           <Filter 
-              filterData={filterData} 
+              //filterData={filterData} 
               getSelectedFilters={(selectedFilters) => applyFilters(selectedFilters)}
               clearAllFilters={clearAllFilters}
           />
@@ -190,7 +205,14 @@ function UserHomepage() {
                     onChange={handleChange}
                     label="Sort By"
                     sx={{
-                      color:"red",
+                      borderColor:"red",
+
+                    }}
+                    inputProps={{
+                      style: {
+                        borderColor: "red !important",
+                        color: "red !important"
+                      }
                     }}
                   >
                       <MenuItem value="">
@@ -204,21 +226,8 @@ function UserHomepage() {
                 </FormControl>
 
               <AccordionContainer>
-                <Accordion>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>Filters</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
+                <div>Filters</div>
+                <Filter />
               </AccordionContainer>
                 
 

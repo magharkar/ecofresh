@@ -28,6 +28,7 @@ import SupplierOrders from "./pages/Supplier/SupplierOrders";
 import OrderDetail from "./pages/Supplier/OrderDetail";
 import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
 
@@ -67,6 +68,10 @@ function App() {
         <Route path="/supplier/orders/:id" element={<OrderDetail />}></Route>
         <Route path="/supplier/orders/fulfilment/:id" element={<OrderFulfilment />}> </Route>
         <Route path="supplier/pantry" element={<SupplierPantry />}></Route>
+        <Route path="/uploadRecipe" element={<UploadRecipe/>} />
+        <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
+        <Route path="/admin" element={<AdminHomepage/>} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </ThemeProvider>
   );
