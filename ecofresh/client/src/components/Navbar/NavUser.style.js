@@ -25,7 +25,7 @@ export const Nav = styled.div`
         width: 40px;
         text-align: center;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 25px;
         margin: 4px 2px;
         border-radius: 50%;
         cursor: pointer;

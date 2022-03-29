@@ -103,53 +103,37 @@ route.get("/sort", (req, res) => {
     });
 });
 
-route.get("/getMealTypes", (req, res) => {
-    Recipe.find({}).select({mealType:1}).then(result => {
+route.get("/getFilterValues", (req, res) => {
+    Recipe.find({}).select({cuisine:1, ratings:1, mealType:1}).then(result => {
         console.log(result);
         let mealTypes = [];
+        let ratings = [];
+        let cuisines = [];
         for(index in result){
             mealTypes.push(result[index].mealType);
+            ratings.push(result[index].ratings);
+            cuisines.push(result[index].cuisine)
         }
-        let uniqueValues = mealTypes.filter(unique);
-        console.log(uniqueValues);
-        res.send(uniqueValues);
+        let uniqueMealTypeValues = mealTypes.filter(unique);
+        let uniqueCuisineValues = cuisines.filter(unique);
+        let uniqueRatingValues = ratings.filter(unique);
+        res.send([
+            {
+                filterKey: "mealTypes",
+                filterValues: uniqueMealTypeValues,
+            },
+            {
+                filterKey: "cuisines",
+                filterValues: uniqueCuisineValues,
+            },{
+                filterKey: "ratings",
+                filterValues: uniqueRatingValues,
+            }
+        ]);
     }).catch(err  => {
         console.log(err);
-        res.status(500).send("Error in getting meal types");
+        res.status(500).send("Error in getting filter values");
     });
 });
-
-route.get("/getRatings", (req, res) => {
-    Recipe.find({}).select({ratings:1}).then(result => {
-        console.log(result);
-        let mealTypes = [];
-        for(index in result){
-            mealTypes.push(result[index].ratings);
-        }
-        let uniqueValues = mealTypes.filter(unique);
-        console.log(uniqueValues);
-        res.send(uniqueValues);
-    }).catch(err  => {
-        console.log(err);
-        res.status(500).send("Error in getting meal types");
-    });
-});
-
-route.get("/getCuisines", (req, res) => {
-    Recipe.find({}).select({cuisine:1}).then(result => {
-        console.log(result);
-        let mealTypes = [];
-        for(index in result){
-            mealTypes.push(result[index].cuisine);
-        }
-        let uniqueValues = mealTypes.filter(unique);
-        console.log(uniqueValues);
-        res.send(uniqueValues);
-    }).catch(err  => {
-        console.log(err);
-        res.status(500).send("Error in getting meal types");
-    });
-});
-
 
 module.exports = route;

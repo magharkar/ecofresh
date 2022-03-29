@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -17,7 +21,7 @@ const FilterText = styled.div`
 
 const ButtonContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 24px 40px;
 `;
 

@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import styled from 'styled-components';
 
 const RecipeCard = styled.div`
@@ -5,7 +9,8 @@ const RecipeCard = styled.div`
     margin-top: 24px;
     display: flex;
     background-color: #EFEFEF;
-    min-width: 256px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    min-width: 312px;
     justify-content: center;
     @media (min-width: 1730px) {
         width: calc(25% - 24px);

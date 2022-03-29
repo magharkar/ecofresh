@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -8,10 +12,13 @@ const Cart = new mongoose.Schema({
     recipeName: {
         type: String
     },
-    recipePrice: {
+    price: {
         type: Number
     },
     userEmail: {
+        type: String
+    },
+    imgURL: {
         type: String
     }
 });
