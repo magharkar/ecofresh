@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React from 'react'
 import Footer from './Footer'
 import Icons from '../../assets/icons/icons'

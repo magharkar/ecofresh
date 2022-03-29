@@ -6,7 +6,7 @@ const express = require("express");
 const route = express.Router();
 const Cart = require("../models/cartModel");
 const Recipe = require("../models/recipeModel");
-const {getImageURL} = require("../controllers/recipe")
+const { getImageURL } = require("../controllers/recipe")
 
 route.post("/addToCart", (req, res) => {
     let data = req.body;
@@ -41,24 +41,26 @@ route.delete("/deleteItem/:recipeName", (req, res) => {
 });
 
 route.get("/getAllItemsInCart/:email", (req, res) => {
-    let emailId = req.params.email
+    let emailId = req.params.email;
     let responseList = [];
     let subtotal = 0;
     Cart.aggregate([{
-        $lookup:{
+        $match: { "userEmail": emailId }
+    }, {
+        $lookup: {
             from: 'recipe',
             localField: 'recipeName',
             foreignField: 'recipeName',
             as: 'recipeSchema',
             pipeline: [{
                 $project: {
-                    s3URL:1
+                    s3URL: 1
                 }
             }]
-          }
+        }
     }]).then(result => {
         console.log(result);
-            for (i in result) {
+        for (i in result) {
             let recipeObj = result[i];
             let recipeName = recipeObj.recipeName;
             console.log(recipeName);

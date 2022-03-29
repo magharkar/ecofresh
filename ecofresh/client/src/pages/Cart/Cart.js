@@ -13,7 +13,7 @@ function Cart() {
     return(
         <Container>
             <Navbar />
-            <CartContainer>
+            <CartContainer style={{padding: "100px"}}>
                 This will contain all the items in the cart.
                 It is still a work in progress.
             </CartContainer>

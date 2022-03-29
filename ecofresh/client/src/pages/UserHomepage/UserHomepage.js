@@ -45,8 +45,6 @@ function UserHomepage() {
   const [recipes, setAllRecipes] = React.useState([]);
 
     useEffect(() => {
-      const emailId = localStorage.getItem("emailId");
-      const getCartDataURL = baseURL + '/cart/getAllItemsInCart/' + emailId;
       const getRecipeURL = baseURL + '/recipes/allRecipes';
       axios.get(getRecipeURL)
       .then(res => {
@@ -176,6 +174,7 @@ function UserHomepage() {
         <FilterContainer>
           <Filter 
               //filterData={filterData} 
+              isMobileView={false}
               getSelectedFilters={(selectedFilters) => applyFilters(selectedFilters)}
               clearAllFilters={clearAllFilters}
           />
@@ -226,8 +225,23 @@ function UserHomepage() {
                 </FormControl>
 
               <AccordionContainer>
-                <div>Filters</div>
-                <Filter />
+                <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                        <Typography>Filters</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Filter 
+                        //filterData={filterData} 
+                        isMobileView={true}
+                        getSelectedFilters={(selectedFilters) => applyFilters(selectedFilters)}
+                        clearAllFilters={clearAllFilters}
+                    />
+                  </AccordionDetails>
+                </Accordion>
               </AccordionContainer>
                 
 

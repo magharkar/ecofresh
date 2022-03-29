@@ -68,8 +68,13 @@ const ShoppingButton = () => {
     axios.get(getCartDataURL)
     .then(res => {
         //const data = res.data;
-       setCartQuantity(res.data.data.length);
-        console.log(res.data.data.length);
+        console.log(emailId, res.data);
+        let qty = 0;
+        res.data.data.map(recipe => {
+          qty += recipe.qty;
+          return recipe;
+        })
+       setCartQuantity(qty);
     })
   });
 

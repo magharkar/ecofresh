@@ -7,7 +7,6 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 export default function ColorCheckboxes(props) {
-
   const handleCheck = (event, isInputChecked) => {
     this.props.onChange(event, isInputChecked, props.category);
   };
@@ -17,9 +16,9 @@ export default function ColorCheckboxes(props) {
       {...props}
       onClick={props.onClick}
         sx={{
-          color: "#FFF",
+          color: props.isMobileView ? "#355c43" : "#FFF",
           '&.Mui-checked': {
-            color: "#FFF",
+            color: props.isMobileView ? "#355c43" : "#FFF",
           },
         }}
         onCheck={handleCheck}

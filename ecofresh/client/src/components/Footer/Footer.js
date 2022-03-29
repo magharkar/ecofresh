@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React from 'react'
 import { Container, Wrapper, Row, Column, Link, Title, Text, SubText } from './Footer.style'
 

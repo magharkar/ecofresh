@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import styled from 'styled-components'
 import { withStyles } from '@mui/styles';
 import { TextField } from '@mui/material';
@@ -80,7 +84,9 @@ const NoResults = styled.div`
 const AccordionContainer = styled.div`
     display: none;
     @media (max-width: 768px) {
+      margin-top: 24px;
       display: block;
+      width: 100%;
     }
 `;
 

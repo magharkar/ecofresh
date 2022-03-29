@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
    // height: 100vh;
-    background-color: #C3F1A9; 
+   // background-color: #C3F1A9; 
 `;
 
 const FlexContainer = styled.div`
@@ -112,6 +112,8 @@ const List = styled.li`
     padding-top: 6px;
 `;
 
+const ImageWrapper = styled.div``;
+
 export {Container, FlexContainer, ContentContainer, ImageIngredientsContainer, Directions, OrderInfo,
     ImageContainer, IngredientsContainer, RecipeName, DescriptionContainer, SubHeader, DirectionsText, Row,
-Key, Value, ButtonContainer, CountDropdown, Heading, CardContainer, List};
+Key, Value, ButtonContainer, CountDropdown, Heading, CardContainer, List, ImageWrapper};

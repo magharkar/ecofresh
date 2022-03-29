@@ -8,9 +8,6 @@ const theme = createTheme({
     components: {
       MuiButton: {
         styleOverrides: {
-          // root: {
-          //   height: '26px',
-          // },
           textPrimary: {
             background: "white",
             color: 'black',

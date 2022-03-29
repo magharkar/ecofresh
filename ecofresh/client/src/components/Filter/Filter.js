@@ -56,9 +56,10 @@ function Filter(props) {
       setSelectedFilters(currentlySelectedFilters);
     }
     console.log(selectedFilters);
+    const {isMobileView} = props;
 
     return (
-        <Container>
+        <Container isMobileView={isMobileView}>
             <FilterText>Filters</FilterText>
             <JssProvider>
                 <MaterialUIForm onSubmit={handleSubmit} onValuesChange={handleSubmit}>
@@ -66,12 +67,12 @@ function Filter(props) {
                       filterData.map(data => {
                         console.log(data.key);
                         return (
-                          <Accordion sx={{backgroundColor: "#355c43"}} defaultExpanded>
+                          <Accordion sx={{backgroundColor: isMobileView ? "#EFEFEF" : "#355c43"}} defaultExpanded>
                             <AccordionSummary
                               expandIcon={<ExpandMoreIcon />}
                               aria-controls="panel1a-content"
                               id="panel1a-header"
-                              sx={{color: "#FDAD11"}}
+                              sx={{color: isMobileView ? "#355c43" : "#FDAD11"}}
                             >
                               <Typography 
                                   style={{textTransform:"capitalize"}}
@@ -80,7 +81,7 @@ function Filter(props) {
                               </Typography>
                             </AccordionSummary>
                             <AccordionDetails
-                                sx={{color: "#FFF"}}  
+                                sx={{color: isMobileView ? "#000" : "#FFF"}}  
                             >
                                 <FormGroup>
                                   {
@@ -90,6 +91,7 @@ function Filter(props) {
                                                         onChange={(event) => handleCheckbox(event)} 
                                                         category={data.filterKey}
                                                         name={value}
+                                                        isMobileView={isMobileView}
                                                     />} 
                                             label={value} />
                                     ))
