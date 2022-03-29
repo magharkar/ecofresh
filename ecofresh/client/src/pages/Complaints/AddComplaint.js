@@ -39,6 +39,10 @@
    const [orderId,setOrderId] = useState('')
    const fileInput = useRef();
    const userId = localStorage.getItem("emailId")
+   const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
+}
    
    // Populate options for select dropdown of OrderId, Call API and get only user specific OrderIds
    axios.post(orderId_url,{data : {'userId': userId}}).then((response) => {
@@ -83,7 +87,7 @@
        {
          alert("Please enter atleast 15 characters in complaint description")
        }
-       else{
+       else if(errormsg.length>0{
          alert(errormsg)
        }
      }

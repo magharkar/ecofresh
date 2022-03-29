@@ -51,8 +51,8 @@
  // API to insert new complaint to database
  route.post("/addcomplaint", async (req, res) => {
     try {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         complaints.addComplaint(req)
         res.status(200).send({"message": "successfully created complaint"});
       } catch (error) {
