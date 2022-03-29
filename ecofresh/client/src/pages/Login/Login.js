@@ -42,6 +42,9 @@ const Login = () => {
                     else if(res.data.userType == "admin"){
                         navigate("/admin");
                     }
+                    else if(res.data.userType=="supplier"){
+                        navigate("/supplier");
+                    }
                 } else {
                     console.log("sets invalid login")
                     setIsLoginValid(false);
