@@ -6,6 +6,7 @@ aws.config.update({
 })
 
 const S3_BUCKET = process.env.Bucket
+console.log(S3_BUCKET)
 exports.sign_s3 = (req,res) => {
   const s3 = new aws.S3();  
   const fileName = req.body.fileName;
