@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React, { useState, useEffect } from 'react'
 import { UploadRecipeForm, Title, MainFormContainer, FormInputFields, FormLabel, FormInput, FormInputTextArea, Footer, PageWrapper } from './UploadRecipe.style'
 import Navbar from '../../components/Navbar/NavUser'

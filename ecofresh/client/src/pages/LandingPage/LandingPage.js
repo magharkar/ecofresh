@@ -1,4 +1,7 @@
-/* eslint-disable jsx-a11y/alt-text */
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React from "react";
 import Navbar from "../../components/Navbar/NavLanding";
 import { HeaderWrapper, MainContent, PageWrapper, Row,
