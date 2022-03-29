@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React, { useState, useEffect } from 'react'
 import { PageWrapper, Title, MainFormContainer, UploadRecipeForm, FormInputFields, FormLabel, FormInput, Footer } from './CheckRequestStatus.style'
 import Navbar from '../../components/Navbar/NavUser'
@@ -90,9 +94,9 @@ function CheckRequestStatus() {
                     boxShadow: 24,
                     p: 4,}}>
             <Typography id="modal-modal-title" variant="h6" component="h2" style={{color: "#fdad11", textAlign: 'center'}}>
-                Status : {status}
+                <p>Status : {status}</p>
             </Typography>
-            <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)}>Go Back</AppButton>
+            <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)} style={{marginLeft: "160px"}}>Go Back</AppButton>
             </Box>
         </Modal>
         <Footer><FooterContainer /></Footer>

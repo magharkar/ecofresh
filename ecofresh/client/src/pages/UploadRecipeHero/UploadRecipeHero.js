@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React from 'react'
 import Navbar from '../../components/Navbar/NavUser'
 import { FooterContainer } from '../../components/Footer/FooterContainer'

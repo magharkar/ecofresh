@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import styled from 'styled-components'
 import uploadRecipeImg from '../../assets/pictures/uploadRecipeBg.png'
 

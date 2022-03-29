@@ -1,3 +1,7 @@
+/**
+ * @author Vibhor Bhatnagar
+ */
+
 import React, { useState, useEffect } from 'react'
 import { UploadRecipeForm, Title, MainFormContainer, FormInputFields, FormLabel, FormInput, FormInputTextArea, Footer, PageWrapper } from './UploadRecipe.style'
 import Navbar from '../../components/Navbar/NavUser'
@@ -162,7 +166,7 @@ function UploadRecipe() {
         <p>Upload request submitted.</p>
         <p>Request Reference number: {requestId}</p>
       </Typography>
-      <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)}>Go Back</AppButton>
+      <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)} style={{marginLeft: "160px"}}>Go Back</AppButton>
     </Box>
     </Modal>
    <Footer><FooterContainer /></Footer>
