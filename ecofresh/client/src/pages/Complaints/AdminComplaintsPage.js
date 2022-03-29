@@ -3,7 +3,6 @@
  */
 import { Button } from "@mui/material";
 import {FooterContainer} from "../../components/Footer/FooterContainer";
-// import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/NavAdmin"
 import { FooterWrapper, HeaderWrapper, MainContent, PageWrapper, BottomContain, Row_Complaint,
   Column_Complaint, Image } from "../LandingPage/LandingPage.style";
@@ -17,27 +16,30 @@ import './Complaints.css';
 import DropDown from "../../components/CommonComponents/DropDown"
 import TextField from "@mui/material/TextField";
 import Footer from "../../components/Footer/Footer";
+import baseURL from '../../config';
 
 function LandingPage(props) {
     const navigate = useNavigate();
-    const [api_url,setAPIUrl] = useState('http://localhost:3001/complaints/allcomplaints/');
+    const [api_url,setAPIUrl] = useState(baseURL+'/complaints/allcomplaints/');
     const [complaints,setComplaints] = useState([]);
     const [data, setData] = useState('');
     const [search,setSearch] = useState('');
     const complaintType = ["Delivery","Quality","Quantity"]
     const [complaintId,setComplaintId] = useState('')
     const [orderId,setOrderId] = useState('')
+
+    // This function gets the state of the selected value from Select Complaint Type dropdown
     const childToParent = (childdata) => {
       setData(childdata);
       console.log(childdata) 
       console.log(complaintType.includes(childdata))
       if(complaintType.includes(childdata))
       {
-        setAPIUrl('http://localhost:3001/complaints/filterByComplaintType/');
+        setAPIUrl(baseURL+'/complaints/filterByComplaintType/');
       }
       else{
           setData("")
-          setAPIUrl('http://localhost:3001/complaints/allcomplaints/');
+          setAPIUrl(baseURL+'/complaints/allcomplaints/');
       }
       
     }
@@ -59,10 +61,12 @@ function LandingPage(props) {
 
     },[data]);
 
+    // Navigates to Complaint Details page
     const handleClick = (id) => {
         navigate(`/complaints/ComplaintResolutionPage/${id}`);
     }
 
+    // Filters all the complaints by ComplaintID text field
     const SearchByComplaintId=(e)=>{
         const headers = {
             'Access-Control-Allow-Origin': '*',
@@ -71,13 +75,14 @@ function LandingPage(props) {
         setComplaintId(e.target.value)
         };
 
-        const SearchByOrderId=(e)=>{
-            const headers = {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            }
-            setOrderId(e.target.value)
-            };
+    // Filters all the complaints by OrderId text field
+    const SearchByOrderId=(e)=>{
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        }
+        setOrderId(e.target.value)
+        };
 
 
   return (

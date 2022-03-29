@@ -4,7 +4,6 @@
 import {useParams} from 'react-router-dom'
 import { Button } from "@mui/material";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
-// import Header from "../../components/Header/Header";
 import { MainContent, PageWrapper, BottomContain, Row_Complaint,
   Column_Complaint, HeaderWrapper } from "../LandingPage/LandingPage.style";
 import ComplaintsImage from '../../assets/pictures/Complaints.jpg';
@@ -14,6 +13,7 @@ import './Complaints.css';
 import Card from '@mui/material/Card';
 import TextField from "@mui/material/TextField";
 import Navbar from '../../components/Navbar/NavAdmin';
+import baseURL from '../../config';
 
 function ComplaintResolution() {
     const [complaint,setComplaint] = useState('');

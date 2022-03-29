@@ -39,6 +39,8 @@
    const [orderId,setOrderId] = useState('')
    const fileInput = useRef();
    const userId = localStorage.getItem("emailId")
+   
+   // Populate options for select dropdown of OrderId, Call API and get only user specific OrderIds
    axios.post(orderId_url,{data : {'userId': userId}}).then((response) => {
      for (let i = 0; i < response.data.length; i++) {
        orderIds.push({value:response.data[i].orderId,label:response.data[i].orderId});
@@ -58,18 +60,17 @@
      });
    },[data]);
  
+   // Set OrderId to selected value from dropdown
    const handleOrderSelect = (e) =>{
      setOrderId(e.value);
    }
  
+   // Set ComplaintType to selected value from dropdown
    const handleComplaintTypeSelect = (e) =>{
      setTypeOfComplaint(e.value);
    }
  
-   const handleClick = (id) => {
-       navigate(`/complaints/ComplaintResolutionPage/${id}`);
-   }
- 
+   // This function is called when Submit Complaint Button is clicked
    const handleUpload = (ev) => {
      if(typeOfComplaint.length === 0 || orderId.length === 0 || ComplaintError.length>0 ||
        errormsg.length > 0)
@@ -86,6 +87,7 @@
          alert(errormsg)
        }
      }
+     // If there are no form validation errorr then proceed to submit complaint and upload image to S3
      else
      {
      let file = fileInput.current.files[0];
@@ -93,17 +95,16 @@
      let fileName = complaintId;
      let fileType = fileParts[1];
      console.log("Preparing the upload");
-     axios.post("http://localhost:3001/uploadToS3",{
+     axios.post(baseURL+"/uploadToS3",{
        fileName : fileName,
        fileType : fileType
      })
+     // Get signed URL from S3 and then upload selected file to S3
      .then(response => {
        var returnData = response.data.data.returnData;
        var signedRequest = returnData.signedRequest;
        var url = returnData.url;
-       setUrl(url)
-       console.log("Recieved a signed request " + signedRequest);
-       
+       setUrl(url)       
        var options = {
          headers: {
            'Content-Type': fileType
@@ -111,7 +112,6 @@
        };
        axios.put(signedRequest,file,options)
        .then(result => {
-         console.log("Response from s3")
          setSuccess(true);
        })
        .catch(error => {
@@ -126,7 +126,8 @@
        'Access-Control-Allow-Origin': '*',
        'Content-Type': 'application/json'
    }
-   axios.post("http://localhost:3001/complaints/addcomplaint",{headers: headers, 
+   // API call to backend to insert complaint data to database
+   axios.post(baseURL+"/complaints/addcomplaint",{headers: headers, 
    data : {
      complaintId : complaintId,
      complaintType: typeOfComplaint,
@@ -134,10 +135,19 @@
      orderId: orderId,
      photoUrl: 'https://ecofresh-complaint.s3.us-west-2.amazonaws.com/'+complaintId,
      userEmail: userId,
-   }});
+   }})
+   .then(result => {
+     alert("Complain Submitted")
+    window.location.reload();
+  })
+  .catch(error => {
+    alert("ERROR " + JSON.stringify(error));
+  });
+   
    }
  }
  
+  // This function validation for complaint description text field
    const handlecomplaint = (e) =>{
      if(e.target.value.length < 15){
        setComplaintError("Complaint should be atleast 15 characters long");
@@ -183,7 +193,7 @@
                :null}
                
                <Row_Complaint style={{height:"50px",alignItems:"center"}}>
-                   <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}> Upload Image :</Column_Complaint>
+                   <Column_Complaint style={{ backgroundColor:'#1d3124',color:'white'}}> Upload Image (Optional):</Column_Complaint>
                    <Column_Complaint style={{backgroundColor:"orange"}}>  <input onChange={handleChange} ref={fileInput} type="file"/></Column_Complaint>  
                </Row_Complaint>
                <Row_Complaint style={{height:"50px"}}>
