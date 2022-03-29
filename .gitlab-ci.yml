@@ -1,8 +1,6 @@
-/**
- * @author Kandarp Parikh
- */
+
 stages:
-  - deploy
+    - deploy
 deploy:
   stage: deploy
   image: node:latest
