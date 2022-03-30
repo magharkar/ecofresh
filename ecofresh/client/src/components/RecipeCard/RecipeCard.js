@@ -1,13 +1,16 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import React from 'react';
-import {RecipeCard, Key, Value, Row, Title, Description, ImageContainer, Content,
+import {RecipeCard, Key, Value, Row, Title, ImageContainer, Content,
     ContentContainer, ButtonContainer, FlexContainer} from './RecipeCard.style';
 import AppButton from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import placeHolderImage from '../../assets/pictures/placeholder.png';
 
 function RecipeCards(props) {
-    console.log(props.data);
-    const {costPerMeal, description, s3URL, ingredients, recipeName, mealType, cuisine} = props.data;
+    const {costPerMeal, s3URL, recipeName, mealType, cuisine, ratings} = props.data;
     const navigate = useNavigate();
 
     const openDetails = () => {
@@ -35,6 +38,10 @@ function RecipeCards(props) {
                             <Row>
                                 <Key>Cost Per Serving:</Key>
                                 <Value>${costPerMeal}</Value>
+                            </Row>
+                            <Row>
+                                <Key>Ratings:</Key>
+                                <Value>{ratings}/5</Value>
                             </Row>
                             <ButtonContainer>
                                 <AppButton color="secondary" onClick={openDetails}>View Details</AppButton>

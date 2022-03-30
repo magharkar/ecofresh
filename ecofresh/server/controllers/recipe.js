@@ -1,3 +1,7 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 const Recipe = require("../models/recipeModel")
 
 const getImageURL = (recipeName) => {

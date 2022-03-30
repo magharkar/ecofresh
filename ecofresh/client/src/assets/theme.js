@@ -1,12 +1,13 @@
+/**
+ * @author Mugdha Agharkar
+ */
+
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     components: {
       MuiButton: {
         styleOverrides: {
-          // root: {
-          //   height: '26px',
-          // },
           textPrimary: {
             background: "white",
             color: 'black',
