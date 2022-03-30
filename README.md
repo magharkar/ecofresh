@@ -160,3 +160,17 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
   - [usersModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/usersModel.js)
   - [usersRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/usersRoute.js)
   - [config.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/config.js)
+
+## Test User Credentials
+1. User
+Email ID: mug@gmail.com
+Password: Mugdha@0701
+
+2. Admin
+Email ID: admin@gmail.com
+Password: AdminUser@123
+
+3. Supplier
+Email ID: supplier@gmail.com
+Password: Supplier@123
+
