@@ -15,3 +15,22 @@ This is the repository for CSCI 5709 group project created by Group 10.
 
 Server Side:
 ->  orderRoutes.js [ecofresh/server/routes/orderRoutes.js]
+
+## Test User Credentials
+1. User
+
+Email ID: mug@gmail.com
+
+Password: Mugdha@0701
+
+2. Admin
+
+Email ID: admin@gmail.com
+
+Password: AdminUser@123
+
+3. Supplier
+
+Email ID: supplier@gmail.com
+
+Password: Supplier@123
