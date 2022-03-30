@@ -29,7 +29,7 @@ export default function PaymentMethod() {
     useEffect(() => {
 
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:3001/checkout/payment", {
+        fetch("https://csci5709-ecofresh.herokuapp.com/checkout/payment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ items: [{ paymentId: "p1" }] }),
