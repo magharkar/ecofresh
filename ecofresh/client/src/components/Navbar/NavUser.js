@@ -3,15 +3,15 @@
  */
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Nav,Logo,MenuIcon, Menu, NavLinks } from './NavUser.style'
-import React, {useEffect} from 'react'
+import { Nav, Logo, MenuIcon, Menu, NavLinks } from './NavUser.style'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import AccountMenu from '../Dropdown/HomeAccountDropdown';
 import axios from 'axios';
 import baseURL from '../../config';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
 
@@ -29,19 +29,19 @@ function Navbar() {
         <span />
         <span />
       </MenuIcon>
-      
+
       <Menu isClicked={isClicked}>
         <NavLinks to="/home">Home</NavLinks>
         <NavLinks to="/uploadRecipeNavigation">Upload Recipe</NavLinks>
         <div className="button_container">
-            <ShoppingButton />
+          <ShoppingButton />
           <AccountMenu />
         </div>
       </Menu>
-        <div className="button_container">
-            <ShoppingButton />
-          <AccountMenu />
-        </div>
+      <div className="button_container">
+        <ShoppingButton />
+        <AccountMenu />
+      </div>
     </Nav>
   )
 }
@@ -66,7 +66,7 @@ const ShoppingButton = () => {
     const emailId = localStorage.getItem("emailId");
     const getCartDataURL = baseURL + '/cart/getAllItemsInCart/' + emailId;
     axios.get(getCartDataURL)
-    .then(res => {
+      .then(res => {
         //const data = res.data;
         console.log(emailId, res.data);
         let qty = 0;
@@ -74,17 +74,17 @@ const ShoppingButton = () => {
           qty += recipe.qty;
           return recipe;
         })
-       setCartQuantity(qty);
-    })
-  });
+        setCartQuantity(qty);
+      })
+  }, []);
 
 
   return (
-  <button className="buttons" onClick={() => navigate("/cart")}>
-    <StyledBadge badgeContent={cartQuantity}>
+    <button className="buttons" onClick={() => navigate("/cart")}>
+      <StyledBadge badgeContent={cartQuantity}>
         <ShoppingCartIcon />
-    </StyledBadge>
-  </button>);
+      </StyledBadge>
+    </button>);
 };
 
 export default Navbar
