@@ -117,8 +117,10 @@
        axios.put(signedRequest,file,options)
        .then(result => {
          setSuccess(true);
+         console.log("uploaded")
        })
        .catch(error => {
+         console.log(JSON.stringify(error))
          alert("ERROR " + JSON.stringify(error));
        })
      })
