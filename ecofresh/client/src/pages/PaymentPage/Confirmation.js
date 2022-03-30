@@ -21,6 +21,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import AppButton from "../../components/Button/Button";
 import { Paper } from "@mui/material";
 import axios from 'axios';
+import baseURL from '../../config';
 
 const { Title } = Typography;
 
@@ -30,12 +31,13 @@ export default function Confirmation() {
     const [isSubmit, setIsSubmit] = useState(false);
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
+    const [api_url, setAPIUrl] = useState(baseURL + '/api/paymentDetails');
 
     useEffect(() => {
         const data = localStorage.getItem("formData") ? JSON.parse(localStorage.getItem("formData")) : {}
         // console.log(JSON.parse(data))
         setFormData(data)
-        axios.get('http://localhost:3001/api/paymentDetails')
+        axios.get(api_url)
             .then(res => {
                 const data = res.data;
                 console.log(data);
