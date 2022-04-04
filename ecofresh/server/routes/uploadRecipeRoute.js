@@ -26,9 +26,11 @@ route.get('/getAllRequests', async (req, res) => {
   console.log(newRecipe);
   newRecipe.save().then(result => {
     const reqId = result.requestId;
+    const usId = result.userId;
     console.log("in result");
     res.status(201).send({
-      "requestId" : reqId
+      "requestId" : reqId,
+      "userId" : usId
     });
   }).catch(err => {
     console.log("Failed to submit recipe upload request.");

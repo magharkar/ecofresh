@@ -11,8 +11,19 @@ import food from '../../assets/pictures/food.png'
 import points from '../../assets/pictures/points.png'
 import { FooterContainer } from '../../components/Footer/FooterContainer'
 import AppButton from '../../components/Button/Button.js'
+import { useNavigate } from 'react-router-dom'
 
 function LandingPage() {
+
+  const navigate= useNavigate();
+  const handleKnowMoreClick = (e) => {
+    navigate('/howItWorks')
+  }
+
+  const handleGetStartedClick = (e) => {
+    navigate('/login')
+  } 
+
   return (
     <PageWrapper>
         <HeaderWrapper>
@@ -26,7 +37,7 @@ function LandingPage() {
                     <h4>Say 'Yes' to eco-friendly</h4>  
                     <h3>Reduce food wastage</h3>
                     <p>EcoFresh delivers fresh food for the recipes from farmers directly to your doorstep. Only order how much you need and contribute to our goal to be 100% eco-friendly.</p>
-                    <div className="mid_button"><AppButton color="secondary">Know more</AppButton></div>
+                    <div className="mid_button"><AppButton color="secondary" onClick={handleKnowMoreClick}>Know more</AppButton></div>
                     </Column>
                 </Row>
                 <Row className="row2">
@@ -35,7 +46,7 @@ function LandingPage() {
                     <h4>Earn for your contribution</h4>
                     <h3>Rewards</h3>
                     <p>Now collect reward points for every recipe that you upload on EcoFresh. Redeem these points when checking out during your next purchase from EcoFresh.</p>
-                    <div className="mid_button"><AppButton color="secondary">Get Started!</AppButton></div>
+                    <div className="mid_button"><AppButton color="secondary" onClick={handleGetStartedClick}>Get Started!</AppButton></div>
                     </Column>
                 </Row>
               </MainContent> 

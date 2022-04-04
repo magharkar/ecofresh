@@ -26,6 +26,10 @@ export default function AdminMenu() {
     {
       navigate("/complaints")
     }
+    if(selectedOption==="Approve Recipes")
+    {
+      navigate("/adminRecipeRequests")
+    }
     //use the selectedOption and navigate hook to route to different pages.
     //refer to HomeAccountDropdown for an example
     //remove these comments once one option is added

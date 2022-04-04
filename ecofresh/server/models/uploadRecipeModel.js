@@ -6,7 +6,7 @@
  const Schema = mongoose.Schema;
  
  const uploadRecipeModel = new mongoose.Schema({
-     recipeTitle: {
+    recipeTitle: {
          type: String,
          required: true
      },
@@ -45,6 +45,13 @@
          type: String,
          default: "Under review"
      },
+     userId: {
+         type: Number,
+         default: function() {
+            return Math.floor(Math.random() * 1234) + 10000;
+         },
+         index: { unique: true }
+     }
  });
 
  module.exports = mongoose.model("uploadedrecipe",uploadRecipeModel, "uploadedrecipe");

@@ -29,6 +29,9 @@ import OrderDetail from "./pages/Supplier/OrderDetail";
 import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
 import Cart from "./pages/Cart/Cart";
+import UploadRecipeAdmin from "./pages/UploadRecipe/UploadRecipeAdmin";
+import About from "./pages/LandingPage/About"
+import HowItWorks from "./pages/LandingPage/HowItWorks"
 
 function App() {
 
@@ -72,6 +75,9 @@ function App() {
         <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
         <Route path="/admin" element={<AdminHomepage/>} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/adminRecipeRequests" element={<UploadRecipeAdmin />}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/howItWorks" element={<HowItWorks />}/>
       </Routes>
     </ThemeProvider>
   );

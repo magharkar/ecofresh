@@ -20,6 +20,7 @@ function UploadRecipe() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [requestId, setRequestId] = useState("");
+  const [userId, setUserId] = useState(0);
   const url = baseURL + '/uploadRecipe/requestForm';
 
   const handleChange = (e) => {
@@ -43,6 +44,7 @@ function UploadRecipe() {
       }).then(
         res=> {
           setRequestId(res.data.requestId);
+          setUserId(res.data.userId);
         }, (error) => {
           console.log(error);
         });
