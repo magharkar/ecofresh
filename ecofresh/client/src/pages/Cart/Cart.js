@@ -16,10 +16,12 @@ import AppButton from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 import { Divider } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
     let email = localStorage.getItem("emailId");
     const [cartItems, setCartItems] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getRecipeAPI();
@@ -40,6 +42,10 @@ function Cart() {
     }
 
     const { data, finalCost, shipping, subtotal, taxes } = cartItems;
+
+    const navigateToCheckout = () => {
+        navigate('/details', {state: cartItems});
+    }
 
     return(
         <Container>
@@ -86,7 +92,9 @@ function Cart() {
                                                     </Row>
                                                 </PaymentInfo>
                                                 <ButtonWrapper>
-                                                    <AppButton color="secondary" style={{marginTop: 'auto'}}>Checkout And Pay</AppButton>
+                                                    <AppButton color="secondary" style={{marginTop: 'auto'}} onClick={navigateToCheckout}>
+                                                        Checkout And Pay
+                                                    </AppButton>
                                                 </ButtonWrapper>
                                             </FlexContainer>
                                             
