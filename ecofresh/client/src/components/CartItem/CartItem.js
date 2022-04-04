@@ -3,11 +3,11 @@
  */
 
 
- import React from "react";
- import { CartItemContainer, ImageContainer, ContentContainer, DeleteButtonContainer,
+import React from "react";
+import { CartItemContainer, ImageContainer, ContentContainer, DeleteButtonContainer,
     RecipeName, RecipeContent } from './CartItem.style';
- import placeHolderImage from '../../assets/pictures/placeholder.png';
- import DeleteIcon from '@mui/icons-material/Delete';
+import placeHolderImage from '../../assets/pictures/placeholder.png';
+import DeleteIcon from '@mui/icons-material/Delete';
 import AppButton from "../Button/Button";
 import axios from "axios";
 import baseURL from "../../config";
@@ -42,7 +42,7 @@ import baseURL from "../../config";
                 <RecipeContent>Cost Per Serving: {price}</RecipeContent>
             </ContentContainer>
             <DeleteButtonContainer>
-                <AppButton color="secondary" onClick={() => deleteCartItem(recipeName)}>
+                <AppButton color="secondary" style={{minWidth: 0, borderRadius: "100%"}} onClick={() => deleteCartItem(recipeName)}>
                     <DeleteIcon />
                 </AppButton>
             </DeleteButtonContainer>
