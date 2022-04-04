@@ -2,21 +2,103 @@
  * @author Mugdha Agharkar
  */
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Navbar from '../../components/Navbar/NavUser'
 import { FooterContainer } from '../../components/Footer/FooterContainer'
-import {Container, CartContainer} from './Cart.style';
+import {Container, ImageWrapper, Heading, CartContainer, CartItems, PaymentInfo,
+    Row,RowItem, ContentContainer, ContentWrapper, EmptyCart, FlexContainer, DividerWrapper,
+    HorizontalDividerWrapper, ButtonWrapper,
+} from './Cart.style';
+import baseURL from "../../config";
+import axios from "axios";
+import uploadRecipeImg from '../../assets/pictures/uploadRecipeBg.png'
+import AppButton from "../../components/Button/Button";
+import { Link } from "react-router-dom";
+import CartItem from "../../components/CartItem/CartItem";
+import { Divider } from "@mui/material";
 
 function Cart() {
     let email = localStorage.getItem("emailId");
-    console.log(email);
+    const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+        getRecipeAPI();
+      }, []);
+
+    const getRecipeAPI = () => {
+        const getRecipeURL = baseURL + '/cart/getAllItemsInCart/' + email;
+        axios.get(getRecipeURL)
+            .then(res => {
+                const data = res.data;
+                setCartItems(data);
+            })
+    }
+
+    const handleCartUpdate = () => {
+        setTimeout(getRecipeAPI(), 1000);
+        
+    }
+
+    const { data, finalCost, shipping, subtotal, taxes } = cartItems;
+
     return(
         <Container>
             <Navbar />
-            <CartContainer style={{padding: "100px"}}>
-                This will contain all the items in the cart.
-                It is still a work in progress.
-            </CartContainer>
+            <ImageWrapper style={{backgroundImage: `url(${uploadRecipeImg})`}}>
+                <ContentWrapper>
+                    <ContentContainer>
+                        {
+                            data?.length > 0 ? (
+                                <>
+                                   <Heading>Your shopping cart</Heading>
+                                        <CartContainer>
+                                            <CartItems>
+                                                {
+                                                    data.map(item => (
+                                                        <CartItem item={item} updateCart={handleCartUpdate}/>
+                                                    ))
+                                                }
+                                            </CartItems>
+                                            <DividerWrapper>
+                                                <Divider orientation="vertical" className="vertical"/>
+                                            </DividerWrapper>
+                                            <FlexContainer>
+                                                <PaymentInfo>
+                                                    <HorizontalDividerWrapper>
+                                                        <Divider />
+                                                    </HorizontalDividerWrapper>
+                                                    <Row>
+                                                        <RowItem>Sub-total</RowItem>
+                                                        <RowItem className="value">${subtotal}</RowItem>
+                                                    </Row>
+                                                    <Row>
+                                                        <RowItem>Shipping</RowItem>
+                                                        <RowItem className="value">${shipping}</RowItem>
+                                                    </Row>
+                                                    <Row className="taxes">
+                                                        <RowItem>Taxes (5%)</RowItem>
+                                                        <RowItem className="value">${taxes}</RowItem>
+                                                    </Row>
+                                                    <Divider />
+                                                    <Row className="final">
+                                                        <RowItem>Final Cost</RowItem>
+                                                        <RowItem className="value">${finalCost}</RowItem>
+                                                    </Row>
+                                                </PaymentInfo>
+                                                <ButtonWrapper>
+                                                    <AppButton color="secondary" style={{marginTop: 'auto'}}>Checkout And Pay</AppButton>
+                                                </ButtonWrapper>
+                                            </FlexContainer>
+                                            
+                                        </CartContainer>
+                                    </>
+                                ) : 
+                                    <EmptyCart>Your cart looks empty. <Link to="/home">Click here</Link> to start ordering! </EmptyCart>
+                            }
+                        
+                    </ContentContainer>
+                </ContentWrapper>
+            </ImageWrapper>
             <FooterContainer />
         </Container>
     )

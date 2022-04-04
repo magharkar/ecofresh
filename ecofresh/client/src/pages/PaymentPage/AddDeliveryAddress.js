@@ -19,6 +19,7 @@ import deliveryMan from "../../assets/pictures/delivery-man.jpeg";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
 import { TextField, Box, Paper } from "@mui/material";
 import AppButton from "../../components/Button/Button";
+import baseURL from '../../config';
 
 const { Title } = Typography;
 
@@ -39,6 +40,7 @@ function AddDeliveryAddress() {
     const [formErrors, setFormErrors] = useState(values);
     const [formValues, setFormValues] = useState(values);
     const [isSubmit, setIsSubmit] = useState(false);
+    const [api_url, setAPIUrl] = useState(baseURL + '/api/paymentDetails');
 
     const navigate = useNavigate();
 
@@ -62,7 +64,7 @@ function AddDeliveryAddress() {
         setFormValues(formValues);
         setIsSubmit(true);
 
-        fetch('http://localhost:3001/api/paymentDetails', {
+        fetch(api_url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
