@@ -17,15 +17,37 @@ const Heading = styled.h1`
 
 const CartContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 40px;
 `;
 
-const CartItems = styled.div``;
+const CartItems = styled.div`
+    padding-right: 32px;
+`;
 
 const PaymentInfo = styled.div``;
 
-const Row = styled.div``;
+const Row = styled.div`
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 20px;
+    padding-top: 16px;
+    &.final {
+        font-size: 24px;
+        padding-top: 24px;
+    }
+    &.taxes {
+        padding-bottom: 24px;
+    }
+`;
 
-const RowItem = styled.div``;
+const RowItem = styled.div`
+    &.value{
+        padding-left: 160px;
+    }
+`;
 
 const ContentContainer = styled.div`
     background-color: #FFF; 
@@ -50,6 +72,31 @@ const EmptyCart = styled.div`
     margin: auto;
 `;
 
-export {Container, ImageWrapper, Heading, CartContainer, CartItems, PaymentInfo,
-    Row,RowItem, ContentContainer, ContentWrapper, EmptyCart
+const FlexContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+`;
+
+const DividerWrapper = styled.div`
+    @media (max-width: 992px) {
+        display: none;
+    }
+`;
+
+const HorizontalDividerWrapper = styled.div`
+    display: none;
+    @media (max-width: 992px) {
+        display: block;
+    }
+`;
+
+const ButtonWrapper = styled.div`
+    padding-top: 32px;
+    width: fit-content;
+    margin-left: auto;
+`;
+
+export {Container, ImageWrapper, Heading, CartContainer, CartItems, PaymentInfo, HorizontalDividerWrapper,
+    Row,RowItem, ContentContainer, ContentWrapper, EmptyCart, FlexContainer, DividerWrapper, ButtonWrapper,
 }

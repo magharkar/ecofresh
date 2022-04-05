@@ -2,17 +2,26 @@ import styled from "styled-components";
 
 const CartItemContainer = styled.div`
     display: flex;
+    padding-bottom: 32px;
 `;
 
-const ImageContainer = styled.div``;
+const ImageContainer = styled.div`
+    padding-right: 16px;
+`;
 
-const ContentContainer = styled.div``;
+const ContentContainer = styled.div`
+    padding-right: 24px;
+    width: calc(100% - 192px);
+`;
 
-const DeleteButtonContainer = styled.div``;
+const DeleteButtonContainer = styled.div`
+    height: fit-content;
+    margin: auto;
+`;
 
-const RecipeName = styled.h3``;
+const RecipeName = styled.p``;
 
-const RecipeContent = styled.div``;
+const RecipeContent = styled.p``;
 
 
 export { CartItemContainer, ImageContainer, ContentContainer, DeleteButtonContainer,
