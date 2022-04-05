@@ -20,6 +20,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Typography } from 'antd';
 import AppButton from "../../components/Button/Button";
 import axios from 'axios';
+import baseURL from '../../config';
 
 const { Title } = Typography;
 
@@ -29,11 +30,12 @@ export default function Details() {
     const [formValues, setFormValues] = useState({});
     const navigate = useNavigate();
     const { state } = useLocation()
+    const [api_url, setAPIUrl] = useState(baseURL + '/api/paymentDetails');
     console.log(state?.formValues)
 
     useEffect(() => {
         setFormValues(state?.formValues)
-        axios.get('http://localhost:3001/api/paymentDetails')
+        axios.get(api_url)
             .then(res => {
                 const data = res.data;
                 console.log(data);
