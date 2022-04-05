@@ -11,6 +11,8 @@ const complaintRoutes = require("./routes/complaintRoutes");
 const uploadToS3 = require("./controllers/uploadToS3");
 var sign_s3 = require('./controllers/uploadToS3');
 const uploadRecipeRoute = require("./routes/uploadRecipeRoute");
+const myOrdersRoute = require("./routes/myOrdersRoute");
+
 const cors = require("cors");
 
 const recipesRoute = require("./routes/recipesRoute");
@@ -42,6 +44,7 @@ app.use('/uploadToS3', uploadToS3.sign_s3);
 app.use("/recipes", recipesRoute);
 app.use("/cart", cartManagementRoute);
 app.use("/uploadRecipe", uploadRecipeRoute);
+app.use("/myOrders", myOrdersRoute);
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);

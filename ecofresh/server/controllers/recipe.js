@@ -20,4 +20,12 @@ const getImageURL = (recipeName) => {
     });
 }
 
-module.exports = { getImageURL };
+const getRatingsForRecipe = (recipeName) =>{
+Recipe.find({recipeName:recipeName}).then(result => {
+    return result.ratings;
+}).catch(err => {
+    return 0;
+})
+}
+
+module.exports = { getImageURL, getRatingsForRecipe };

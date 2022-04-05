@@ -24,7 +24,7 @@ route.post("/login", async (req, res) => {
     console.log("Salt: " + result.salt);
     if (validatePassword(result.salt, result.password, password)) {
       console.log("valid");
-      res.send({ "success": true, "user": email, "userType": result.userType });
+      res.send({ "success": true, "user": email, "userType": result.userType, "firstName": result.firstName, "lastName":result.lastName, "userId": result.userId });
     }
     else {
       res.status(401).send({ "success": false, "message": "Invalid credentials" });

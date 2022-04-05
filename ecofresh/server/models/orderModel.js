@@ -1,33 +1,37 @@
 var mongoose = require('mongoose');
-const Schema  = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const orderModel = new mongoose.Schema({
-    _id:{
+    _id: {
         type: String,
         required: true
     },
-    date:{
+    date: {
         type: String,
         required: true
     },
-    orderId:{
+    orderId: {
         type: String,
         required: true
     },
-    recipes:{
+    recipes: {
         type: String,
         required: true
     },
-    status:{
+    status: {
         type: String,
         required: true
     },
-    userId:{
+    userId: {
         type: String,
         required: true
+    },
+    ratings: {
+        type: Number,
+        required: false
     }
 
 
 }, { collection: 'orders' });
 
-module.exports = mongoose.model("ecofresh",orderModel);
+module.exports = mongoose.model("ecofresh", orderModel);
