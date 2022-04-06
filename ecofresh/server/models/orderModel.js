@@ -2,26 +2,43 @@ var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const orderModel = new mongoose.Schema({
-    _id: {
-        type: String,
-        required: true
-    },
     date: {
-        type: String,
+        type: Date,
+        default: Date.now,
         required: true
     },
     orderId: {
         type: String,
         default: function () {
-            return Math.floor(Math.random() * 1234) + 10000;
+            return Math.floor(Math.random() * 12345) + 10000;
         },
         index: { unique: true },
         required: true
     },
-    recipes: {
-        type: String,
-        required: true
-    },
+    recipes: [{
+        recipeName: {
+            type: String,
+            required: true
+        },
+        qty: {
+            type: Number,
+            default: 0,
+            required: false
+        },
+        ratings: {
+            type: Number,
+            default: 0,
+            required: false
+        },
+        pricePerServing: {
+            type: Number,
+            required: true
+        },
+        priceSummation: {
+            type: Number,
+            required: true
+        }
+    }],
     status: {
         type: String,
         required: true
@@ -30,11 +47,18 @@ const orderModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    ratings: {
+    finalCost: {
         type: Number,
-        required: false
+        required: true
+    },
+    subtotal: {
+        type: Number,
+        required: true
+    },
+    taxes: {
+        type: Number,
+        required: true
     }
-
 
 }, { collection: 'orders' });
 
