@@ -1,7 +1,3 @@
-/* 
-* @author Ruchi Shinde
-*/
-
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -37,38 +33,9 @@ const Heading = styled.h1`
     margin: auto;
 `;
 
-const EmptyOrdersList = styled.div`
+const SubHeader = styled.h3`
     width: fit-content;
     margin: auto;
 `;
 
-const OrderWrapper = styled.div`
-    padding: 16px;
-    background-color: #EFEFEF;
-    width: 80%;
-    margin: 8px auto;
-    display: flex;
-    justify-content: center;
-`;
-
-const OrderRow = styled.div`
-    display:flex;
-    justify-content: space-between;
-`;
-
-const OrderContent = styled.div`
-    padding-left: 16px;
-    padding-right: 16px;
-`;
-
-const Key = styled.td`
-    font-weight: 700;
-`;
-
-const Value = styled.td`
-    color: green;
-`;
-
-
-export { Container, ContentContainer, ContentWrapper, ImageWrapper, Heading, 
-    EmptyOrdersList,OrderWrapper, OrderRow, OrderContent, Key, Value }
+export {Container, Heading, ImageWrapper, ContentWrapper, ContentContainer, Row, SubHeader}

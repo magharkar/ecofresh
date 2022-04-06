@@ -6,7 +6,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Container, ContentContainer, ContentWrapper, ImageWrapper, Heading, EmptyOrdersList } from './MyOrders.style';
+import { Container, ContentContainer, ContentWrapper, ImageWrapper, Heading, EmptyOrdersList,
+    OrderWrapper, OrderRow, OrderContent, Key, Value } from './MyOrders.style';
 import Navbar from '../../components/Navbar/NavUser';
 import { FooterContainer } from '../../components/Footer/FooterContainer';
 import uploadRecipeBg from '../../assets/pictures/uploadRecipeBg.png'
@@ -14,12 +15,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import baseURL from '../../config';
 import OrderList from '../../components/OrderList/OrderList';
+import { useNavigate } from 'react-router-dom';
+import AppButton from '../../components/Button/Button';
 
 
 const MyOrders = () => {
     let [orderData, setOrderData] = useState([]);
+    const navigate = useNavigate();
     let email = localStorage.getItem("emailId");
-    email = "kandarpparikh@gmail.com";
     let url = baseURL+"/myOrders/getAllOrdersForUser/"+email;
     let data = [];
 
@@ -33,7 +36,30 @@ const MyOrders = () => {
         });
     }, []);
 
-    
+    const openOrderDetails = (id) => {
+        console.log(id);
+        navigate('/orderDetails', {state: id});
+    }
+
+    const getDate = (date) => {
+        const sysDate = new Date(date);
+        const dateString = sysDate.getMonth().toString() + "/" + sysDate.getDate().toString() + "/" + 
+            sysDate.getFullYear().toString();
+        return dateString;
+    }
+
+    const getItems = (items) => {
+        let text = "";
+        items.map(item => {
+            let comma = ",";
+            if(item === items[items.length - 1]){
+                comma = "";
+            }
+           text += item + comma;
+        })
+        return text;
+    }
+
 
     return (
         <Container>
@@ -45,87 +71,38 @@ const MyOrders = () => {
                             orderData?.length > 0 ? (
                                 <>
                                    <Heading>My Orders</Heading>
-                                   <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', alignItems: 'center' }}>
-                                       {
-                                           orderData.map(data =>(
-                                               <OrderList  
-                                                recipeName={data.recipeName}
-                                                recipeSchema={data.recipeSchema}
-                                                date={data.date}
-                                                status={data.status}
-                                                orderId={data.orderId} 
-                                                />
-                                           ))
-                                       }
-                                    {/* <ListItem alignItems="center">
-                                        <ListItemAvatar>
-                                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                            primary="Brunch this weekend?"
-                                            secondary={
-                                                <React.Fragment>
-                                                    <Typography
-                                                        sx={{ display: 'inline' }}
-                                                        component="span"
-                                                        variant="body2"
-                                                        color="text.primary"
-                                                    >
-                                                        Ali Connors
-                                                    </Typography>
-                                                    {" — I'll be in your neighborhood doing errands this…"}
-                                                </React.Fragment>
-                                            }
-                                        />
-                                    </ListItem>
-                                    <Divider variant="inset" component="li" />
-                                    <ListItem alignItems="flex-start">
-                                        <ListItemAvatar>
-                                            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                            primary="Summer BBQ"
-                                            secondary={
-                                                <React.Fragment>
-                                                    <Typography
-                                                        sx={{ display: 'inline' }}
-                                                        component="span"
-                                                        variant="body2"
-                                                        color="text.primary"
-                                                    >
-                                                        to Scott, Alex, Jennifer
-                                                    </Typography>
-                                                    {" — Wish I could come, but I'm out of town this…"}
-                                                </React.Fragment>
-                                            }
-                                        />
-                                    </ListItem>
-                                    <Divider variant="inset" component="li" />
-                                    <ListItem alignItems="flex-start">
-                                        <ListItemAvatar>
-                                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                            primary="Oui Oui"
-                                            secondary={
-                                                <React.Fragment>
-                                                    <Typography
-                                                        sx={{ display: 'inline' }}
-                                                        component="span"
-                                                        variant="body2"
-                                                        color="text.primary"
-                                                    >
-                                                        Sandra Adams
-                                                    </Typography>
-                                                    {' — Do you have Paris recommendations? Have you ever…'}
-                                                </React.Fragment>
-                                            }
-                                        />
-                                    </ListItem> */}
-                                </List>
+                                    {
+                                    orderData.map(data =>(
+                                        <OrderWrapper>
+                                            <table cellPadding={"10"}>
+                                                <tr>
+                                                    <Key>Order ID:</Key>
+                                                    <Value>{data.orderId}</Value>
+                                                </tr>
+                                                <tr>
+                                                    <Key>Items:</Key>
+                                                    {
+                                                        <Value>{getItems(data.items)}</Value>
+                                                    }
+                                                </tr>
+                                                <tr>
+                                                    <Key>Date:</Key>
+                                                    <Value>{getDate(data.date)}</Value>
+                                                </tr>
+                                                <tr>
+                                                    <Key>Status:</Key>
+                                                    <Value style={{color: "green"}}>{data.status}</Value>
+                                                    <Value><AppButton color="secondary" onClick={() => openOrderDetails(data.orderId)}>View Details</AppButton></Value>
+                                                </tr>
+                                            </table>
+                                            
+                                        </OrderWrapper>
+
+                                        ))
+                                    }
                                     </>
                                 ) : 
-                                    <EmptyOrdersList>Your cart looks empty. <Link to="/home">Click here</Link> to start ordering! </EmptyOrdersList>
+                                    <EmptyOrdersList>You have no orders yet.<Link to="/home">Click here</Link> to start ordering!</EmptyOrdersList>
                             }
                         
                     </ContentContainer>

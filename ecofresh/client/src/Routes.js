@@ -30,6 +30,7 @@ import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
 import Cart from "./pages/Cart/Cart";
 import MyOrders from "./pages/MyOrders/MyOrders";
+import OrderDetails from "./pages/OrderDetails/OrderDetails";
 
 function App() {
 
@@ -74,6 +75,7 @@ function App() {
         <Route path="/admin" element={<AdminHomepage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/myOrders" element={<MyOrders />} />
+        <Route path="/orderDetails" element={<OrderDetails />} />
       </Routes>
     </ThemeProvider>
   );
