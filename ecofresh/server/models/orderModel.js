@@ -12,6 +12,10 @@ const orderModel = new mongoose.Schema({
     },
     orderId: {
         type: String,
+        default: function () {
+            return Math.floor(Math.random() * 1234) + 10000;
+        },
+        index: { unique: true },
         required: true
     },
     recipes: {

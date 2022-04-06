@@ -13,7 +13,21 @@ route.get("/test", (req, res) => {
 
 route.get("/getAllOrdersForUser/:email", (req, res) => {
     let email = req.params.email
-    orderModel.find({ userId: email }).then(result => {
+    orderModel.aggregate([{
+        $match: { "userId": email }
+    }, {
+        $lookup: {
+            from: 'recipe',
+            localField: 'recipeName',
+            foreignField: 'recipeName',
+            as: 'recipeSchema',
+            pipeline: [{
+                $project: {
+                    s3URL: 1
+                }
+            }]
+        }
+    }]).then(result => {
         res.status(200).send(result);
     }).catch(err => {
         console.log(err);
@@ -23,7 +37,21 @@ route.get("/getAllOrdersForUser/:email", (req, res) => {
 
 route.get("/getOrderDetails/:orderId", (req, res) => {
     let orderId = req.params.orderId;
-    orderModel.find({ orderId: orderId }).then(result => {
+    orderModel.aggregate([{
+        $match: { "orderId": orderId }
+    }, {
+        $lookup: {
+            from: 'recipe',
+            localField: 'recipeName',
+            foreignField: 'recipeName',
+            as: 'recipeSchema',
+            pipeline: [{
+                $project: {
+                    s3URL: 1
+                }
+            }]
+        }
+    }]).then(result => {
         res.send(result);
     }).catch(err => {
         console.log(err);
