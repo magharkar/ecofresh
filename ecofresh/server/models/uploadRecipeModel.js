@@ -48,9 +48,9 @@
      userId: {
          type: Number,
          default: function() {
-            return Math.floor(Math.random() * 1234) + 10000;
-         },
-         index: { unique: true }
+             const id = localStorage.getItem(userId);
+             return id;
+         }
      }
  });
 

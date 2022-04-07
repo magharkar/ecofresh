@@ -52,6 +52,12 @@ export const Row = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-around;
+
+    &.headingRow {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
 `
 export const Form = styled.div`
 `;
@@ -61,6 +67,15 @@ export const Column = styled.div`
     justify-content: center;
     margin: 20px;
     width: 50%;
+    align-items: center;
+
+    @media (max-width: 708px) {
+        font-size: 25px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 20px;
+    }
 `
 
 export const NoRequests = styled.div`
@@ -75,6 +90,10 @@ export const RowContainer = styled.div`
     border-radius: 20px;
     justify-content: center;
     background-color: #C3F1A9;
+    @media (max-width: 400px) {
+        width: 100%;
+        border-radius: 0;
+    }
 `;
 
 export const Text = styled.text`

@@ -12,7 +12,7 @@ route.get('/getAllRequests', async (req, res) => {
     res.send(recipes);
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error while fetching recipes.");
+    res.status(500).send({message: "Error while fetching recipes."});
   }
 })
 
@@ -27,14 +27,12 @@ route.get('/getAllRequests', async (req, res) => {
   newRecipe.save().then(result => {
     const reqId = result.requestId;
     const usId = result.userId;
-    console.log("in result");
-    res.status(201).send({
+    res.status(200).send({
       "requestId" : reqId,
       "userId" : usId
     });
   }).catch(err => {
-    console.log("Failed to submit recipe upload request.");
-    res.status(400).send("Recipe upload request cannot be submitted");
+    res.status(400).send({message: "Recipe upload request cannot be submitted"});
   });
 });
 

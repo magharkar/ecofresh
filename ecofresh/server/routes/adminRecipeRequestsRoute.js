@@ -31,18 +31,18 @@ route.get('/:requestId', async (req, res) => {
     })
   });
 
-  route.post('/update/:requestId', async(req,res) => {
+  route.post('/updateApprove/:requestId', async(req,res) => {
       let reqId = req.params.requestId;
-      await UploadRecipe.findOneAndUpdate({
-          "requestId" : reqId
-      }).then( result => {
-        UploadRecipe.updateOne({requestId : reqId}, {$set: {"requestStatus" : "Approved"}});
-        res.status(200).send(result);
-      })
-        .catch( (err) => {
-            console.log("Err:" + err);
-            res.status(500).send({message: "Could not update request status"});
-        })
-    })
-  
+        UploadRecipe.updateOne({requestId : reqId}, {$set: {requestStatus : "Approved"}})
+        .then( result => res.status(200).send(result) )
+          .catch(err => console.log("Error" + err))
+  })
+
+  route.post('/updateReject/:requestId', async(req,res) => {
+    let reqId = req.params.requestId;
+      UploadRecipe.updateOne({requestId : reqId}, {$set: {requestStatus : "Rejected"}})
+      .then( result => res.status(200).send(result) )
+        .catch(err => console.log("Error" + err))
+})
+
 module.exports = route;
