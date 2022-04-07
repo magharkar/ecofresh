@@ -31,8 +31,6 @@ function LandingPage(props) {
     // This function gets the state of the selected value from Select Complaint Type dropdown
     const childToParent = (childdata) => {
       setData(childdata);
-      console.log(childdata) 
-      console.log(complaintType.includes(childdata))
       if(complaintType.includes(childdata))
       {
         setAPIUrl(baseURL+'/complaints/filterByComplaintType/');

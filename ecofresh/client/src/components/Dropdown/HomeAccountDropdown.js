@@ -40,6 +40,9 @@ export default function AccountMenu() {
     if(selectedOption === "Orders"){
       navigate("/myOrders");
     }
+    if(selectedOption === "Offers"){
+      navigate("/customeralloffers");
+    }
   }
   const handleClose = () => {
     setAnchorEl(null);
