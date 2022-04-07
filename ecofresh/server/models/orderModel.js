@@ -1,33 +1,65 @@
 var mongoose = require('mongoose');
-const Schema  = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const orderModel = new mongoose.Schema({
-    _id:{
+    date: {
+        type: Date,
+        default: Date.now,
+        required: true
+    },
+    orderId: {
+        type: String,
+        default: function () {
+            return Math.floor(Math.random() * 12345) + 10000;
+        },
+        index: { unique: true },
+        required: true
+    },
+    recipes: [{
+        recipeName: {
+            type: String,
+            required: true
+        },
+        qty: {
+            type: Number,
+            default: 0,
+            required: false
+        },
+        ratings: {
+            type: Number,
+            default: 0,
+            required: false
+        },
+        pricePerServing: {
+            type: Number,
+            required: true
+        },
+        priceSummation: {
+            type: Number,
+            required: true
+        }
+    }],
+    status: {
         type: String,
         required: true
     },
-    date:{
+    userId: {
         type: String,
         required: true
     },
-    orderId:{
-        type: String,
+    finalCost: {
+        type: Number,
         required: true
     },
-    recipes:{
-        type: String,
+    subtotal: {
+        type: Number,
         required: true
     },
-    status:{
-        type: String,
-        required: true
-    },
-    userId:{
-        type: String,
+    taxes: {
+        type: Number,
         required: true
     }
 
-
 }, { collection: 'orders' });
 
-module.exports = mongoose.model("ecofresh",orderModel);
+module.exports = mongoose.model("ecofresh", orderModel);

@@ -11,7 +11,7 @@ import {Container, ImageWrapper, Heading, CartContainer, CartItems, PaymentInfo,
 } from './Cart.style';
 import baseURL from "../../config";
 import axios from "axios";
-import uploadRecipeImg from '../../assets/pictures/uploadRecipeBg.png'
+import uploadRecipeBg from '../../assets/pictures/uploadRecipeBg.png'
 import AppButton from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
@@ -50,7 +50,7 @@ function Cart() {
     return(
         <Container>
             <Navbar />
-            <ImageWrapper style={{backgroundImage: `url(${uploadRecipeImg})`}}>
+            <ImageWrapper style={{backgroundImage: `url(${uploadRecipeBg})`}}>
                 <ContentWrapper>
                     <ContentContainer>
                         {
