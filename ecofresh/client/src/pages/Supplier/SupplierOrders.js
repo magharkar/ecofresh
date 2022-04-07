@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import AppButton from "../../components/Button/Button";
 import axios from 'axios';
 import { orderAPI } from '../../api/API';
 import Card from '@mui/material/Card';
@@ -58,11 +58,10 @@ export default function Orders() {
 }
 
   return (
-    <ThemeProvider theme={theme}>
-      {/* <CssBaseline /> */}
+
+    <React.Fragment>
       <Navbar />
-      <main>
-        {/* Hero unit */}
+   
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -90,36 +89,36 @@ export default function Orders() {
 
         <Box
           sx={{
-            bgcolor: '#96e0aa',
+           
             pt: 5,
             pb: 2,
           }}
         >
-        <Container container spacing={2} maxWidth="300">
+        <Container container spacing={2} maxWidth="400">
         
-        <Grid  bgcolor={"#96e0aa"} padding="4rem" sx={{display:'flex'}}> 
+        <Grid  padding="4rem" container spacing={{xs:2,md:3}} columns={{xs:5,sm:8,md:12}}> 
             
             {showdata.map((ele) => (
           
-              <Card style={{backgroundColor: "#0d401b"}} sx={{maxWidth:"50%",margin:'5px' }} >
+              <Card style={{backgroundColor: "#ffffff"}} sx={{display:'flex', margin:'20px', maxWidth:'250px', flexWrap: 'wrap' }} >
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2" color="#cfa911">
+                  <Typography gutterBottom variant="h5" component="h2" color="black">
                     {ele.orderId}
                   </Typography>
 
-                   <Typography color="#cfa911"  variant={"h6"}>
+                   <Typography color="black"  variant={"h6"}>
                    Recipe Name:
                    </Typography>
-                  <Typography component={"div"} color="#ffffff" >
+                  <Typography component={"div"} color="black" >
                      {ele.recipeName &&
                       `${ele.recipeName.slice(0, 1).toUpperCase()}${ele.recipeName.slice(1, ele.recipeName.length)}. `
                     }
                    
                   </Typography>
-                  <Typography color="#cfa911">
+                  <Typography color="black">
                     Username:
                   </Typography>
-                  <Typography  color="#ffffff">
+                  <Typography  color="black">
                 {ele.userId}
                   </Typography>
                   <Typography  color="#ffffff">
@@ -128,8 +127,14 @@ export default function Orders() {
 
                 </CardContent>
                 <CardActions>
-                  <Button size="small"  onClick={() => handleCardClick(ele.orderId)} >View</Button>
-                  <Button size="small">Cancel</Button>
+                <AppButton color="secondary"
+                                       onClick={() => handleCardClick(ele.orderId)} >
+                                        View
+                                    </AppButton>
+                                    <AppButton color="secondary"
+                                       onClick={() => handleCardClick(ele.orderId)} >
+                                        Cancel
+                                    </AppButton>
                 </CardActions>
               </Card>
 
@@ -139,9 +144,10 @@ export default function Orders() {
      
         </Container>
         </Box>
-      </main>
+      
+
       <FooterContainer />
-    </ThemeProvider>
+  </React.Fragment>
 
 
   );

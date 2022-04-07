@@ -23,9 +23,10 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from '../../components/Navbar/NavSupplier';
-import { FooterContainer } from '../../components/Footer/FooterContainer'
+import { FooterContainer } from '../../components/Footer/FooterContainer';
+import AppButton from "../../components/Button/Button";
 
-const theme = createTheme();
+
 
 export default function Orders() {
 
@@ -67,6 +68,8 @@ export default function Orders() {
     navigate(`/supplier/orders/fulfilment/${id}`)
 }
 
+
+
   return (
    
     <div>
@@ -92,7 +95,7 @@ export default function Orders() {
                 <Typography  color="#ffffff"  padding={1} margin={2}>Username: {showdata.user_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}> Order id:{showdata.Order_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}>Ingredients: {showdata.Ingredients}</Typography>
-                <Button variant="contained" align="center"  onClick={() => handleCardClick(showdata.Order_id)} padding={2} margin={2}>Fulfill</Button>
+                <AppButton  color="secondary" onClick={() => handleCardClick(showdata.Order_id)} padding={2} margin={2}>Fulfill</AppButton>
        {/* <Button variant="outlined">Cancel</Button> */}
                 </Card>
                 </Grid>
