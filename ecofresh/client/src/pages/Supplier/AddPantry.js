@@ -20,6 +20,8 @@ const styles = {
 }
 
 
+
+
 export default function AddPantry() {
 
     const values = {
@@ -29,14 +31,17 @@ export default function AddPantry() {
 
 
     const params = useParams();
-    const [formValues, setFormValues] = useState(values);
+    const [quantity, setQuantity] = useState("");
 
 
-    const handleChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setFormValues({ ...formValues, [name]: value });
-    };
+    const handleQuantityChange = (event) => {
+      let quantity = params.value
+      console.log(quantity)
+      //if (password.length >= 8) {
+          setQuantity(quantity);
+      //}
+
+  }
 
 
   return (
@@ -69,7 +74,10 @@ export default function AddPantry() {
                   }}
                 />
                 <CardContent>
-                    <TextBox onChange={handleChange}>Quantity</TextBox>
+                    <TextBox onChange={(event) => {
+                                    console.log("Quantity : " + event.target)
+                                    setQuantity(event.target.value)
+                                }}>Quantity</TextBox>
                   <Box
                     sx={{
                       display: 'flex',

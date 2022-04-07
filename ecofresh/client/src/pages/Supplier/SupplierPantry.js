@@ -47,27 +47,16 @@ export default function BasicTable() {
 
 
 
-  const handleClick = (element) => {
+  const handleClick = (element,value) => {
     console.log(element)
-    navigate(`/supplier/pantry/add-pantry/${element}`)
+  
+    navigate(`/supplier/pantry/add-pantry/${element}${value}`)
 }
 
 
 
   return (
 
-
-
-    //   <div>
-    //   {showdata.map((data) => (
-    //     <ul>
-    //          {Object.values(data.Items).map(ele => `${ele[0]} ${ele[1]}`)}
-    //     </ul>
-
-
-    //   ))}
-
-    // // </div>
     <TableContainer component={Paper} >
       <Navbar></Navbar>
       <Table sx={{ minWidth: 10 }} aria-label="simple table">
@@ -103,7 +92,7 @@ export default function BasicTable() {
 
                   
                   <TableCell align='center' style={{backgroundColor:'#ffffff'}}>
-                    <AppButton color="secondary"  onClick={() => handleClick(ele[0])}> Add </AppButton>
+                    <AppButton color="secondary"  onClick={() => handleClick(ele[0],ele[1])}> Add </AppButton>
                   </TableCell>
             </TableRow>
                 </>
