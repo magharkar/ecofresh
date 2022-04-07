@@ -37,6 +37,36 @@ route.post("/update/:id", (req, res) => {
 })
 
 
+
+route.post("/cancel/:id", (req, res) => {
+  let id = req.params.id;
+  let status ="cancelled";
+  try{
+  Orders.findOne({
+    "orderId": id
+  }, (err, data) => {
+    if (data) {
+      console.log(data)
+      Orders.updateOne({ "orderId": id },{$set:{ status: 'cancelled' }}, (error, result) => {
+        if (result) {
+            console.log(result)
+          res.send({ "success": true, "message": "Status updated" });
+        }
+        else {
+          res.status(400).send({ "success": false, "message": "Cannot process request" });
+        }
+      });
+    }
+   
+  });
+}catch{
+  res.status(400).send({ "success": false, "message": "Cannot process request" });
+}
+
+})
+
+
+
 route.get("/orders",async(req,res)=>{
     try{
     let  orders = await Orders.find({$or: [{ status: "placed" }, { status: "Placed" }]});
