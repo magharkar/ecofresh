@@ -25,6 +25,7 @@ const { Title } = Typography;
 
 function AddDeliveryAddress() {
     const values = {
+        orderId: "",
         email: "",
         fname: "",
         lname: "",
@@ -35,6 +36,7 @@ function AddDeliveryAddress() {
         postal: "",
         number: "",
         instructions: "",
+        promo: "",
     };
 
     const [formErrors, setFormErrors] = useState(values);
