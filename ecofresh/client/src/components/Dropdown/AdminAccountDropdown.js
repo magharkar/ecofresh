@@ -11,6 +11,8 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import { useNavigate } from 'react-router-dom';
+import LocalOffer from '@mui/icons-material/LocalOffer';
+import Logout from '@mui/icons-material/Logout';
 
 export default function AdminMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,9 +24,21 @@ export default function AdminMenu() {
   };
   const handleRouting = (event) => {
     const selectedOption = event.target.innerText;
-    if(selectedOption==="Support")
+    if(selectedOption==="Complaints")
     {
       navigate("/complaints")
+    }
+    if(selectedOption==="View Offers")
+    {
+      navigate("/adminalloffers")
+    }
+    if(selectedOption==="Create Offers")
+    {
+      navigate("/createoffer")
+    }
+    if(selectedOption === "Logout"){
+      localStorage.clear();
+      navigate("/login");
     }
     //use the selectedOption and navigate hook to route to different pages.
     //refer to HomeAccountDropdown for an example
@@ -41,12 +55,25 @@ export default function AdminMenu() {
       },
       {
         icon: <ContactSupportIcon fontSize='small' />,
-        text: "Support",
+        text: "Complaints",
       },
       {
         icon: <FactCheckIcon fontSize='small' />,
         text: "Approve Recipes",
       },
+      {
+        icon: <LocalOffer fontSize='small' />,
+        text: "View Offers",
+      },
+      {
+        icon:<LocalOffer fontSize='small' />,
+        text: "Create Offers",
+      },
+      {
+        icon: <Logout fontSize='small' />,
+        text: "Logout",
+        divider: false,
+      }
   ];
   return (
     <React.Fragment>
