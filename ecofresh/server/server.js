@@ -48,10 +48,7 @@ app.use("/cart", cartManagementRoute);
 app.use("/uploadRecipe", uploadRecipeRoute);
 app.use("/myOrders", myOrdersRoute);
 app.use("/offers", offerRoute);
-<<<<<<< HEAD
 app.use("/adminRecipeRequests", adminRecipeRequests);
-=======
->>>>>>> 2bb54a73a0119ec4079b308921383c331dd769d8
 
 app.listen(port, () => {
     console.log("App is listening on port " + port);
