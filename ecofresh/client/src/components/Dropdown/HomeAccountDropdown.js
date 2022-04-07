@@ -37,13 +37,11 @@ export default function AccountMenu() {
     if(selectedOption === "Raise Complaint"){
       navigate("/addcomplaint");
     }
-<<<<<<< HEAD
     if(selectedOption === "Orders"){
       navigate("/myOrders");
-=======
+    }
     if(selectedOption === "Offers"){
       navigate("/customeralloffers");
->>>>>>> 9e73caa73474a2034c3e212db70607af1537b5e8
     }
   }
   const handleClose = () => {
