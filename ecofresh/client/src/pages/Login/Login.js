@@ -36,6 +36,10 @@ const Login = () => {
                 if (res.status === 200) {
                     console.log("Logged in");
                     localStorage.setItem("emailId",emailId);
+                    localStorage.setItem("userId", res.data.userId);
+                    localStorage.setItem("firstName", res.data.firstName);
+                    localStorage.setItem("lastName", res.data.lastName);
+                    localStorage.setItem("userType", res.data.userType);
                     if(res.data.userType == "customer"){
                         navigate("/home");
                     } 
