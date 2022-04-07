@@ -28,7 +28,8 @@
          required: true
      },
      ratings: {
-         type: String,
+         type: Number,
+         default: 0,
          required: true
      },
      recipeId: {
@@ -46,6 +47,9 @@
      s3URL: {
          type: String
      },
+     recipeStatus:{
+         type: String,
+     }
  });
  
 

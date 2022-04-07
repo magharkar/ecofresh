@@ -29,6 +29,8 @@ import OrderDetail from "./pages/Supplier/OrderDetail";
 import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
 import Cart from "./pages/Cart/Cart";
+import MyOrders from "./pages/MyOrders/MyOrders";
+import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import CreateOffer from "./pages/Offers/CreateOffer";
 import AdminAllOffers from "./pages/Offers/AdminAllOffers";
 import OfferDetails from "./pages/Offers/OfferDetails";
@@ -81,10 +83,12 @@ function App() {
         <Route path="/supplier/orders/:id" element={<OrderDetail />}></Route>
         <Route path="/supplier/orders/fulfilment/:id" element={<OrderFulfilment />}> </Route>
         <Route path="supplier/pantry" element={<SupplierPantry />}></Route>
-        <Route path="/uploadRecipe" element={<UploadRecipe/>} />
-        <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
-        <Route path="/admin" element={<AdminHomepage/>} />
+        <Route path="/uploadRecipe" element={<UploadRecipe />} />
+        <Route path="/checkReqStat" element={<CheckRequestStatus />} />
+        <Route path="/admin" element={<AdminHomepage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/myOrders" element={<MyOrders />} />
+        <Route path="/orderDetails" element={<OrderDetails />} />
         <Route path="/createoffer" element={<CreateOffer />} />
         <Route path="/adminalloffers" element={<AdminAllOffers />} />
         <Route path="/customeralloffers" element={<CustomerAllOffers />} />
