@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate,useParams,useLocation } from 'react-router-dom';
 import Navbar  from '../../components/Navbar/NavSupplier';
 import TextBox from '../../components/TextBox/Textbox';
 import {Textbox} from './AddPantry.style';
@@ -11,6 +11,8 @@ import Box from '@mui/material/Box';
 import CardActions from '@mui/material/CardActions';
 import AppButton from "../../components/Button/Button";
 import { useEffect, useState } from "react";
+import {pantryAPI} from '../../api/API';
+import axios from 'axios';
 
 
 const styles = {
@@ -24,24 +26,41 @@ const styles = {
 
 export default function AddPantry() {
 
-    const values = {
-        Quantity: " "
-    };
-
 
 
     const params = useParams();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    console.log(location.state)
+    
+
     const [quantity, setQuantity] = useState("");
 
 
     const handleQuantityChange = (event) => {
-      let quantity = params.value
+      let quantity = event.target.value
       console.log(quantity)
-      //if (password.length >= 8) {
           setQuantity(quantity);
-      //}
+   
 
   }
+
+  const handlePantry = (item,existing_quantity) => {
+    let updated_quantity  =parseInt(existing_quantity) + parseInt(quantity);
+    let itemJson = {
+      "item": location.state.item
+  };
+    axios.post(`${pantryAPI}add/${updated_quantity}`,itemJson).then((data) => {
+        console.log(data);
+       
+      });
+    
+    navigate(`/supplier/pantry/update/${item}`)
+}
+
+
 
 
   return (
@@ -90,7 +109,9 @@ export default function AddPantry() {
                 
                 </CardContent>
                 <CardActions align='center'>
-                <AppButton color="secondary" 
+                <AppButton color="secondary"
+                
+                onClick={() => handlePantry(location.state.item, location.state.existing_quantity)}
                                         >
                                         Add to Pantry
                                     </AppButton>

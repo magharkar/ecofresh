@@ -13,6 +13,35 @@ route.get("/pantry",async(req,res)=>{
         res.status(500).send("Error while fetching the pantry ");
     }
   });
+
+
+  route.post("/add/:id", (req, res) => {
+    let item = req.body.item;
+    let quantity =req.params.id;
+    
+    try{
+        Pantry.findOne({
+          "Supplier_id": '10706'
+        }, (err, data) => {
+          if (data) {
+            console.log(data)
+            Pantry.updateOne({  "Supplier_id": "10706"},{ $set: { "Items.1" :[item, quantity]  }}, (error, result) => {
+              if (result) {
+                  console.log(result)
+                res.send({ "success": true, "message": "Status updated" });
+              }
+              else {
+                res.status(400).send({ "success": false, "message": "Cannot process request" });
+              }
+            });
+          }
+         
+        });
+    }catch{
+        res.status(400).send({ "success": false, "message": "Cannot process request" });
+    }
   
+})
+
 
   module.exports = route;

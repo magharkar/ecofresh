@@ -22,6 +22,8 @@ function createData(Item, Quantity) {
 }
 
 
+
+
 export default function BasicTable() {
   let navigate = useNavigate();
 
@@ -50,7 +52,13 @@ export default function BasicTable() {
   const handleClick = (element,value) => {
     console.log(element)
   
-    navigate(`/supplier/pantry/add-pantry/${element}${value}`)
+    navigate(`/supplier/pantry/add-pantry/${element}`,
+    {
+      state :{
+        item: element,
+      existing_quantity: value
+      }
+    })
 }
 
 

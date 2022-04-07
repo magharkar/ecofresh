@@ -4,7 +4,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import AppButton from "../../components/Button/Button";
 import axios from 'axios';
 import { orderAPI } from '../../api/API';
@@ -37,6 +37,7 @@ export default function Orders() {
   const [Data, setData] = useState([]);
   const [showdata, setShowData] = useState([]);
   const [isError, setIsError] = useState(false);
+  const params = useParams();
 
 
   useEffect(() => {
@@ -55,6 +56,20 @@ export default function Orders() {
 
   const handleCardClick = (id) => {
     navigate(`/supplier/orders/${id}`)
+}
+
+
+const handleCancelClick = (id) => {
+  axios.post(`${orderAPI}cancel/${id}`).then((data) => {
+    console.log(data);
+    if (data.status) {
+      setIsError(false)
+  }
+  else {
+      setIsError(true)
+  }
+  });
+  navigate(`/supplier/orders/cancel/${id}`)
 }
 
   return (
@@ -132,7 +147,7 @@ export default function Orders() {
                                         View
                                     </AppButton>
                                     <AppButton color="secondary"
-                                       onClick={() => handleCardClick(ele.orderId)} >
+                                       onClick={() => handleCancelClick(ele.orderId)} >
                                         Cancel
                                     </AppButton>
                 </CardActions>
