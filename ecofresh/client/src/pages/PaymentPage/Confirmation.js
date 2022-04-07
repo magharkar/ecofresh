@@ -28,8 +28,10 @@ const cartItems = JSON.parse(localStorage.getItem("cartItems"));
 
 export default function Confirmation() {
     let email = localStorage.getItem("emailId");
+    // let id = localStorage.getItem("cartItem").id;
     const [isSubmit, setIsSubmit] = useState(false);
     const [formData, setFormData] = useState({});
+    const [cart, setCart] = useState('');
     const navigate = useNavigate();
     const [api_url, setAPIUrl] = useState(baseURL + '/api/paymentDetails');
 
@@ -48,11 +50,34 @@ export default function Confirmation() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmit(true);
+
+        axios.delete(baseURL + '/cart/delete/' + email)
+            .then(res => {
+                console.log(res);
+                if (res.status === 200) {
+                    console.log("Cart is deleted")
+                }
+            })
+
+        axios.post(baseURL + '/myOrders/saveOrder', {
+            ...cartItems,
+            userId: email,
+            status: "Placed",
+        })
+            .then(res => {
+                const data = res.data;
+                setCart(data);
+                if (res.status === 200) {
+                    console.log("|||||||||||||")
+                }
+
+            })
+
         navigate("/home");
+
     };
 
     const { state } = useLocation()
-    // console.log(state?.formValues)
 
     return (
         <PageWrapper>

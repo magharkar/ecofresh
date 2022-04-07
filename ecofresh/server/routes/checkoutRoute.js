@@ -22,7 +22,6 @@ route.post("/paymentDetails", (req, res) => {
 
     const { formValues: data } = req.body;
     newPayment = new Payment();
-    // newPayment.orderId = uuid.v1();
     newPayment.email = data.email;
     newPayment.address = data.address;
     newPayment.apartmentNumber = data.apartmentNumber;

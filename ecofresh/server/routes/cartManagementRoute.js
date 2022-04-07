@@ -40,6 +40,22 @@ route.delete("/deleteItem/:recipeName", (req, res) => {
 
 });
 
+route.delete("/delete/:email", (req, res) => {
+    let email = req.params.email;
+    console.log(email);
+    if (email != null) {
+        Cart.deleteMany({ "email": email }).then(result => {
+            console.log(result);
+            res.status(200).send("Cart is empty");
+        }).catch(err => {
+            res.status(400).send("Invalid request");
+        });
+    } else {
+        res.status(400).send("Please pass a valid email");
+    }
+
+});
+
 route.get("/getAllItemsInCart/:email", (req, res) => {
     let emailId = req.params.email;
     let responseList = [];

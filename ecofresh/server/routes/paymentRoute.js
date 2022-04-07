@@ -42,22 +42,30 @@ app.get("/payment", async (req, res) => {
 });
 
 app.post("/payment", async (req, res) => {
-    const { finalCost } = req.body;
-    // console.log("HELLO::::::", finalCost)
+    try {
+        const { finalCost } = req.body;
+        console.log("HELLO::::::", finalCost)
 
-    // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-        amount: Math.round(finalCost),
-        currency: "cad",
-        automatic_payment_methods: {
-            enabled: true,
-        },
-    });
+        // Create a PaymentIntent with the order amount and currency
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: Math.round(finalCost) * 100,
+            currency: "cad",
+            payment_method_types: ['card'],
+            // automatic_payment_methods: {
+            //     enabled: true,
+            // },
+        });
 
-    res.send({
-        clientSecret: paymentIntent.client_secret,
-    });
+        res.send({
+            clientSecret: paymentIntent.client_secret,
+        });
 
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            message: "Server error"
+        });
+    }
 });
 
 

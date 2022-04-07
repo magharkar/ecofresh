@@ -59,10 +59,6 @@ export default function Details() {
     }, []);
 
     const getOffersAPI = () => {
-
-
-
-
         axios.get(APIUrl)
             .then(res => {
                 const data = res.data;
@@ -93,15 +89,11 @@ export default function Details() {
 
         } else {
 
-
-            console.log("invalid")
+            console.log("Invalid")
 
         }
 
     }
-
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
