@@ -98,7 +98,6 @@
      let fileParts = fileInput.current.files[0].name.split('.');
      let fileName = complaintId;
      let fileType = fileParts[1];
-     console.log("Preparing the upload");
      axios.post(baseURL+"/uploadToS3",{
        fileName : fileName,
        fileType : fileType
@@ -117,10 +116,8 @@
        axios.put(signedRequest,file,options)
        .then(result => {
          setSuccess(true);
-         console.log("uploaded")
        })
        .catch(error => {
-         console.log(JSON.stringify(error))
          alert("ERROR " + JSON.stringify(error));
        })
      })
