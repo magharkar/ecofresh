@@ -17,8 +17,8 @@ const ContentContainer = styled.div`
 const ContentWrapper = styled.div`
     padding: 60px;
     @media (min-width: 1365px) {
-        width: 1305px;
     margin: auto;
+    width: 800px;
     }
     @media (max-width: 478px) {
         background-color: #FFF;
@@ -38,4 +38,33 @@ const SubHeader = styled.h3`
     margin: auto;
 `;
 
-export {Container, Heading, ImageWrapper, ContentWrapper, ContentContainer, Row, SubHeader}
+const DividerWrapper = styled.div`
+    @media (max-width: 992px) {
+        display: none;
+    }
+`;
+
+const CardContainer = styled.div`
+    width: 50%;
+`;
+
+const  FlexContainer = styled.div`
+    display: flex;
+    &.right {
+        justify-content: space-between;
+    }
+`;
+
+const RowKey = styled.div`
+    padding-right: 8px;
+`;
+
+const RowVal = styled.div``;
+
+const RightContainer = styled.div`
+    width: 50%;
+`;
+
+
+export {Container, Heading, ImageWrapper, ContentWrapper, ContentContainer, Row, SubHeader, DividerWrapper,
+CardContainer, FlexContainer, RightContainer, RowKey, RowVal}
