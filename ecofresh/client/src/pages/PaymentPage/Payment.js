@@ -16,6 +16,11 @@ import baseURL from "../../config";
 
 const { Title } = Typography;
 
+/**
+ * 
+ * This code is derived from https://stripe.com/docs/payments/accept-a-payment
+ */
+
 export default function Payment() {
     const stripe = useStripe();
     const elements = useElements();

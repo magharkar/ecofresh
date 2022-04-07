@@ -17,11 +17,12 @@ import { FooterContainer } from "../../components/Footer/FooterContainer";
 import { Box, Paper, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Typography } from 'antd';
+import { Col, Typography } from 'antd';
 import AppButton from "../../components/Button/Button";
 import axios from 'axios';
 import baseURL from '../../config';
 import CartItem from "../../components/CartItem/CartItem";
+
 
 const { Title } = Typography;
 
@@ -29,45 +30,78 @@ export default function Details() {
     let email = localStorage.getItem("emailId");
     const [isSubmit, setIsSubmit] = useState(false);
     const [formValues, setFormValues] = useState({});
-    // const [cartItems, setCartItems] = useState([]);
-    // const [data, setData] = useState('');
-    // const [finalCost, setFinalCost] = useState('');
+    const [code, setCode] = useState("");
+    const [error, setError] = useState(code);
+    const [offers, setOffers] = useState([]);
+    const finalCost = JSON.parse(localStorage.getItem("cartItems")).finalCost;
+    const [total, setTotal] = useState(finalCost);
+
 
     const navigate = useNavigate();
     const { state } = useLocation()
-    const [api_url, setAPIUrl] = useState(baseURL + '/api/paymentDetails');
-    // console.log(state?.formValues)
-
+    const [api_url, setApiUrl] = useState(baseURL + '/api/paymentDetails');
+    const [APIUrl, setAPIUrl] = useState(baseURL + '/offers/alloffers');
 
     const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    const finalCost = JSON.parse(localStorage.getItem("cartItems")).finalCost;
-    // console.log(data)
-    // const finalCost = localStorage.getItem("finalCost");
-    // console.log(finalCost)
 
     useEffect(() => {
-        // localStorage.setItem("cartItems", JSON.stringify(state?.cartItems))
 
-        // getRecipeAPI();
+
+        getOffersAPI();
+
         setFormValues(state?.formValues)
         axios.get(api_url)
             .then(res => {
                 const data = res.data;
-                // console.log(data); 
+
             })
 
     }, []);
 
-    // const getRecipeAPI = () => {
-    //     const getRecipeURL = baseURL + '/cart/getAllItemsInCart/' + email;
-    //     axios.get(getRecipeURL)
-    //         .then(res => {
-    //             const data = res.data;
-    //             setCartItems(data);
-    //         })
-    // }
+    const getOffersAPI = () => {
 
-    // const { data, finalCost, shipping, subtotal, taxes } = cartItems;
+
+
+
+        axios.get(APIUrl)
+            .then(res => {
+                const data = res.data;
+                setOffers(data);
+
+            })
+    }
+
+    const handleChange = (e) => {
+        // const name = e.target.name;
+        const value = e.target.value;
+        setCode(value);
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        setIsSubmit(true);
+        const filterCode = offers.filter(offer => offer.offerCode === code)
+
+        if (filterCode.length > 0 && parseFloat(filterCode[0].minimumAmount) <= total) {
+
+            console.log(filterCode)
+            console.log("valid")
+
+            const totalCost = total - parseFloat(filterCode[0].offerDiscount);
+            setTotal(totalCost);
+
+        } else {
+
+
+            console.log("invalid")
+
+        }
+
+    }
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -78,6 +112,7 @@ export default function Details() {
 
     };
 
+    console.log(offers)
 
     return (
         <PageWrapper>
@@ -163,19 +198,28 @@ export default function Details() {
                                 </Column>
                             </Row> <hr />
                             <Row>
-                                {/* <label><strong> Add Promocode: </strong></label>
                                 <TextField
                                     width="50%"
-                                    required
                                     id="outlined-required"
                                     name="promo"
-                                    label="Add Promocode"
+                                    label=" Have Promocode ?"
                                     placeholder="Enter Promocode"
                                     margin="normal"
-                                value={formValues.fname}
-                                onChange={handleChange} */}
+                                    value={code}
+                                    onChange={handleChange}
 
-                                {/* /> */}
+
+                                />
+                                <Box sx={{
+                                    marginBottom: "10px",
+                                    marginTop: "20px",
+                                    marginLeft: "50px"
+                                }}>
+                                    <AppButton color="secondary"
+                                        onClick={handleClick}>
+                                        Apply
+                                    </AppButton>
+                                </Box>
 
                             </Row> <hr />
                             <Row>
@@ -183,7 +227,8 @@ export default function Details() {
                                     <strong> Subtotal: </strong>
                                 </Column>
                                 <Column>
-                                    CAD {parseFloat(finalCost).toFixed(2)}
+                                    CAD {parseFloat(total).toFixed(2)}
+
                                 </Column>
                             </Row>
                         </Box>

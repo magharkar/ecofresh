@@ -24,6 +24,12 @@ app.use(express.json());
 //     return 1400;
 // };
 
+
+/**
+ *
+ * This code is derived from https://stripe.com/docs/payments/accept-a-payment
+ */
+
 app.get("/payment", async (req, res) => {
     try {
         let payments = await Payment.find({});

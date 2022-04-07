@@ -21,6 +21,10 @@ import { FooterContainer } from "../../components/Footer/FooterContainer";
 import Navbar from "../../components/Navbar/NavUser";
 import baseURL from '../../config';
 
+/**
+ *
+ * This code is derived from https://stripe.com/docs/payments/accept-a-payment
+ */
 
 const stripePromise = loadStripe('pk_test_51KhEA9D3pnjAoJfMFmML7iTQCnqznYxc0ANnAzWVVSi2c1hVV7368SDniaQ0iCG5nsulXb9aYgBsaqF5O6YPLUD600zfv6Tf0k');
 
