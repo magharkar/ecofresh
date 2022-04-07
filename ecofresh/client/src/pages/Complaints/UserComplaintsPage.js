@@ -19,7 +19,6 @@
  function LandingPage(props) {
     const navigate = useNavigate();
     const [api_url,setAPIUrl] = useState(baseURL+'/complaints/allcomplaints/');
-    console.log(api_url)
     const [complaints,setComplaints] = useState([]);
     const [data, setData] = useState('');
     const [search,setSearch] = useState('');
@@ -42,7 +41,6 @@
       
     }
     useEffect(() => {
-        console.log(localStorage.getItem("emailId"))
         const headers = {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
