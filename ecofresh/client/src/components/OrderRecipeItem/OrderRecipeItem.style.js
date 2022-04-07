@@ -10,7 +10,6 @@ const ImageContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-    padding-right: 24px;
     width: calc(100% - 192px);
 `;
 
