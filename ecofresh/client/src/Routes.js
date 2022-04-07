@@ -29,6 +29,11 @@ import OrderDetail from "./pages/Supplier/OrderDetail";
 import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
 import Cart from "./pages/Cart/Cart";
+import CreateOffer from "./pages/Offers/CreateOffer";
+import AdminAllOffers from "./pages/Offers/AdminAllOffers";
+import OfferDetails from "./pages/Offers/OfferDetails";
+import CustomerAllOffers from "./pages/Offers/CustomerAllOffers";
+import CustomerOfferDetails from "./pages/Offers/CustomerOfferDetails";
 
 function App() {
 
@@ -43,6 +48,14 @@ function App() {
 
         <Route path='/complaints/ComplaintDetailsPage/'>
           <Route path=':id' element={<ComplaintDetailsPage />}></Route>
+        </Route>
+
+        <Route path='/offers/offerdetails'>
+          <Route path=':id' element={<OfferDetails />}></Route>
+        </Route>
+
+        <Route path='/offers/customerofferdetails'>
+            <Route path=":id" element={<CustomerOfferDetails />} />
         </Route>
 
         <Route path='/complaints/ComplaintResolutionPage/'>
@@ -72,6 +85,10 @@ function App() {
         <Route path="/checkReqStat" element={<CheckRequestStatus/>} />
         <Route path="/admin" element={<AdminHomepage/>} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/createoffer" element={<CreateOffer />} />
+        <Route path="/adminalloffers" element={<AdminAllOffers />} />
+        <Route path="/customeralloffers" element={<CustomerAllOffers />} />
+        <Route path="/customerofferdetails" element={<CustomerOfferDetails />} />
       </Routes>
     </ThemeProvider>
   );

@@ -33,7 +33,6 @@ function ComplaintResolution() {
 
 function AddResolution()
     {
-        console.log("add called")
         const headers = {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
