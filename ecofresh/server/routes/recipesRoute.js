@@ -7,15 +7,14 @@ const recipeModel = require("../models/recipeModel");
 const route = express.Router();
 const Recipe = require("../models/recipeModel");
 const url = require("url");
-const { request } = require("http");
 const e = require("express");
 
 const unique = (value, index, self) => {
     return self.indexOf(value) === index
-  }
-  
+}
+
 route.get("/allRecipes", (req, res) => {
-    Recipe.find({}).then(result => {
+    Recipe.find({ "recipeStatus": "Approved" }).then(result => {
         res.send(result);
     }).catch(err => {
         console.log(err)
@@ -41,7 +40,7 @@ route.post("/filterResults", (req, res) => {
         console.log(listOfConditions);
     }
 
-    Recipe.find({ $or: listOfConditions }).then(result => {
+    Recipe.find({ $or: listOfConditions , $and: [{"recipeStatus": "Approved"}] }).then(result => {
         res.send(result);
     }).catch(err => {
         console.log(err);
@@ -56,25 +55,31 @@ route.get("/search", (req, res) => {
     let cuisine = parsedURL.cuisine;
     let listOfConditions = []
     // if (recipeName) {
-        listOfConditions.push({ "recipeName": {
+    listOfConditions.push({
+        "recipeName": {
             $regex: value.toLowerCase(),
             $options: 'i'
-            }});
+        }
+    });
     // }
     // if (mealType) {
-        listOfConditions.push({ "mealType": {
+    listOfConditions.push({
+        "mealType": {
             $regex: value.toLowerCase(),
             $options: 'i'
-            } });
+        }
+    });
     // }
     // if (cuisine) {
-        listOfConditions.push({ "cuisine": {
+    listOfConditions.push({
+        "cuisine": {
             $regex: value.toLowerCase(),
             $options: 'i'
-            } });
+        }
+    });
     // }
     console.log(listOfConditions);
-    Recipe.find({ $or: listOfConditions }).collation({locale: "en", strength: 2}).then(result => {
+    Recipe.find({ $or: listOfConditions, $and: [{"recipeStatus": "Approved"}]  }).collation({ locale: "en", strength: 2 }).then(result => {
         res.send(result);
     }).catch(err => {
         console.log(err);
@@ -95,7 +100,7 @@ route.get("/sort", (req, res) => {
         asc[key] = -1;
     }
     console.log(asc);
-    Recipe.find({}).sort(asc).then(result => {
+    Recipe.find({"recipeStatus": "Approved"}).sort(asc).then(result => {
         res.send(result);
     }).catch(err => {
         console.log(err);
@@ -104,12 +109,12 @@ route.get("/sort", (req, res) => {
 });
 
 route.get("/getFilterValues", (req, res) => {
-    Recipe.find({}).select({cuisine:1, ratings:1, mealType:1}).then(result => {
+    Recipe.find({"recipeStatus": "Approved"}).select({ cuisine: 1, ratings: 1, mealType: 1 }).then(result => {
         console.log(result);
         let mealTypes = [];
         let ratings = [];
         let cuisines = [];
-        for(index in result){
+        for (index in result) {
             mealTypes.push(result[index].mealType);
             ratings.push(result[index].ratings);
             cuisines.push(result[index].cuisine)
@@ -125,12 +130,12 @@ route.get("/getFilterValues", (req, res) => {
             {
                 filterKey: "cuisines",
                 filterValues: uniqueCuisineValues,
-            },{
+            }, {
                 filterKey: "ratings",
                 filterValues: uniqueRatingValues,
             }
         ]);
-    }).catch(err  => {
+    }).catch(err => {
         console.log(err);
         res.status(500).send("Error in getting filter values");
     });
