@@ -36,7 +36,7 @@ export default function AddPantry() {
     console.log(location.state)
     
 
-    const [quantity, setQuantity] = useState("");
+    const [quantity, setQuantity] = useState(""); 
 
 
     const handleQuantityChange = (event) => {
