@@ -28,11 +28,10 @@ export default function AdminMenu() {
     {
       navigate("/complaints")
     }
-<<<<<<< HEAD
     if(selectedOption==="Approve Recipes")
     {
       navigate("/adminRecipeRequests")
-=======
+    }
     if(selectedOption==="View Offers")
     {
       navigate("/adminalloffers")
@@ -44,7 +43,6 @@ export default function AdminMenu() {
     if(selectedOption === "Logout"){
       localStorage.clear();
       navigate("/login");
->>>>>>> 9e73caa73474a2034c3e212db70607af1537b5e8
     }
     //use the selectedOption and navigate hook to route to different pages.
     //refer to HomeAccountDropdown for an example
