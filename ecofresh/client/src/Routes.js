@@ -29,14 +29,11 @@ import OrderDetail from "./pages/Supplier/OrderDetail";
 import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
 import Cart from "./pages/Cart/Cart";
-<<<<<<< HEAD
+import MyOrders from "./pages/MyOrders/MyOrders";
+import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import UploadRecipeAdmin from "./pages/UploadRecipe/UploadRecipeAdmin";
 import About from "./pages/LandingPage/About"
 import HowItWorks from "./pages/LandingPage/HowItWorks"
-=======
-import MyOrders from "./pages/MyOrders/MyOrders";
-import OrderDetails from "./pages/OrderDetails/OrderDetails";
->>>>>>> 146021d64f4dfc58cf6a98efb264eff777c48ee4
 
 function App() {
 
@@ -80,14 +77,11 @@ function App() {
         <Route path="/checkReqStat" element={<CheckRequestStatus />} />
         <Route path="/admin" element={<AdminHomepage />} />
         <Route path="/cart" element={<Cart />} />
-<<<<<<< HEAD
-        <Route path="/adminRecipeRequests" element={<UploadRecipeAdmin />}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path="/howItWorks" element={<HowItWorks />}/>
-=======
         <Route path="/myOrders" element={<MyOrders />} />
         <Route path="/orderDetails" element={<OrderDetails />} />
->>>>>>> 146021d64f4dfc58cf6a98efb264eff777c48ee4
+        <Route path='/adminRecipeRequests' element={<UploadRecipeAdmin/>} />
+        <Route path='/about' element={<About/>}/>
+        <Route path='howItWorks' element={<HowItWorks/>}/>
       </Routes>
     </ThemeProvider>
   );

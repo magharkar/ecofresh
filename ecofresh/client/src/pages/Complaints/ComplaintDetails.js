@@ -13,7 +13,7 @@ import axios from 'axios';
 import './Complaints.css';
 import Card from '@mui/material/Card';
 import TextField from "@mui/material/TextField";
-import Navbar from '../../components/Navbar/NavAdmin';
+import Navbar from '../../components/Navbar/NavUser';
 import baseURL from '../../config';
 function ComplaintDetails() {
     const [complaint,setComplaint] = useState('');
