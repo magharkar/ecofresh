@@ -35,7 +35,12 @@ route.get('/getAllRequests', async (req, res) => {
       "requestId" : reqId,
     });
   }).catch(err => {
+<<<<<<< HEAD
     res.status(400).send({message: "Recipe upload request cannot be submitted" + err});
+=======
+    console.log("Failed to submit recipe upload request. "+ err);
+    res.status(400).send("Recipe upload request cannot be submitted");
+>>>>>>> 2bb54a73a0119ec4079b308921383c331dd769d8
   });
 });
 

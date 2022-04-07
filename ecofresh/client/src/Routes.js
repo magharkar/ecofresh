@@ -31,9 +31,17 @@ import SupplierPantry from "./pages/Supplier/SupplierPantry";
 import Cart from "./pages/Cart/Cart";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
+<<<<<<< HEAD
 import UploadRecipeAdmin from "./pages/UploadRecipe/UploadRecipeAdmin";
 import About from "./pages/LandingPage/About"
 import HowItWorks from "./pages/LandingPage/HowItWorks"
+=======
+import CreateOffer from "./pages/Offers/CreateOffer";
+import AdminAllOffers from "./pages/Offers/AdminAllOffers";
+import OfferDetails from "./pages/Offers/OfferDetails";
+import CustomerAllOffers from "./pages/Offers/CustomerAllOffers";
+import CustomerOfferDetails from "./pages/Offers/CustomerOfferDetails";
+>>>>>>> 2bb54a73a0119ec4079b308921383c331dd769d8
 
 function App() {
 
@@ -79,9 +87,16 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/myOrders" element={<MyOrders />} />
         <Route path="/orderDetails" element={<OrderDetails />} />
+<<<<<<< HEAD
         <Route path='/adminRecipeRequests' element={<UploadRecipeAdmin/>} />
         <Route path='/about' element={<About/>}/>
         <Route path='howItWorks' element={<HowItWorks/>}/>
+=======
+        <Route path="/createoffer" element={<CreateOffer />} />
+        <Route path="/adminalloffers" element={<AdminAllOffers />} />
+        <Route path="/customeralloffers" element={<CustomerAllOffers />} />
+        <Route path="/customerofferdetails" element={<CustomerOfferDetails />} />
+>>>>>>> 2bb54a73a0119ec4079b308921383c331dd769d8
       </Routes>
     </ThemeProvider>
   );

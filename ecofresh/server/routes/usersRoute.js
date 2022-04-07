@@ -17,7 +17,9 @@ route.get("/allUsers", (req, res) => {
 
 route.post("/login", async (req, res) => {
   let email = req.body.email;
+  email = email.trim();
   let password = req.body.password;
+  console.log(req.body);
   console.log(email, password);
   await Users.findOne({ "email": email }).then(result => {
     console.log("Res: " + result);
@@ -39,7 +41,9 @@ route.post("/register", (req, res) => {
   let isRegistered = true;
   let password = req.body.password
   let newUser = new Users();
-  newUser.email = req.body.email;
+  let email = req.body.email;
+  email = email.trim();
+  newUser.email = email;
   newUser.firstName = req.body.firstName;
   newUser.lastName = req.body.lastName;
   newUser.phoneNumber = req.body.phoneNumber;
@@ -81,6 +85,7 @@ route.post("/register", (req, res) => {
 
 route.post("/updatePassword", (req, res) => {
   let email = req.body.email;
+  email = email.trim();
   Users.findOne({
     "email": email
   }, (err, data) => {
