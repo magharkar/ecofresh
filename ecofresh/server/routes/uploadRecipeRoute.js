@@ -18,21 +18,24 @@ route.get('/getAllRequests', async (req, res) => {
 
  route.post('/requestForm', async (req, res) => {
   let newRecipe = await new UploadRecipe();
-  newRecipe.recipeTitle = req.body.recipeTitle;
+  console.log("in upload form")
+  newRecipe.submittedBy = req.body.userId;
+  newRecipe.recipeName = req.body.recipeName;
+  newRecipe.cuisine = req.body.cuisine;
+  newRecipe.costPerMeal = req.body.costPerMeal;
+  newRecipe.mealType = req.body.mealType;
   newRecipe.ingredients = req.body.ingredients;
-  newRecipe.cookingTime = req.body.cookingTime;
-  newRecipe.portionSize = req.body.portionSize;
   newRecipe.description = req.body.description;
   console.log(newRecipe);
+  console.log(req.body);
   newRecipe.save().then(result => {
     const reqId = result.requestId;
     const usId = result.userId;
     res.status(200).send({
       "requestId" : reqId,
-      "userId" : usId
     });
   }).catch(err => {
-    res.status(400).send({message: "Recipe upload request cannot be submitted"});
+    res.status(400).send({message: "Recipe upload request cannot be submitted" + err});
   });
 });
 

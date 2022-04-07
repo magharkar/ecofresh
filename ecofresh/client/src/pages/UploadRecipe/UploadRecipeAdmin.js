@@ -12,6 +12,7 @@ import Navbar from '../../components/Navbar/NavAdmin'
 import { FooterContainer } from '../../components/Footer/FooterContainer'
 import baseURL from '../../config';
 import axios from 'axios'
+import { Navigate } from 'react-router-dom'
 
 function UploadRecipeAdmin() {
 const [isSubmit, setIsSubmit] = useState(false);
@@ -43,12 +44,18 @@ const handleClick = (requestId) => {
 
 const handleAcceptClick = (requestId) => {
   axios.post(baseURL + '/adminRecipeRequests/updateApprove/' + requestId)
-  .then((data) => console.log(data)).then( err => console.log(err))
+  .then((data) => {
+    console.log(data);
+    setModalIsOpen(false);
+  }).then( err => console.log(err))
 }
 
 const handleRejectClick = (requestId) => {
   axios.post(baseURL + '/adminRecipeRequests/updateReject/' + requestId)
-  .then((data) => console.log(data)).then( err => console.log(err))
+  .then((data) => {
+    console.log(data);
+    setModalIsOpen(false);
+  }).then( err => console.log(err))
 }
 
 useEffect(() => {

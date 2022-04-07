@@ -12,6 +12,7 @@ const uploadToS3 = require("./controllers/uploadToS3");
 var sign_s3 = require('./controllers/uploadToS3');
 const uploadRecipeRoute = require("./routes/uploadRecipeRoute");
 const myOrdersRoute = require("./routes/myOrdersRoute");
+const adminRecipeRequests = require("./routes/adminRecipeRequestsRoute")
 
 const offerRoute = require("./routes/offerRoute");
 const cors = require("cors");
