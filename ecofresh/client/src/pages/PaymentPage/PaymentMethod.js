@@ -27,6 +27,7 @@ const stripePromise = loadStripe('pk_test_51KhEA9D3pnjAoJfMFmML7iTQCnqznYxc0ANnA
 export default function PaymentMethod() {
     const [clientSecret, setClientSecret] = useState("");
     const [api_url, setAPIUrl] = useState(baseURL + '/checkout/payment');
+    const finalCost = JSON.parse(localStorage.getItem("cartItems")).finalCost;
 
     useEffect(() => {
 
@@ -34,10 +35,13 @@ export default function PaymentMethod() {
         fetch(api_url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: [{ paymentId: "p1" }] }),
+            body: JSON.stringify({ finalCost }),
         })
-            .then((res) => res.json())
-            .then((data) => setClientSecret(data.clientSecret))
+            .then(async (res) => {
+                const data = await res.json()
+                // console.log(data)
+                setClientSecret(data.clientSecret)
+            })
             .catch(e => {
                 console.log(e)
             })

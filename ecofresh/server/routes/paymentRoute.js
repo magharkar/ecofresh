@@ -12,17 +12,17 @@ const secretKey = process.env.STRIPE_PRIVATE_KEY
 
 const app = express.Router();
 
-console.log(secretKey)
 const stripe = require("stripe")(secretKey);
+// const finalCost = localStorage.getItem("cartItems").finalCost;
 
 
 app.use(express.static("public"));
 app.use(express.json());
 
-const calculateOrderAmount = (items) => {
+// const calculateOrderAmount = (items) => {
 
-    return 1400;
-};
+//     return 1400;
+// };
 
 app.get("/payment", async (req, res) => {
     try {
@@ -36,11 +36,12 @@ app.get("/payment", async (req, res) => {
 });
 
 app.post("/payment", async (req, res) => {
-    const { items } = req.body;
+    const { finalCost } = req.body;
+    // console.log("HELLO::::::", finalCost)
 
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: calculateOrderAmount(items),
+        amount: Math.round(finalCost),
         currency: "cad",
         automatic_payment_methods: {
             enabled: true,

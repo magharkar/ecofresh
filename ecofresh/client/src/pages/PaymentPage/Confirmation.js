@@ -24,10 +24,10 @@ import axios from 'axios';
 import baseURL from '../../config';
 
 const { Title } = Typography;
-
+const cartItems = JSON.parse(localStorage.getItem("cartItems"));
 
 export default function Confirmation() {
-
+    let email = localStorage.getItem("emailId");
     const [isSubmit, setIsSubmit] = useState(false);
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
@@ -40,7 +40,6 @@ export default function Confirmation() {
         axios.get(api_url)
             .then(res => {
                 const data = res.data;
-                console.log(data);
             })
 
 
@@ -53,7 +52,7 @@ export default function Confirmation() {
     };
 
     const { state } = useLocation()
-    console.log(state?.formValues)
+    // console.log(state?.formValues)
 
     return (
         <PageWrapper>
@@ -99,10 +98,10 @@ export default function Confirmation() {
                             </Box>
                             <Row>
                                 <Column>
-                                    <strong> Order ID: </strong>
+                                    <strong> User ID: </strong>
                                 </Column>
                                 <Column>
-                                    1234
+                                    {email}
                                 </Column>
                             </Row> <hr />
                             <Row>
@@ -134,8 +133,11 @@ export default function Confirmation() {
                                     <strong> Your Orders: </strong>
                                 </Column>
                                 <Column>
-                                    1. Chhole Bhature
-                                    2. Lasagna
+                                    {
+                                        cartItems?.data?.map((item, key) => (
+                                            <div key={key}>{key + 1}. {item.recipeName}</div>
+                                        ))
+                                    }
                                 </Column>
                             </Row> <hr />
                         </Box>

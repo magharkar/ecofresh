@@ -59,7 +59,7 @@ route.get("/getAllItemsInCart/:email", (req, res) => {
             }]
         }
     }]).then(result => {
-        console.log(result);
+        // console.log(result);
         for (i in result) {
             let recipeObj = result[i];
             let recipeName = recipeObj.recipeName;
@@ -74,7 +74,7 @@ route.get("/getAllItemsInCart/:email", (req, res) => {
         let taxes = 5;
         const roundedSubTotal = Math.round(subtotal * 100) / 100;
         let finalCost = roundedSubTotal + ((roundedSubTotal * taxes) / 100) + shipping;
-        console.log("here")
+        // console.log("here")
         res.send({
             data: responseList,
             userEmail: emailId,

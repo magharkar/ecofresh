@@ -12,6 +12,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { Box } from "@mui/material";
 import AppButton from "../../components/Button/Button";
+import baseURL from "../../config";
 
 const { Title } = Typography;
 
@@ -70,7 +71,8 @@ export default function Payment() {
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: "https://group10-ecofresh.herokuapp.com/confirmation",
+                // return_url: baseURL + '/confirmation',
+                return_url: "http://localhost:3000/confirmation"
             },
         });
 

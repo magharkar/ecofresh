@@ -14,34 +14,60 @@ import {
 } from "./Details.style";
 import deliveryMan from "../../assets/pictures/delivery-man.jpeg";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
-import { Box, Paper } from "@mui/material";
+import { Box, Paper, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Typography } from 'antd';
 import AppButton from "../../components/Button/Button";
 import axios from 'axios';
 import baseURL from '../../config';
+import CartItem from "../../components/CartItem/CartItem";
 
 const { Title } = Typography;
 
 export default function Details() {
-
+    let email = localStorage.getItem("emailId");
     const [isSubmit, setIsSubmit] = useState(false);
     const [formValues, setFormValues] = useState({});
+    // const [cartItems, setCartItems] = useState([]);
+    // const [data, setData] = useState('');
+    // const [finalCost, setFinalCost] = useState('');
+
     const navigate = useNavigate();
     const { state } = useLocation()
     const [api_url, setAPIUrl] = useState(baseURL + '/api/paymentDetails');
-    console.log(state?.formValues)
+    // console.log(state?.formValues)
+
+
+    const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    const finalCost = JSON.parse(localStorage.getItem("cartItems")).finalCost;
+    // console.log(data)
+    // const finalCost = localStorage.getItem("finalCost");
+    // console.log(finalCost)
 
     useEffect(() => {
+        // localStorage.setItem("cartItems", JSON.stringify(state?.cartItems))
+
+        // getRecipeAPI();
         setFormValues(state?.formValues)
         axios.get(api_url)
             .then(res => {
                 const data = res.data;
-                console.log(data);
+                // console.log(data); 
             })
 
     }, []);
+
+    // const getRecipeAPI = () => {
+    //     const getRecipeURL = baseURL + '/cart/getAllItemsInCart/' + email;
+    //     axios.get(getRecipeURL)
+    //         .then(res => {
+    //             const data = res.data;
+    //             setCartItems(data);
+    //         })
+    // }
+
+    // const { data, finalCost, shipping, subtotal, taxes } = cartItems;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -94,10 +120,10 @@ export default function Details() {
                             </Box>
                             <Row>
                                 <Column>
-                                    <strong> Order ID: </strong>
+                                    <strong> User ID: </strong>
                                 </Column>
                                 <Column>
-                                    1234
+                                    {email}
                                 </Column>
                             </Row> <hr />
                             <Row>
@@ -129,16 +155,35 @@ export default function Details() {
                                     <strong> Your Orders: </strong>
                                 </Column>
                                 <Column>
-                                    1. Chhole Bhature
-                                    2. Lasagna
+                                    {
+                                        cartItems?.data?.map((item, key) => (
+                                            <div key={key}>{key + 1}. {item.recipeName}</div>
+                                        ))
+                                    }
                                 </Column>
+                            </Row> <hr />
+                            <Row>
+                                {/* <label><strong> Add Promocode: </strong></label>
+                                <TextField
+                                    width="50%"
+                                    required
+                                    id="outlined-required"
+                                    name="promo"
+                                    label="Add Promocode"
+                                    placeholder="Enter Promocode"
+                                    margin="normal"
+                                value={formValues.fname}
+                                onChange={handleChange} */}
+
+                                {/* /> */}
+
                             </Row> <hr />
                             <Row>
                                 <Column>
                                     <strong> Subtotal: </strong>
                                 </Column>
                                 <Column>
-                                    CAD 40.00
+                                    CAD {parseFloat(finalCost).toFixed(2)}
                                 </Column>
                             </Row>
                         </Box>
