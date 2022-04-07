@@ -12,6 +12,8 @@ const uploadToS3 = require("./controllers/uploadToS3");
 var sign_s3 = require('./controllers/uploadToS3');
 const uploadRecipeRoute = require("./routes/uploadRecipeRoute");
 const pantryRoute = require("./routes/pantryRoutes");
+const myOrdersRoute = require("./routes/myOrdersRoute");
+
 const offerRoute = require("./routes/offerRoute");
 const cors = require("cors");
 
@@ -45,6 +47,7 @@ app.use("/recipes", recipesRoute);
 app.use("/cart", cartManagementRoute);
 app.use("/uploadRecipe", uploadRecipeRoute);
 app.use("/pantry",pantryRoute)
+app.use("/myOrders", myOrdersRoute);
 app.use("/offers", offerRoute);
 
 app.listen(port, () => {

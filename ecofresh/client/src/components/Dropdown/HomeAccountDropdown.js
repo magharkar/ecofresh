@@ -37,6 +37,9 @@ export default function AccountMenu() {
     if(selectedOption === "Raise Complaint"){
       navigate("/addcomplaint");
     }
+    if(selectedOption === "Orders"){
+      navigate("/myOrders");
+    }
     if(selectedOption === "Offers"){
       navigate("/customeralloffers");
     }
