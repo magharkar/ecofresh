@@ -28,6 +28,7 @@ import SupplierOrders from "./pages/Supplier/SupplierOrders";
 import OrderDetail from "./pages/Supplier/OrderDetail";
 import OrderFulfilment from "./pages/Supplier/OrderFulfilment";
 import SupplierPantry from "./pages/Supplier/SupplierPantry";
+import AddPantry from "./pages/Supplier/AddPantry";
 import Cart from "./pages/Cart/Cart";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
@@ -39,6 +40,8 @@ import AdminAllOffers from "./pages/Offers/AdminAllOffers";
 import OfferDetails from "./pages/Offers/OfferDetails";
 import CustomerAllOffers from "./pages/Offers/CustomerAllOffers";
 import CustomerOfferDetails from "./pages/Offers/CustomerOfferDetails";
+import PantryUpdate from "./pages/Supplier/PantryUpdate";
+import OrderCancel from "./pages/Supplier/OrderCancel";
 
 function App() {
 
@@ -78,6 +81,9 @@ function App() {
         <Route path="/supplier/orders/:id" element={<OrderDetail />}></Route>
         <Route path="/supplier/orders/fulfilment/:id" element={<OrderFulfilment />}> </Route>
         <Route path="supplier/pantry" element={<SupplierPantry />}></Route>
+        <Route path="supplier/pantry/add-pantry/:element" element={<AddPantry></AddPantry>}> </Route>
+        <Route path="supplier/pantry/update/:item" element={<PantryUpdate></PantryUpdate>}></Route>
+        <Route path="/supplier/orders/cancel/:id" element={<OrderCancel></OrderCancel>}></Route>
         <Route path="/uploadRecipe" element={<UploadRecipe />} />
         <Route path="/checkReqStat" element={<CheckRequestStatus />} />
         <Route path="/admin" element={<AdminHomepage />} />

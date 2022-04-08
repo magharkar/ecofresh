@@ -7,27 +7,13 @@ const pantryModel = new mongoose.Schema({
         required: true
     },
     supplierId:{
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
     Items:{
-        "onions":{
-            type: Number,
-            required: true
-        },
-        "tomatoes":{
-               type:Number,
-               required:true
-        },
-        "salt":{
-            type:Number,
-            required: true
-
-        }
+        type: Object,
+        required: true
     }
+}, { collection: 'Pantry' });
 
-  
-
-});
-
-module.exports = mongoose.model("orders",orderDetailsModel);
+module.exports = mongoose.model("Pantry",pantryModel);

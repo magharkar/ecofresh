@@ -5,6 +5,7 @@
 const express = require("express");
 const route = express.Router();
 const Payment = require("../models/paymentModel")
+const uuid = require("uuid");
 
 route.get("/paymentDetails", async (req, res) => {
     try {
@@ -34,7 +35,6 @@ route.post("/paymentDetails", (req, res) => {
 
     newPayment.save().then(result => {
         res.send("Success");
-        console.log(result);
     }).catch(err => {
         console.log(err);
         res.status(400).send("Invalid input");

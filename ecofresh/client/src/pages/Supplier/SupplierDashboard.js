@@ -14,7 +14,7 @@ import { FooterContainer } from '../../components/Footer/FooterContainer';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import AppButton from "../../components/Button/Button";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
@@ -102,9 +102,9 @@ const routeChange = () =>{
                 </CardContent>
                 <CardActions>
                 
-                  <Button  fullWidth variant="outlined" onClick={routeChange} >  
+                  <AppButton    color="secondary" onClick={routeChange} >  
                     View Orders
-                  </Button>
+                  </AppButton>
                   
                 </CardActions>
               </Card>
@@ -144,9 +144,10 @@ const routeChange = () =>{
                 
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant="outlined">
-                    View Pantry
-                  </Button>
+                <AppButton color="secondary"
+                                        >
+                                        View Pantry
+                                    </AppButton>
                 </CardActions>
               </Card>
             </Grid>
@@ -185,9 +186,10 @@ const routeChange = () =>{
                 
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant="outlined">
-                    View Substitutions
-                  </Button>
+                <AppButton color="secondary"
+                                        >
+                                        Get Substitutions
+                                    </AppButton>
                 </CardActions>
               </Card>
             </Grid>

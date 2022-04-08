@@ -11,6 +11,7 @@ const complaintRoutes = require("./routes/complaintRoutes");
 const uploadToS3 = require("./controllers/uploadToS3");
 var sign_s3 = require('./controllers/uploadToS3');
 const uploadRecipeRoute = require("./routes/uploadRecipeRoute");
+const pantryRoute = require("./routes/pantryRoutes");
 const myOrdersRoute = require("./routes/myOrdersRoute");
 const adminRecipeRequests = require("./routes/adminRecipeRequestsRoute")
 
@@ -46,6 +47,7 @@ app.use('/uploadToS3', uploadToS3.sign_s3);
 app.use("/recipes", recipesRoute);
 app.use("/cart", cartManagementRoute);
 app.use("/uploadRecipe", uploadRecipeRoute);
+app.use("/pantry",pantryRoute)
 app.use("/myOrders", myOrdersRoute);
 app.use("/offers", offerRoute);
 app.use("/adminRecipeRequests", adminRecipeRequests);
