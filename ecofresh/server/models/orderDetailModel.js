@@ -26,6 +26,10 @@ const orderDetailsModel = new mongoose.Schema({
         type: String,
         required: true
     },
+    ingredients:{
+        type:String,
+        required:true
+    },
     Recipe_details:[{type:Schema.Types.ObjectId,ref:'recipe'}],
   
 
