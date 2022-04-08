@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { UploadRecipeForm, Title, MainFormContainer, FormInputFields, FormLabel, FormInput, FormInputTextArea, Footer, PageWrapper } from './UploadRecipe.style'
+import { UploadRecipeForm, Title, MainFormContainer, FormInputFields, FormLabel, FormInput, FormInputUpload, FormInputTextArea, Footer, PageWrapper } from './UploadRecipe.style'
 import Navbar from '../../components/Navbar/NavUser'
 import { FooterContainer } from '../../components/Footer/FooterContainer'
 import uploadRecipeImg from '../../assets/pictures/uploadRecipeBg.png'
@@ -11,15 +11,19 @@ import AppButton from '../../components/Button/Button'
 import { Modal, Box, Typography } from '@mui/material'
 import baseURL from '../../config'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function UploadRecipe() {
 
-  const initialState = { recipeTitle:"", ingredients:"", cookingTime: "",portionSize: "", description: ""};
+  const initialState = { recipeTitle:"", cuisine: "", mealType: "", ingredients:"", costPerMeal:"", description: "", pictureName: "default-upload.png"};
   const[formValues, setFormValues] = useState(initialState);
   const[errors, setErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [requestId, setRequestId] = useState("");
+  const [userId, setUserId] = useState(0);
+  const [selectFile, setSelectFile] = useState(null);
+  const navigate = useNavigate();
   const url = baseURL + '/uploadRecipe/requestForm';
 
   const handleChange = (e) => {
@@ -29,20 +33,33 @@ function UploadRecipe() {
       }); 
   };
 
+  const handleFileChange = (e) => {
+    setSelectFile(e.target.files[0]);
+  }
+  const handleModalClose = (e) => {
+    setModalIsOpen(false);
+    navigate('/uploadRecipeNavigation');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(formValues));
     setIsSubmit(true);
     if(Object.keys(errors).length === 0) {
-      axios.post(url,{
-        "recipeTitle": formValues.recipeTitle,
-        "ingredients": formValues.ingredients,
-        "cookingTime": formValues.cookingTime,
-        "portionSize": formValues.portionSize,
-        "description": formValues.description
-      }).then(
+      const formdata = new FormData();
+      formdata.append("image", selectFile);
+      formdata.append("submittedBy", localStorage.getItem('userId'));
+      formdata.append("recipeName", formValues.recipeTitle);
+      formdata.append("cuisine", formValues.cuisine);
+      formdata.append("mealType", formValues.mealType);
+      formdata.append("ingredients", formValues.ingredients);
+      formdata.append("costPerMeal", formValues.costPerMeal);
+      formdata.append("description", formValues.description);
+      axios.post(url,formdata).then(
         res=> {
           setRequestId(res.data.requestId);
+          console.log(requestId);
+          setUserId(res.data.userId);
         }, (error) => {
           console.log(error);
         });
@@ -60,15 +77,18 @@ function UploadRecipe() {
     if(!value.recipeTitle.trim()) {
         errors.recipeTitle = "Recipe Title is mandatory";
     }
+    if(!value.cuisine.trim()) {
+      errors.cuisine = "Cuisine origin is mandatory";
+    }
     if(!value.ingredients.trim()) {
         errors.ingredients = "Ingredients are mandatory";
     }
-    if(!value.cookingTime.trim()) {
-        errors.cookingTime = "Cooking time cannot be blank !";
+    if(!value.mealType.trim()) {
+      errors.mealType = "Meal type is mandatory";
     }
-    if(!value.portionSize.trim()) {
-        errors.portionSize = "Portion Size cannot be blank !";
-    }
+    if(!value.costPerMeal.trim()) {
+      errors.costPerMeal = "Cost per meal cannot be blank !";
+  }
     if(!value.description.trim()){
       errors.description = "Description cannot be empty !";
     }
@@ -96,6 +116,32 @@ function UploadRecipe() {
         </FormInputFields>
 
         <FormInputFields>
+          <FormLabel htmlFor='cuisine'>Cuisine</FormLabel>
+          <FormInput
+          type='cuisine'
+          name='cuisine'
+          key={'cuisine'}
+          placeholder='Enter cuisine origin'
+          value={formValues.cuisine}
+          onChange={handleChange}>
+          </FormInput>
+          <p>{errors.cuisine}</p>
+        </FormInputFields>
+
+        <FormInputFields>
+          <FormLabel htmlFor='mealType'>Meal Type</FormLabel>
+          <FormInput
+          type='mealType'
+          name='mealType'
+          key={'mealType'}
+          placeholder='Enter meal type - Salads, Breakfast, Appetizers, Soups, Main Course'
+          value={formValues.mealType}
+          onChange={handleChange}>
+          </FormInput>
+          <p>{errors.mealType}</p>
+        </FormInputFields>
+
+        <FormInputFields>
           <FormLabel htmlFor='ingredients'>Ingredients</FormLabel>
           <FormInput
           type='text'
@@ -109,29 +155,26 @@ function UploadRecipe() {
         </FormInputFields>
 
         <FormInputFields>
-          <FormLabel htmlFor='cookingTime'>Cooking Time</FormLabel>
+          <FormLabel htmlFor='costPerMeal'>Cost per meal</FormLabel>
           <FormInput
           type='text'
-          name='cookingTime'
-          key={'cookingTime'}
-          placeholder='Enter cooking time'
-          value={formValues.cookingTime}
+          name='costPerMeal'
+          key={'costPerMeal'}
+          placeholder='Enter cost per meal'
+          value={formValues.costPerMeal}
           onChange={handleChange}>
           </FormInput>
-          <p>{errors.cookingTime}</p>
+          <p>{errors.costPerMeal}</p>
         </FormInputFields>
 
         <FormInputFields>
-          <FormLabel htmlFor='portionSize'>Portion Size</FormLabel>
-          <FormInput
-          type='text'
-          name='portionSize'
-          key={'portionSize'}
-          placeholder='Enter portion size'
-          value={formValues.portionSize}
-          onChange={handleChange}>
-          </FormInput>
-          <p>{errors.portionSize}</p>
+          <FormLabel htmlFor='recipePicture'>Upload picture (optional)</FormLabel>
+          <FormInputUpload
+          type='file'
+          name='recipePicture'
+          key={'recipePicture'}
+          onChange={handleFileChange}>
+          </FormInputUpload>
         </FormInputFields>
 
         <FormInputFields>
@@ -166,7 +209,7 @@ function UploadRecipe() {
         <p>Upload request submitted.</p>
         <p>Request Reference number: {requestId}</p>
       </Typography>
-      <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)} style={{marginLeft: "160px"}}>Go Back</AppButton>
+      <AppButton color='secondary' type='submit' onClick={handleModalClose} style={{marginLeft: "160px"}}>Go Back</AppButton>
     </Box>
     </Modal>
    <Footer><FooterContainer /></Footer>

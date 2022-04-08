@@ -32,6 +32,9 @@ import AddPantry from "./pages/Supplier/AddPantry";
 import Cart from "./pages/Cart/Cart";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
+import UploadRecipeAdmin from "./pages/UploadRecipe/UploadRecipeAdmin";
+import About from "./pages/LandingPage/About"
+import HowItWorks from "./pages/LandingPage/HowItWorks"
 import CreateOffer from "./pages/Offers/CreateOffer";
 import AdminAllOffers from "./pages/Offers/AdminAllOffers";
 import OfferDetails from "./pages/Offers/OfferDetails";
@@ -53,14 +56,6 @@ function App() {
 
         <Route path='/complaints/ComplaintDetailsPage/'>
           <Route path=':id' element={<ComplaintDetailsPage />}></Route>
-        </Route>
-
-        <Route path='/offers/offerdetails'>
-          <Route path=':id' element={<OfferDetails />}></Route>
-        </Route>
-
-        <Route path='/offers/customerofferdetails'>
-            <Route path=":id" element={<CustomerOfferDetails />} />
         </Route>
 
         <Route path='/complaints/ComplaintResolutionPage/'>
@@ -95,6 +90,9 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/myOrders" element={<MyOrders />} />
         <Route path="/orderDetails" element={<OrderDetails />} />
+        <Route path='/adminRecipeRequests' element={<UploadRecipeAdmin/>} />
+        <Route path='/about' element={<About/>}/>
+        <Route path='howItWorks' element={<HowItWorks/>}/>
         <Route path="/createoffer" element={<CreateOffer />} />
         <Route path="/adminalloffers" element={<AdminAllOffers />} />
         <Route path="/customeralloffers" element={<CustomerAllOffers />} />

@@ -33,14 +33,24 @@
          required: true
      },
      recipeId: {
-         type: String,
-         required: true
+        type: Number,
+        default: function () {
+           return Math.floor(Math.random() * 1234) + 10000;
+       },
+       index: { unique: true }
      },
+     requestId: {
+        type: String,
+        default: function () {
+            const id =  (Math.floor(Math.random() * 12345) + 10000).toString();
+            return id;
+        },
+        index: { unique: true }
+    },
      recipeName: {
          type: String,
          required: true
      },
- 
      submittedBy: {
          type: String
      },
@@ -49,6 +59,7 @@
      },
      recipeStatus:{
          type: String,
+         default: "Under review"
      }
  });
  

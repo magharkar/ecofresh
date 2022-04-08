@@ -6,10 +6,22 @@
  const Schema = mongoose.Schema;
  
  const uploadRecipeModel = new mongoose.Schema({
-     recipeTitle: {
+    recipeTitle: {
          type: String,
          required: true
      },
+    costPerMeal: {
+        type: Number, 
+        required: true
+    },
+    cuisine: {
+        type: String,
+        required: true
+    },
+    mealType: {
+        type: String,
+        required: true
+    },
      ingredients: {
          type: String,
          required: true
@@ -36,7 +48,7 @@
      requestId: {
          type: String,
          default: function () {
-             const id =  (Math.floor(Math.random() * 1234) + 10000).toString();
+             const id =  (Math.floor(Math.random() * 12345) + 10000).toString();
              return id;
          },
          index: { unique: true }
@@ -45,6 +57,24 @@
          type: String,
          default: "Under review"
      },
+
+     ratings: {
+        type: String,
+        default: function() {
+            const rating = "";
+            return rating;
+        }
+    },
+    submittedBy: {
+        type: String,
+    },
+    s3URL: {
+        type: String,
+        default: function() {
+            const URL = "";
+            return URL;
+        }
+    }
  });
 
  module.exports = mongoose.model("uploadedrecipe",uploadRecipeModel, "uploadedrecipe");
