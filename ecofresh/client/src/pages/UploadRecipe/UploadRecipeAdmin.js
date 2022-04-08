@@ -12,7 +12,7 @@ import Navbar from '../../components/Navbar/NavAdmin'
 import { FooterContainer } from '../../components/Footer/FooterContainer'
 import baseURL from '../../config';
 import axios from 'axios'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function UploadRecipeAdmin() {
 const [isSubmit, setIsSubmit] = useState(false);
@@ -20,8 +20,6 @@ const [allRequests, setAllRequests] = useState([]);
 const [isRequestId, setRequestId] = useState("");
 const [isRecipeTitle, setRecipeTitle] = useState("");
 const [isIngredients, setIngredients] = useState("");
-const [isCookingTime, setCookingTime] = useState("");
-const [isPortionSize, setPortionSize] = useState("");
 const [isDescription, setDescription] = useState("");
 const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -30,16 +28,16 @@ const apiUrl = baseURL+'/adminRecipeRequests/getAllRequests';
 const handleClick = (requestId) => {
   console.log(requestId);
   setIsSubmit(true);
-  setModalIsOpen(true);
   axios.get(baseURL + "/adminRecipeRequests/" + requestId)
     .then(res => {
+      console.log(res.data.ingredients);
       setRequestId(res.data.requestId);
-      setRecipeTitle(res.data.recipeTitle);
+      setRecipeTitle(res.data.recipeName);
       setIngredients(res.data.ingredients);
-      setCookingTime(res.data.cookingTime);
-      setPortionSize(res.data.portionSize);
       setDescription(res.data.description);
+      setModalIsOpen(true);
     }).then(err => console.log(err));
+  
 }
 
 const handleAcceptClick = (requestId) => {
@@ -87,7 +85,7 @@ useEffect(() => {
       {allRequests.map((requests) => (
         <Row style={{fontSize: '25px', paddingBottom: '10px'}}>
         <RowContainer>
-        <Column>{requests.userId}</Column>
+        <Column>{requests.submittedBy}</Column>
         <Column>{requests.requestId}</Column>
         <Column><AppButton color='secondary' type='submit' style={{color: "#000" ,width:"100px"}} onClick={() => handleClick(requests.requestId)}>Open Request</AppButton></Column>
         </RowContainer>
@@ -112,8 +110,6 @@ useEffect(() => {
       <p style={{marginTop: "5px",fontSize: "32px", marginRight: '40px'}}>Request details</p>
       <p style={{textAlign: "left"}}>Recipe Title: <Text>{isRecipeTitle}</Text></p>
       <p style={{textAlign: "left"}}>Ingredients: <Text>{isIngredients}</Text></p>
-      <p style={{textAlign: "left"}}>Cooking Time: <Text>{isCookingTime}</Text></p>
-      <p style={{textAlign: "left"}}>Portion Size: <Text>{isPortionSize}</Text></p>
       <p style={{textAlign: "left"}}>Description: <Text>{isDescription}</Text></p>
     </Typography>
     <AppButton type='submit' onClick={() => handleAcceptClick(isRequestId)} style={{backgroundColor: "#50AF00",color: "#fff", fontWeight: "600", marginLeft:"40px", width:"90px"}}>Approve</AppButton>

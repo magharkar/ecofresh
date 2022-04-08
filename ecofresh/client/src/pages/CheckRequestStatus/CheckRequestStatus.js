@@ -18,8 +18,8 @@ function CheckRequestStatus() {
     const[errors, setErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [status, setStatus] = useState("");
-    const url = baseURL + "/uploadRecipe/" + formValues.requestId;
+    const [recipeStatus, setRecipeStatus] = useState("");
+    const url = baseURL + "/adminRecipeRequests/" + formValues.requestId;
   
     const handleChange = (e) => {
       const { name,value } = e.target;
@@ -35,8 +35,7 @@ function CheckRequestStatus() {
       if(Object.keys(errors).length === 0) {
         axios.get(url).then(
           res=> {
-            console.log(res.data)
-            setStatus(res.data);
+            setRecipeStatus(res.data.recipeStatus);
           }, (error) => {
             console.log(error);
           });
@@ -94,7 +93,7 @@ function CheckRequestStatus() {
                     boxShadow: 24,
                     p: 4,}}>
             <Typography id="modal-modal-title" variant="h6" component="h2" style={{color: "#fdad11", textAlign: 'center'}}>
-                <p>Status : {status}</p>
+                <p>Status : {recipeStatus}</p>
             </Typography>
             <AppButton color='secondary' type='submit' onClick={() => setModalIsOpen(false)} style={{marginLeft: "160px"}}>Go Back</AppButton>
             </Box>

@@ -24,7 +24,6 @@ function UploadRecipe() {
   const [userId, setUserId] = useState(0);
   const [selectFile, setSelectFile] = useState(null);
   const navigate = useNavigate();
-  const S3URL = "https://ecofresh-pictures-bucket.s3.ca-central-1.amazonaws.com/";
   const url = baseURL + '/uploadRecipe/requestForm';
 
   const handleChange = (e) => {
@@ -47,16 +46,16 @@ function UploadRecipe() {
     setErrors(validateForm(formValues));
     setIsSubmit(true);
     if(Object.keys(errors).length === 0) {
-      axios.post(url,{
-        "userId": localStorage.getItem(userId),
-        "recipeName": formValues.recipeTitle,
-        "cuisine": formValues.cuisine,
-        "mealType": formValues.mealType,
-        "ingredients": formValues.ingredients,
-        "costPerMeal": formValues.costPerMeal,
-        "description": formValues.description,
-        "s3URL": S3URL + formValues.pictureName
-      }).then(
+      const formdata = new FormData();
+      formdata.append("image", selectFile);
+      formdata.append("submittedBy", localStorage.getItem('userId'));
+      formdata.append("recipeName", formValues.recipeTitle);
+      formdata.append("cuisine", formValues.cuisine);
+      formdata.append("mealType", formValues.mealType);
+      formdata.append("ingredients", formValues.ingredients);
+      formdata.append("costPerMeal", formValues.costPerMeal);
+      formdata.append("description", formValues.description);
+      axios.post(url,formdata).then(
         res=> {
           setRequestId(res.data.requestId);
           console.log(requestId);
@@ -174,7 +173,6 @@ function UploadRecipe() {
           type='file'
           name='recipePicture'
           key={'recipePicture'}
-          value={formValues.pictureName}
           onChange={handleFileChange}>
           </FormInputUpload>
         </FormInputFields>
