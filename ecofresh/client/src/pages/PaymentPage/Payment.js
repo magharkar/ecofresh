@@ -76,7 +76,7 @@ export default function Payment() {
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: baseURL + '/confirmation',
+                return_url: 'https://group10-ecofresh.herokuapp.com/confirmation',
                 // return_url: "http://localhost:3000/confirmation"
             },
         });
