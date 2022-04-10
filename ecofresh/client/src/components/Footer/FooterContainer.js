@@ -5,8 +5,10 @@
 import React from 'react'
 import Footer from './Footer'
 import Icons from '../../assets/icons/icons'
+import { useNavigate } from 'react-router-dom'
 
 export function FooterContainer() {
+    const navigate = useNavigate();
   return (
     <Footer>
         <Footer.Wrapper>
@@ -16,9 +18,9 @@ export function FooterContainer() {
                   
                 <Footer.Column>
                     <Footer.Title>About Us</Footer.Title>
-                    <Footer.Link href="#">How It Works</Footer.Link>
-                    <Footer.Link href="#">Pricing</Footer.Link>
-                    <Footer.Link href="#">Testimonials</Footer.Link>
+                    <Footer.Link onClick={() => navigate('/howItWorks')}>How It Works</Footer.Link>
+                    <Footer.Link onClick={() => navigate('/pricing')}>Pricing</Footer.Link>
+                    <Footer.Link href="">Testimonials</Footer.Link>
                 </Footer.Column>
                 
                 <Footer.Column>

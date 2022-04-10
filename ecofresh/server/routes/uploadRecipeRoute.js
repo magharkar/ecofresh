@@ -21,7 +21,8 @@ route.get('/getAllRequests', async (req, res) => {
 
  route.post('/requestForm', upload.single('image'), async (req, res) => {
   const file = req.file;
-  await uploadImage(file);
+  const result = await uploadImage(file);
+  const imgName = result.Key;
   const filename = req.file['originalname'];
   let newRecipe = await new UploadRecipe();
   newRecipe.submittedBy = req.body.submittedBy;
@@ -30,7 +31,7 @@ route.get('/getAllRequests', async (req, res) => {
   newRecipe.costPerMeal = req.body.costPerMeal;
   newRecipe.mealType = req.body.mealType;
   newRecipe.ingredients = req.body.ingredients;
-  newRecipe.s3URL = "https://ecofresh-bucket.s3.ca-central-1.amazonaws.com/" + filename;
+  newRecipe.s3URL = "https://ecofreshbucket.s3.ca-central-1.amazonaws.com/" + imgName;
   newRecipe.description = req.body.description;
   console.log(newRecipe);
   newRecipe.save().then(result => {
