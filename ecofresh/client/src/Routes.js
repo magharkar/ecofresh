@@ -42,6 +42,7 @@ import CustomerAllOffers from "./pages/Offers/CustomerAllOffers";
 import CustomerOfferDetails from "./pages/Offers/CustomerOfferDetails";
 import PantryUpdate from "./pages/Supplier/PantryUpdate";
 import OrderCancel from "./pages/Supplier/OrderCancel";
+import Pricing from "./pages/LandingPage/Pricing"
 
 function App() {
 
@@ -97,6 +98,7 @@ function App() {
         <Route path="/adminalloffers" element={<AdminAllOffers />} />
         <Route path="/customeralloffers" element={<CustomerAllOffers />} />
         <Route path="/customerofferdetails" element={<CustomerOfferDetails />} />
+        <Route path ="/pricing" element={<Pricing />} />
       </Routes>
     </ThemeProvider>
   );

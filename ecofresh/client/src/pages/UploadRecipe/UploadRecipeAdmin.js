@@ -45,6 +45,7 @@ const handleAcceptClick = (requestId) => {
   .then((data) => {
     console.log(data);
     setModalIsOpen(false);
+    window.location.reload();
   }).then( err => console.log(err))
 }
 

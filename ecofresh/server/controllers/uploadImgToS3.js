@@ -2,9 +2,9 @@ require('dotenv').config()
 const fs = require('fs')
 const AWS = require('aws-sdk')
 
-const ID = 'AKIATN6UZAGMMTCTQSYJ'
-const SECRET = '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'
-const BUCKET_NAME = 'ecofresh-bucket'
+const ID = 'AKIARWZAJSL4NVJGUYPF'
+const SECRET = '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'
+const BUCKET_NAME = 'ecofreshbucket'
 const REGION = 'ca-central-1'
 
 const s3 = new AWS.S3({
