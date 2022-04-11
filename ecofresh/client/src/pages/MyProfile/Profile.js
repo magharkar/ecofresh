@@ -16,7 +16,7 @@ import AppButton from '../../components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import baseURL from '../../config';
 
-const Register = () => {
+const Profile = () => {
 
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
@@ -189,4 +189,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default Profile
