@@ -34,7 +34,7 @@ function LandingPage() {
                 <Row>
                   <Image src={food} width="100%" height="100%"></Image>
                     <Column className="text">
-                    <h4>Say 'Yes' to eco-friendly</h4>  
+                    <h4>Say 'YES' to eco-friendly</h4>  
                     <h3>Reduce food wastage</h3>
                     <p>EcoFresh delivers fresh food for the recipes from farmers directly to your doorstep. Only order how much you need and contribute to our goal to be 100% eco-friendly.</p>
                     <div className="mid_button"><AppButton color="secondary" onClick={handleKnowMoreClick}>Know more</AppButton></div>
