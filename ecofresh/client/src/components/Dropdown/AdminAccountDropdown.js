@@ -54,10 +54,6 @@ export default function AdminMenu() {
   };
   const menuOptions = [
       {
-        icon: <InventoryIcon fontSize='small' />,
-        text: "Supplier",
-      },
-      {
         icon: <ContactSupportIcon fontSize='small' />,
         text: "Complaints",
       },
