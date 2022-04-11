@@ -46,9 +46,11 @@ const Login = () => {
                     } 
                     else if(res.data.userType == "admin"){
                         navigate("/admin");
+                        window.location.reload();
                     }
                     else if(res.data.userType=="supplier"){
                         navigate("/supplier");
+                        window.location.reload();
                     }
                 } else {
                     console.log("sets invalid login")
