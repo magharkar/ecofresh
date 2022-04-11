@@ -154,17 +154,17 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
   - [Login.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Login/Login.js)
   - [Login.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Login/Login.style.js)
   - [Register.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Register/Register.js)
-  - [MyOrders.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyOrders/MyOrders.js)
-  - [MyOrders.style.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyOrders/MyOrders.style.js)
-  - [MyProfile] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyProfile/Profile.js)
-  - [MyProfile.style.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyProfile/MyProfile.style.js)
+  - [MyOrders.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyOrders/MyOrders.js)
+  - [MyOrders.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyOrders/MyOrders.style.js)
+  - [MyProfile](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyProfile/Profile.js)
+  - [MyProfile.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyProfile/MyProfile.style.js)
 - Server Side: [/server]
   - [login.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/login.js)
   - [usersModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/usersModel.js)
   - [usersRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/usersRoute.js)
   - [config.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/config.js)
-  - [ordersRoute.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/orderRoutes.js)
-  - [orderModel.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/orderModel.js)
+  - [ordersRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/orderRoutes.js)
+  - [orderModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/orderModel.js)
 
 ## Test User Credentials
 1. User
