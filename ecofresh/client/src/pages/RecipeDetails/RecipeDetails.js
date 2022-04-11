@@ -8,7 +8,7 @@ import { FooterContainer } from '../../components/Footer/FooterContainer'
 import {useLocation} from 'react-router-dom';
 import {Container, FlexContainer, ContentContainer, ImageIngredientsContainer, Directions, DirectionsText, OrderInfo,
     ImageContainer, IngredientsContainer, RecipeName, DescriptionContainer, SubHeader, Row, Key, Value, Heading,
-ButtonContainer, CardContainer, List, ImageWrapper} from './RecipeDetails.style';
+ButtonContainer, CardContainer, List, ImageWrapper, FlexParent} from './RecipeDetails.style';
 import AppButton from '../../components/Button/Button';
 import axios from 'axios';
 import baseURL from '../../config';
@@ -86,71 +86,74 @@ function RecipeDetails() {
                             <RecipeName>{recipeName}</RecipeName>
                             <SubHeader>Category : {cuisine} {mealType}</SubHeader>
                     </Heading>
-                        <FlexContainer>
+                    <FlexParent>
+                       <FlexContainer>
                                 
-                            <ImageIngredientsContainer>
-                                <ImageContainer>
-                                    <img src={s3URL} alt="Food!" height="256px" width="256px" />
-                                </ImageContainer>
-                                <IngredientsContainer>
-                                    <ul>
-                                        {
-                                            ingredientsArray.map(ingredient => (
-                                                <List>{ingredient}</List>
-                                            ))
-                                        }
-                                    </ul>
-                                </IngredientsContainer> 
-                            </ImageIngredientsContainer>
-                            <Directions>   
-                                <div>
-                                        <DirectionsText>Directions</DirectionsText>
-                                        <DescriptionContainer>
+                                <ImageIngredientsContainer>
+                                    <ImageContainer>
+                                        <img src={s3URL} alt="Food!" height="256px" width="256px" />
+                                    </ImageContainer>
+                                    <IngredientsContainer>
                                         <ul>
-                                                {
-                                                    descriptionArray.map(ingredient => {
-                                                        const shouldRender = ingredient.trim() !== "";
-                                                        return (
-                                                            shouldRender && (
-                                                                <List>{ingredient.trim()}</List>
-                                                            )
-                                                    )})
-                                                }
-                                            </ul>
-                                        </DescriptionContainer>
-                                </div>
-                                
-                                <OrderInfo>
-                                    <Row>
-                                        <Key>Cost Per Meal: </Key>
-                                        <Value>{costPerMeal}</Value>
-                                    </Row>
-                                    <ButtonContainer>
-                                        <FormControl style={{width: "100px", marginRight: "24px"}}>
-                                            <InputLabel id="demo-simple-select-label">Quantity</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={quantity}
-                                                label="Quantity"
-                                                onChange={(event) => setQuantity(event.target.value)}
-                                            >
-                                                <MenuItem value={1}>1</MenuItem>
-                                                <MenuItem value={2}>2</MenuItem>
-                                                <MenuItem value={3}>3</MenuItem>
-                                                <MenuItem value={4}>4</MenuItem>
-                                                <MenuItem value={5}>5</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                        <AppButton color="secondary" onClick={handleAddToCart}>Add to cart</AppButton>
-                                    </ButtonContainer>
+                                            {
+                                                ingredientsArray.map(ingredient => (
+                                                    <List>{ingredient}</List>
+                                                ))
+                                            }
+                                        </ul>
+                                    </IngredientsContainer> 
+                                </ImageIngredientsContainer>
+                                <Directions>   
+                                    <div>
+                                            <DirectionsText>Directions</DirectionsText>
+                                            <DescriptionContainer>
+                                            <ul>
+                                                    {
+                                                        descriptionArray.map(ingredient => {
+                                                            const shouldRender = ingredient.trim() !== "";
+                                                            return (
+                                                                shouldRender && (
+                                                                    <List>{ingredient.trim()}</List>
+                                                                )
+                                                        )})
+                                                    }
+                                                </ul>
+                                            </DescriptionContainer>
+                                    </div>
                                     
-                                </OrderInfo>
-                            
-
-
-                            </Directions>
-                        </FlexContainer>
+                                    <OrderInfo>
+                                        <Row>
+                                            <Key>Cost Per Meal: </Key>
+                                            <Value>{costPerMeal}</Value>
+                                        </Row>
+                                        <ButtonContainer>
+                                            <FormControl style={{width: "100px", marginRight: "24px"}}>
+                                                <InputLabel id="demo-simple-select-label">Quantity</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={quantity}
+                                                    label="Quantity"
+                                                    onChange={(event) => setQuantity(event.target.value)}
+                                                >
+                                                    <MenuItem value={1}>1</MenuItem>
+                                                    <MenuItem value={2}>2</MenuItem>
+                                                    <MenuItem value={3}>3</MenuItem>
+                                                    <MenuItem value={4}>4</MenuItem>
+                                                    <MenuItem value={5}>5</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                            <AppButton color="secondary" onClick={handleAddToCart}>Add to cart</AppButton>
+                                        </ButtonContainer>
+                                        
+                                    </OrderInfo>
+                                
+    
+    
+                                </Directions>
+                            </FlexContainer>
+                    </FlexParent>
+                       
                     </CardContainer>
                     
                 </ContentContainer>

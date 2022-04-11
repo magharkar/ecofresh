@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
 
-
   const [isClicked, setIsClicked] = useState(false);
 
   return (
@@ -76,7 +75,7 @@ const ShoppingButton = () => {
         })
         setCartQuantity(qty);
       })
-  }, []);
+  });
 
 
   return (

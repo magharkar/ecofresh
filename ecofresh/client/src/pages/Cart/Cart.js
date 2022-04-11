@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /**
  * @author Mugdha Agharkar
  */
@@ -30,8 +31,6 @@ function Cart() {
     }, []);
 
     const getRecipeAPI = () => {
-
-
         console.log(state)
         const getRecipeURL = baseURL + '/cart/getAllItemsInCart/' + email;
         axios.get(getRecipeURL)
@@ -89,12 +88,12 @@ function Cart() {
                                                 </Row>
                                                 <Row className="taxes">
                                                     <RowItem>Taxes (5%)</RowItem>
-                                                    <RowItem className="value">${taxes}</RowItem>
+                                                    <RowItem className="value">${Math.round((taxes + Number.EPSILON) * 100) / 100}</RowItem>
                                                 </Row>
                                                 <Divider />
                                                 <Row className="final">
                                                     <RowItem>Final Cost</RowItem>
-                                                    <RowItem className="value">${finalCost}</RowItem>
+                                                    <RowItem className="value">${Math.round((finalCost + Number.EPSILON) * 100) / 100}</RowItem>
                                                 </Row>
                                             </PaymentInfo>
                                             <ButtonWrapper>

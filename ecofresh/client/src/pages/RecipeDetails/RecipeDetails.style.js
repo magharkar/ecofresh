@@ -34,7 +34,7 @@ const ImageIngredientsContainer = styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+   // margin: 0 auto;
     @media (max-width: 478px) {
         padding: 0;
     }
@@ -112,8 +112,13 @@ const List = styled.li`
     padding-top: 6px;
 `;
 
+const FlexParent = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
 const ImageWrapper = styled.div``;
 
 export {Container, FlexContainer, ContentContainer, ImageIngredientsContainer, Directions, OrderInfo,
     ImageContainer, IngredientsContainer, RecipeName, DescriptionContainer, SubHeader, DirectionsText, Row,
-Key, Value, ButtonContainer, CountDropdown, Heading, CardContainer, List, ImageWrapper};
+Key, Value, ButtonContainer, CountDropdown, Heading, CardContainer, List, ImageWrapper, FlexParent};
