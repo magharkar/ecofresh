@@ -42,6 +42,7 @@ import CustomerAllOffers from "./pages/Offers/CustomerAllOffers";
 import CustomerOfferDetails from "./pages/Offers/CustomerOfferDetails";
 import PantryUpdate from "./pages/Supplier/PantryUpdate";
 import OrderCancel from "./pages/Supplier/OrderCancel";
+import Profile from "./pages/MyProfile/Profile";
 
 function App() {
 
@@ -90,13 +91,14 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/myOrders" element={<MyOrders />} />
         <Route path="/orderDetails" element={<OrderDetails />} />
-        <Route path='/adminRecipeRequests' element={<UploadRecipeAdmin/>} />
-        <Route path='/about' element={<About/>}/>
-        <Route path='howItWorks' element={<HowItWorks/>}/>
+        <Route path='/adminRecipeRequests' element={<UploadRecipeAdmin />} />
+        <Route path='/about' element={<About />} />
+        <Route path='howItWorks' element={<HowItWorks />} />
         <Route path="/createoffer" element={<CreateOffer />} />
         <Route path="/adminalloffers" element={<AdminAllOffers />} />
         <Route path="/customeralloffers" element={<CustomerAllOffers />} />
         <Route path="/customerofferdetails" element={<CustomerOfferDetails />} />
+        <Route path="/myProfile" element={<Profile />} />
       </Routes>
     </ThemeProvider>
   );
