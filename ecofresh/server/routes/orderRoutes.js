@@ -91,13 +91,24 @@ route.get("/orders",async(req,res)=>{
             $match:{orderId:req.params.id}
         }
 ]).then(result=>{
-    console.log(result)
+    console.log("this is " +result[0].recipes[0].recipeName)
+   var arr = []
+   result[0].recipes.forEach(recipe=>{
+     console.log(recipe.recipeName)
+     arr.push(recipe.recipeName)
+
+   
+   })    
+
     res.send({
      "Order_id":result[0].orderId,
      "user_id":result[0].userId,
-     "Recipe_name": result[0].recipeName,
-     "Ingredients": result[0].Recipe_details[0].ingredients,
-     "Cost_Per_meal":result[0].Recipe_details[0].costPerMeal
+     "date": result[0].date,
+     "recipes": arr,
+     "status": result[0].status,
+     "finalCost":result[0].finalCost
+    
+     
 
     });
 });

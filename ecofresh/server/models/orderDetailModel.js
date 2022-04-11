@@ -14,7 +14,7 @@ const orderDetailsModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    recipes:{
+    recipeName:{
         type: String,
         required: true
     },
@@ -30,6 +30,19 @@ const orderDetailsModel = new mongoose.Schema({
         type:String,
         required:true
     },
+    subtotal:{
+        type: Number,
+        required: true
+    },
+    taxes:{
+        type:Number,
+        required:true
+    },
+    finalCost:{
+        type: Number,
+        required: true
+    },
+    
     Recipe_details:[{type:Schema.Types.ObjectId,ref:'recipe'}],
   
 
