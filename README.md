@@ -111,11 +111,33 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
   - [ComplaintResolutionPage.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Complaints/ComplaintResolutionPage.js)
   - [Complaints.css](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Complaints/Complaints.css)
   - [UserComplaintsPage.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Complaints/UserComplaintsPage.js)
+  - [AdminAllOffers](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Offers/AdminAllOffers.js)
+  - [CreateOffer](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Offers/CreateOffer.js)
+  - [CustomerAllOffers](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Offers/CustomerAllOffers.js)
+  - [CustomerOfferDetails](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Offers/CustomerOfferDetails.js)
+  - [OfferDetails](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Offers/OfferDetails.js)
+  - [Offers.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Offers/Offers.style.js)
 
 - Server Side: [/server]
   - [complaints.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/complaints.js)
   - [complaintsModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/complaintsModel.js)
   - [complaintRoutes.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/complaintRoutes.js)
+  - [offers](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/offers.js)
+  - [uploadImgToS3](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/uploadImgToS3.js)
+  - [uploadToS3](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/uploadToS3.js)
+  - [offersModel](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/offersModel.js)
+  - [offerRoute](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/offerRoute.js)
+
+- Routes to Access Features "Complaint" and "Offers"
+  - User Login (Credentials :- Email : kandarpparikh@gmail.com , Password : Kandarp@123)
+    - [View Existing Complaints](https://group10-ecofresh.herokuapp.com/usercomplaints)
+    - [Raise New Complaint](https://group10-ecofresh.herokuapp.com/addcomplaint)
+    - [View Offers](https://group10-ecofresh.herokuapp.com/customeralloffers)
+
+  - Admin Login (Credentials :- Email ID: admin@gmail.com , Password: AdminUser@123)
+    - [View Customer Complaints](https://group10-ecofresh.herokuapp.com/complaints)
+    - [View All Offers and details](https://group10-ecofresh.herokuapp.com/adminalloffers)
+    - [Create New Offer](https://group10-ecofresh.herokuapp.com/createoffer)
 
 [Mugdha Agharkar](mailto:mg425404@dal.ca)
 
@@ -154,17 +176,12 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
   - [Login.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Login/Login.js)
   - [Login.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Login/Login.style.js)
   - [Register.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Register/Register.js)
-  - [MyOrders.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyOrders/MyOrders.js)
-  - [MyOrders.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyOrders/MyOrders.style.js)
-  - [MyProfile](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyProfile/Profile.js)
-  - [MyProfile.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/MyProfile/MyProfile.style.js)
+
 - Server Side: [/server]
   - [login.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/login.js)
   - [usersModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/usersModel.js)
   - [usersRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/usersRoute.js)
   - [config.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/config.js)
-  - [ordersRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/orderRoutes.js)
-  - [orderModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/orderModel.js)
 
 ## Test User Credentials
 1. User
@@ -179,7 +196,3 @@ Password: AdminUser@123
 Email ID: supplier@gmail.com
 Password: Supplier@123
 
-
-### Login Session Management
-
-Please note that there is no timeout set for a user's session. You must logout from the current session in order to login with a new user.
