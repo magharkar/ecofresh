@@ -28,6 +28,10 @@ export default function AdminMenu() {
     {
       navigate("/complaints")
     }
+    if(selectedOption==="Approve Recipes")
+    {
+      navigate("/adminRecipeRequests")
+    }
     if(selectedOption==="View Offers")
     {
       navigate("/adminalloffers")

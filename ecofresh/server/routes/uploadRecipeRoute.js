@@ -4,7 +4,10 @@
 
  const express = require("express");
  const route = express.Router();
- const UploadRecipe = require("../models/uploadRecipeModel")
+ const UploadRecipe = require("../models/recipeModel")
+ const multer = require('multer')
+ const upload = multer ({ dest: 'uploads/'})
+ const { uploadImage } = require('../controllers/uploadImgToS3')
 
 route.get('/getAllRequests', async (req, res) => {
   let recipes = await UploadRecipe.find({});
@@ -12,27 +15,32 @@ route.get('/getAllRequests', async (req, res) => {
     res.send(recipes);
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error while fetching recipes.");
+    res.status(500).send({message: "Error while fetching recipes."});
   }
 })
 
- route.post('/requestForm', async (req, res) => {
+ route.post('/requestForm', upload.single('image'), async (req, res) => {
+  const file = req.file;
+  await uploadImage(file);
+  const filename = req.file['originalname'];
   let newRecipe = await new UploadRecipe();
-  newRecipe.recipeTitle = req.body.recipeTitle;
+  newRecipe.submittedBy = req.body.submittedBy;
+  newRecipe.recipeName = req.body.recipeName;
+  newRecipe.cuisine = req.body.cuisine;
+  newRecipe.costPerMeal = req.body.costPerMeal;
+  newRecipe.mealType = req.body.mealType;
   newRecipe.ingredients = req.body.ingredients;
-  newRecipe.cookingTime = req.body.cookingTime;
-  newRecipe.portionSize = req.body.portionSize;
+  newRecipe.s3URL = "https://ecofresh-bucket.s3.ca-central-1.amazonaws.com/" + filename;
   newRecipe.description = req.body.description;
   console.log(newRecipe);
   newRecipe.save().then(result => {
-    const reqId = result.requestId;
-    console.log("in result");
-    res.status(201).send({
-      "requestId" : reqId
+    const reqId= result.requestId;
+    res.status(200).send({
+      "requestId" : reqId,
+      "message" : "Recipe request submitted."
     });
   }).catch(err => {
-    console.log("Failed to submit recipe upload request. "+ err);
-    res.status(400).send("Recipe upload request cannot be submitted");
+    res.status(400).send({message: "Recipe upload request cannot be submitted" + err});
   });
 });
 
