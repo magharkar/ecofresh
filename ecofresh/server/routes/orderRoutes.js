@@ -96,7 +96,8 @@ route.get("/orders",async(req,res)=>{
      "Order_id":result[0].orderId,
      "user_id":result[0].userId,
      "Recipe_name": result[0].recipeName,
-    
+     "Ingredients": result[0].Recipe_details[0].ingredients,
+     "Cost_Per_meal":result[0].Recipe_details[0].costPerMeal
 
     });
 });

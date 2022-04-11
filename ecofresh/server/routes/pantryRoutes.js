@@ -25,7 +25,10 @@ route.get("/pantry",async(req,res)=>{
         }, (err, data) => {
           if (data) {
             console.log(data)
-            Pantry.updateOne({  "Supplier_id": "10706"},{ $set: { "Items.1" :[item, quantity]  }}, (error, result) => {
+            
+            var colName = "Items."+item;
+            console.log(colName);
+            Pantry.updateOne({  "Supplier_id": "10706"},{ $set: { [colName] :[item, quantity]  }}, (error, result) => {
               if (result) {
                   console.log(result)
                 res.send({ "success": true, "message": "Status updated" });
