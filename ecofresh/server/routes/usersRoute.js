@@ -108,5 +108,33 @@ route.post("/updatePassword", (req, res) => {
 
 })
 
+route.get("/getUserDetails/:emailId", (req, res) => {
+  let emailId = req.params.emailId;
+  Users.findOne({ "email": emailId }).then(result => {
+    console.log(result);
+    res.send({
+      "email": result.email,
+      "firstName": result.firstName,
+      "lastName": result.lastName,
+      "userType": result.userType,
+      "userId": result.userId
+    })
+  }).catch(err => {
+    console.log(err)
+    res.status(400).send({ "success": false });
+  });
+});
+
+route.put("/updateUserDetails", (req, res)=>{
+  let body = req.body;
+  let email = body.email;
+  Users.updateOne({email: email}, body).then(result => {
+    res.send({success: true});
+  }).catch(err =>{
+    console.log(err);
+    res.status(400).send({success: false});
+  });
+});
+
 
 module.exports = route;
