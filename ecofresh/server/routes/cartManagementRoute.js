@@ -95,7 +95,7 @@ route.get("/getAllItemsInCart/:email", (req, res) => {
             data: responseList,
             userEmail: emailId,
             subtotal: roundedSubTotal,
-            taxes: (roundedSubTotal * taxes) / 100,
+            taxes: Math.round((roundedSubTotal * taxes) / 100),
             shipping: shipping,
             finalCost: finalCost
         });
