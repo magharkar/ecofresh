@@ -26,7 +26,7 @@ route.post("/login", async (req, res) => {
     console.log("Salt: " + result.salt);
     if (validatePassword(result.salt, result.password, password)) {
       console.log("valid");
-      res.send({ "success": true, "user": email, "userType": result.userType, "firstName": result.firstName, "lastName":result.lastName, "userId": result.userId });
+      res.send({ "success": true, "user": email, "userType": result.userType, "firstName": result.firstName, "lastName": result.lastName, "userId": result.userId });
     }
     else {
       res.status(401).send({ "success": false, "message": "Invalid credentials" });
@@ -68,12 +68,12 @@ route.post("/register", (req, res) => {
   //     res.status(400).send("User already exists");
   //   }
   //   else {
-      newUser.save().then(savedResult => {
-        res.status(201).send("User created");
-      }).catch(saveErr => {
-        res.status(400).send("User already exists");
-      });
-    // }
+  newUser.save().then(savedResult => {
+    res.status(201).send("User created");
+  }).catch(saveErr => {
+    res.status(400).send("User already exists");
+  });
+  // }
 
   // }).catch(err => {
   //   console.log("Failed to add user.");
@@ -108,5 +108,31 @@ route.post("/updatePassword", (req, res) => {
 
 })
 
+route.get("/getUserDetails/:emailId", (req, res) => {
+  let emailId = req.params.emailId;
+  Users.findOne({ "email": emailId }).then(result => {
+    console.log(result);
+    res.send({
+      "email": result.email,
+      "firstName": result.firstName,
+      "lastName": result.lastName,
+      "userType": result.userType,
+      "userId": result.userId
+    })
+  }).catch(err => {
+    console.log(err)
+    res.status(400).send({ "success": false });
+  });
+});
 
+route.put("/updateUserDetails", (req, res)=>{
+  let body = req.body;
+  let email = body.email;
+  Users.updateOne({email: email}, body).then(result => {
+    res.send({success: true});
+  }).catch(err =>{
+    console.log(err);
+    res.status(400).send({success: false});
+  });
+});
 module.exports = route;

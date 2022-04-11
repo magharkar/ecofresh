@@ -10,6 +10,13 @@ const Payment = new mongoose.Schema({
     //     type: String
     //     // required: true
     // },
+    orderId: {
+        type: Number,
+        default: function () {
+            return Math.floor(Math.random() * 1234) + 10000;
+        },
+        index: { unique: true }
+    },
     email: {
         type: String,
         required: true

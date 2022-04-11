@@ -29,7 +29,6 @@ const Row = styled.div`
 
 const Column = styled.div`
     width: 50%;
-    marginTop: 0px;
     padding: 10px;
     &.text {
         margin: auto;

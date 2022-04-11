@@ -22,7 +22,7 @@ export const MainFormContainer = styled.div`
   opacity: 0.9;
   position: relative;
   border-radius: 10px;
-  height: 600px;
+  height: 850px;
   display: grid;
 
   @media (max-width:768px) {
@@ -68,6 +68,16 @@ export const FormLabel = styled.div`
 export const FormInput = styled.input`
   display: block;
   border-style: solid;
+  border-width: .5px;
+  padding-left: 10px;
+  outline: black;
+  border-radius: 2px;
+  height: 40px;
+  width: 100%;
+`
+export const FormInputUpload = styled.input`
+  display: block;
+  border-style: none;
   border-width: .5px;
   padding-left: 10px;
   outline: black;
