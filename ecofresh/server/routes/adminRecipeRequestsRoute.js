@@ -8,9 +8,11 @@ const express = require("express");
  const UploadRecipe = require("../models/recipeModel")
 
 route.get('/getAllRequests', async (req, res) => {
-  let recipes = await UploadRecipe.find({});
+  let recipes = await UploadRecipe.find({
+    "recipeStatus" : "Under review"
+  });
   try {
-    res.status(200).send(recipes.splice(0,10));
+    res.status(200).send(recipes);
   } catch (error) {
     console.log(error);
     res.status(500).send("Error while fetching recipes.");

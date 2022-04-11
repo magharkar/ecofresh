@@ -42,19 +42,22 @@ const Login = () => {
                     localStorage.setItem("userType", res.data.userType);
                     if(res.data.userType == "customer"){
                         navigate("/home");
+                        window.location.reload();
                     } 
                     else if(res.data.userType == "admin"){
                         navigate("/admin");
+                        window.location.reload();
                     }
                     else if(res.data.userType=="supplier"){
                         navigate("/supplier");
+                        window.location.reload();
                     }
                 } else {
                     console.log("sets invalid login")
                     setIsLoginValid(false);
                 }
             }
-        ) .catch(
+        ).catch(
             error => {
                setIsLoginValid(false);
             }
