@@ -74,7 +74,7 @@ const MyOrders = () => {
                                     {
                                     orderData.map(data =>(
                                         <OrderWrapper>
-                                            <table cellPadding={"10"}>
+                                            <table cellPadding={"10"} style={{tableLayout:"fixed",  width:"90%"}}>
                                                 <tr>
                                                     <Key>Order ID:</Key>
                                                     <Value>{data.orderId}</Value>
