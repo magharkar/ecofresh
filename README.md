@@ -10,7 +10,7 @@ The quantity that will be supplied to them depends on how many portions they ord
 They can also post their unique recipe creations, which will be evaluated by the administrative team and if approved, the recipe is published on our blog, and we reward the user with credit points that can be redeemed on their next purchase.
 
 - _Date Created_: 27 03 2022
-- _Last Modification Date_: 29 03 2022
+- _Last Modification Date_: 12 04 2022
 
 ## Author
 
@@ -145,6 +145,7 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
     - [Create New Offer](https://group10-ecofresh.herokuapp.com/createoffer)
 
 [Mugdha Agharkar](mailto:mg425404@dal.ca)
+Features : Home Page(Browsing), Add to cart(Cart Management)
 
 - Client Side: [/client]
 
@@ -165,6 +166,14 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
   - [RecipeDetails.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/RecipeDetails/RecipeDetails.style.js)
   - [UserHomepage.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UserHomepage/UserHomepage.js)
   - [UserHomepage.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UserHomepage/UserHomepage.style.js)
+  - [CartItem.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/components/CartItem/CartItem.js)
+  - [CartItem.style.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/components/CartItem/CartItem.style.js)
+  - [Cart.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Cart/Cart.js)
+  - [Cart.style.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/Cart/Cart.style.js)
+  - [cartModel.js] (https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/cartModel.js)
+  
+
+
 
 - Server Side: [/server]
   - [recipe.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/recipe.js)
