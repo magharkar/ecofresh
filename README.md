@@ -80,6 +80,7 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
 
 - Client Side: [/client]
 
+  - [Footer](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/tree/main/ecofresh/client/src/components/Footer)
   - [NavAdmin.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/components/Navbar/NavAdmin.js)
   - [NavAdmin.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/components/Navbar/NavAdmin.style.js)
   - [NavLanding.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/components/Navbar/NavLanding.js)
@@ -92,10 +93,14 @@ Project Group Repository: [https://git.cs.dal.ca/agharkar/group_10_csci_5709](ht
   - [LandingPage.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/LandingPage/LandingPage.style.js)
   - [UploadRecipe.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UploadRecipe/UploadRecipe.js)
   - [UploadRecipe.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UploadRecipe/UploadRecipe.style.js)
+  -[UploadRecipeAdmin.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UploadRecipe/UploadRecipeAdmin.js)
+  -[UplaodRecipeAdmin.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UploadRecipe/UploadRecipeAdmin.style.js)
   - [UploadRecipeHero.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UploadRecipeHero/UploadRecipeHero.js)
   - [UploadRecipeHero.style.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/client/src/pages/UploadRecipeHero/UploadRecipeHero.style.js)
 
 - Server Side: [/server]
+  -[uploadImgToS3.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/controllers/uploadImgToS3.js)
+  -[adminRecipeRequestsRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/adminRecipeRequestsRoute.js)
   - [uploadRecipeModel.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/models/uploadRecipeModel.js)
   - [uploadRecipeRoute.js](https://git.cs.dal.ca/agharkar/group_10_csci_5709/-/blob/main/ecofresh/server/routes/uploadRecipeRoute.js)
 
