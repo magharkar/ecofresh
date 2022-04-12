@@ -196,3 +196,9 @@ Password: AdminUser@123
 Email ID: supplier@gmail.com
 Password: Supplier@123
 
+### Test Payment Gateway Credentials
+- Card Number: 4242 4242 4242 4242
+- Expiry: Any future date
+- CVV: Any 3 digit number
+- Postal code: M5T 1T4
+
