@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import baseURL from "../../config";
 import axios from "axios";
 import {
@@ -28,6 +28,7 @@ function OrderDetails() {
             })
     }, []);
 
+    let navigate = useNavigate();
     console.log(orderDetails);
 
     const getRecipes = (order) => (
@@ -73,7 +74,9 @@ function OrderDetails() {
                                             
                                             </FlexContainer>
                                             <div style={{paddingTop: 40}}></div>
-                                            <AppButton color="secondary">Go back to cart</AppButton>
+                                            <AppButton color="secondary" onClick={()=>{
+                                                navigate("/myOrders")
+                                            }}>Go back to My Orders</AppButton>
                                     </div>
                                     
                                         
