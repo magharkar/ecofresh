@@ -69,11 +69,6 @@ export default function AccountMenu() {
       divider: false,
     },
     {
-      icon: <EmojiEvents fontSize='small' />,
-      text: "Rewards",
-      divider: true,
-    },
-    {
       icon: <Visibility fontSize='small' />,
       text: "View Complaints",
       divider: false,
