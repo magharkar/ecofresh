@@ -95,6 +95,11 @@ export default function Orders() {
                 <Typography  color="#ffffff"  padding={1} margin={2}>Username: {showdata.user_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}> Order id:{showdata.Order_id}</Typography>
                 <Typography color="#ffffff" padding={1} margin={2}>Ingredients: {showdata.Ingredients}</Typography>
+                <Typography color="#ffffff" padding={1} margin={2}>date: {showdata.date}</Typography>
+                <Typography color="#ffffff" padding={1} margin={2}>Recipes: {showdata.recipes?.map((ele)=><p> * {ele}</p>)}</Typography>
+                <Typography color="#ffffff" padding={1} margin={2}>Status: {showdata.status}</Typography>
+                <Typography color="#ffffff" padding={1} margin={2}>Final Cost: {showdata.finalCost}</Typography>
+                
                 <AppButton  color="secondary" onClick={() => handleCardClick(showdata.Order_id)} padding={2} margin={2}>Fulfill</AppButton>
        {/* <Button variant="outlined">Cancel</Button> */}
                 </Card>

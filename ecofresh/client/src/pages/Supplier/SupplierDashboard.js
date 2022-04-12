@@ -40,6 +40,11 @@ const routeChange = () =>{
     navigate(path);
   }
 
+
+  const PantryrouteChange = () =>{ 
+    let path = '/supplier/pantry'; 
+    navigate(path);
+  }
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
@@ -144,7 +149,7 @@ const routeChange = () =>{
                 
                 </CardContent>
                 <CardActions>
-                <AppButton color="secondary"
+                <AppButton color="secondary"  onClick={PantryrouteChange}
                                         >
                                         View Pantry
                                     </AppButton>
