@@ -11,7 +11,7 @@ function Header() {
            </FlexContainer>
 
            <FlexContainer>
-               <LinkText>About</LinkText>
+               <LinkText>About after upload #1</LinkText>
                <LinkText>How It Works</LinkText>
                <LinkText>Pricing</LinkText>
            </FlexContainer>
